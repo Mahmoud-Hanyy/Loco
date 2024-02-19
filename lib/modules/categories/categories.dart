@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Categories extends StatelessWidget {
+  const Categories({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: const Center(
-        child: Text('Home',style: TextStyle(color: Colors.black,),),
+        child: Text('Categories',style: TextStyle(color: Colors.black),),
       ),
     );
   }
