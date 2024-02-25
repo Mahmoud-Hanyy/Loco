@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../constants/colors.dart' as Colors;
+import '../../constants/theme.dart' as Colors;
 
 //ignore: must_be_immutable
-class Components extends StatelessWidget {
-  Components({super.key, required this.buttonText});
+class LocoButton extends StatelessWidget {
+  LocoButton({super.key, required this.buttonText,required this.onPressed});
   String buttonText;
+  Function onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -12,20 +13,21 @@ class Components extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.Colors.black.withOpacity(0.1),
+            color: Colors.AppTheme.black.withOpacity(0.1),
             spreadRadius: 5,
             blurRadius: 7,
             offset: const Offset(0, 3),
           ),
         ],
       ),
-      height: 40,
+      height: 50,
       width: 200,
       child: MaterialButton(
           onPressed: () {
+            onPressed();
           },
-          color: Colors.Colors.loco,
-          textColor:Colors.Colors.white,
+          color: Colors.AppTheme.loco,
+          textColor:Colors.AppTheme.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
           ),

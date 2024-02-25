@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../constants/colors.dart'as Colors;
+import '../../constants/theme.dart' as Colors;
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
 
@@ -19,9 +19,9 @@ class NavigationPage extends StatelessWidget {
           return Scaffold(
             body: cubit.pages[cubit.currentIndex],
             bottomNavigationBar: BottomNavigationBar(
-              selectedItemColor: Colors.Colors.white,
-              backgroundColor: Colors.Colors.loco,
-              unselectedItemColor: Colors.Colors.light,
+              selectedItemColor: Colors.AppTheme.white,
+              backgroundColor: Colors.AppTheme.loco,
+              unselectedItemColor: Colors.AppTheme.light,
               currentIndex: cubit.currentIndex,
               type: BottomNavigationBarType.fixed,
               onTap: (index) {

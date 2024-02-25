@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loco/modules/navigation/navigation.dart';
+import 'package:loco/modules/log_in/log_in.dart';
+import 'constants/theme.dart';
+import 'modules/on_boarding/on_boarding.dart';
+import 'modules/on_boarding/on_boarding1.dart';
+import 'modules/on_boarding/on_boarding2.dart';
+import 'modules/register/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,23 +12,22 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: NavigationPage(),
-      theme: ThemeData(
-        textTheme: const TextTheme(
-          bodyText2: TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-            fontFamily: 'Clash',
-          ),
-        )
-      )
+      initialRoute:'onBoarding',
+        routes: {
+          'onBoarding': (context) => const OnBoarding(),
+          'onBoarding1': (context) => const OnBoarding1(),
+          'onBoarding2':(context)=>const OnBoarding2(),
+          'login' :(context)=>const LogIn(),
+          'registerScreen':(context)=>const RegisterScreen(),
+        } ,
+      themeMode: ThemeMode.system,
+      theme: AppTheme.lightTheme,
+      darkTheme:AppTheme.darkTheme ,
     );
   }
 }
