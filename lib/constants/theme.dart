@@ -46,6 +46,11 @@ class AppTheme {
         color:loco,
         fontFamily: 'Clash',
       ),
+      labelSmall :TextStyle(
+        fontSize: 18.0,
+        color: white,
+        fontFamily: 'Clash',
+      )
     ),
   );
 
