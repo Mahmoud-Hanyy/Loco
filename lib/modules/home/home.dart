@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:loco/components/product_item.dart';
+
+import '../../constants/theme.dart' as Colors;
 import '../cart/add_to_cart.dart';
 import '../product_details/product_details.dart';
-import '../../constants/theme.dart' as Colors;
 
 //ignore:must_be_immutable
 class HomePage extends StatelessWidget {
@@ -31,7 +33,8 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 40, right: 0, left: 0),
+                padding: const EdgeInsets.only(
+                    top: 20, bottom: 40, right: 0, left: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -41,14 +44,15 @@ class HomePage extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(26),
                           color: Colors.AppTheme.white,
-                          border:
-                          (Border.all(color: Colors.AppTheme.loco, width: 2)),
+                          border: (Border.all(
+                              color: Colors.AppTheme.loco, width: 2)),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.AppTheme.loco.withOpacity(0.5),
                               spreadRadius: 3,
                               blurRadius: 7,
-                              offset: const Offset(0, 5), // changes position of shadow
+                              offset: const Offset(
+                                  0, 5), // changes position of shadow
                             ),
                           ],
                         ),
@@ -92,8 +96,7 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(26),
                       color: Colors.AppTheme.loco,
                     ),
-                    child: const Center()
-                ),
+                    child: const Center()),
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -143,11 +146,14 @@ class HomePage extends StatelessWidget {
                         ),
                         const Text(
                           'Men',
-                          style: TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
+                          style:
+                              TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
                         ),
                       ],
                     ),
-                    const SizedBox(width: 10,),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
                       children: [
                         Container(
@@ -155,7 +161,8 @@ class HomePage extends StatelessWidget {
                           width: MediaQuery.of(context).size.height * 0.14,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage('lib/resources/images/woman.png'),
+                              image:
+                                  AssetImage('lib/resources/images/woman.png'),
                               fit: BoxFit.cover,
                             ),
                             shape: BoxShape.circle,
@@ -167,11 +174,14 @@ class HomePage extends StatelessWidget {
                         ),
                         const Text(
                           'Women',
-                          style: TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
+                          style:
+                              TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
                         ),
                       ],
                     ),
-                    const SizedBox(width: 10,),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
                       children: [
                         Container(
@@ -191,11 +201,14 @@ class HomePage extends StatelessWidget {
                         ),
                         const Text(
                           'Kids',
-                          style: TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
+                          style:
+                              TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
                         ),
                       ],
                     ),
-                    const SizedBox(width: 10,),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Column(
                       children: [
                         Container(
@@ -215,7 +228,8 @@ class HomePage extends StatelessWidget {
                         ),
                         const Text(
                           'Accessories',
-                          style: TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
+                          style:
+                              TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
                         ),
                       ],
                     ),
@@ -251,321 +265,20 @@ class HomePage extends StatelessWidget {
                       width: 15,
                     ),
                     InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(ProductDetails.routename,
-                            arguments: ProductDetailsArgs(
-                                productName: 'Hoodie 1' /*[index], index: index*/,
-                                price: 123 /*,index:index*/));
-                      },
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 215,
-                            width: 180,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.AppTheme.loco),
-                                borderRadius: BorderRadius.circular(13)),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 150),
-                                  child: Text(
-                                    productName = 'Hoodie 1',
-                                    style: const TextStyle(
-                                        color: Color(0xFF4C7E72),
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ),
-                                Text(
-                                  "${price = 123} EGP",
-                                  style: const TextStyle(
-                                      color: Color(0xFF4C7E72),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w600),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Container(
-                                        height: MediaQuery.of(context).size.height *
-                                            0.03,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.23,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(26),
-                                          color: Colors.AppTheme.loco,
-                                        ),
-                                        child: const Center(
-                                          child: Text(
-                                            'View product',
-                                            style: TextStyle(
-                                                color: Colors.AppTheme.white,
-                                                fontSize: 8),
-                                          ),
-                                        )),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 140,
-                            width: 180,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  image: AssetImage('lib/resources/images/hoodie1.png'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(13),
-                                color: Colors.AppTheme.loco),
-                          ),
-                        ],
-                      ),
-                    ),
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                              ProductDetails.routename,
+                              arguments: ProductDetailsArgs(
+                                  productName:
+                                      'Hoodie 1' /*[index], index: index*/,
+                                  price: 123 /*,index:index*/));
+                        },
+                        child: ProductItem(
+                            price: 123,
+                            productName: 'hoodie1',
+                            imagePath: 'lib/resources/images/hoodie1.png')),
                     const SizedBox(
                       width: 15,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(ProductDetails.routename,
-                            arguments: ProductDetailsArgs(
-                                productName: 'Hoodie 1' /*[index], index: index*/,
-                                price: 123 /*,index:index*/));
-                      },
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 215,
-                            width: 180,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.AppTheme.loco),
-                                borderRadius: BorderRadius.circular(13)),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 150),
-                                  child: Text(
-                                    productName = 'Hoodie 1',
-                                    style: const TextStyle(
-                                        color: Color(0xFF4C7E72),
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ),
-                                Text(
-                                  "${price = 123} EGP",
-                                  style: const TextStyle(
-                                      color: Color(0xFF4C7E72),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w600),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Container(
-                                        height: MediaQuery.of(context).size.height *
-                                            0.03,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.23,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(26),
-                                          color: Colors.AppTheme.loco,
-                                        ),
-                                        child: const Center(
-                                          child: Text(
-                                            'View product',
-                                            style: TextStyle(
-                                                color: Colors.AppTheme.white,
-                                                fontSize: 8),
-                                          ),
-                                        )),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 140,
-                            width: 180,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  image: AssetImage('lib/resources/images/hoodie1.png'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(13),
-                                color: Colors.AppTheme.loco),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(ProductDetails.routename,
-                            arguments: ProductDetailsArgs(
-                                productName: 'Hoodie 1' /*[index], index: index*/,
-                                price: 123 /*,index:index*/));
-                      },
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 215,
-                            width: 180,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.AppTheme.loco),
-                                borderRadius: BorderRadius.circular(13)),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 150),
-                                  child: Text(
-                                    productName = 'Hoodie 1',
-                                    style: const TextStyle(
-                                        color: Color(0xFF4C7E72),
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ),
-                                Text(
-                                  "${price = 123} EGP",
-                                  style: const TextStyle(
-                                      color: Color(0xFF4C7E72),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w600),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Container(
-                                        height: MediaQuery.of(context).size.height *
-                                            0.03,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.23,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(26),
-                                          color: Colors.AppTheme.loco,
-                                        ),
-                                        child: const Center(
-                                          child: Text(
-                                            'View product',
-                                            style: TextStyle(
-                                                color: Colors.AppTheme.white,
-                                                fontSize: 8),
-                                          ),
-                                        )),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 140,
-                            width: 180,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  image: AssetImage('lib/resources/images/hoodie1.png'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(13),
-                                color: Colors.AppTheme.loco),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(ProductDetails.routename,
-                            arguments: ProductDetailsArgs(
-                                productName: 'Hoodie 1' /*[index], index: index*/,
-                                price: 123 /*,index:index*/));
-                      },
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 215,
-                            width: 180,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.AppTheme.loco),
-                                borderRadius: BorderRadius.circular(13)),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 150),
-                                  child: Text(
-                                    productName = 'Hoodie 1',
-                                    style: const TextStyle(
-                                        color: Color(0xFF4C7E72),
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ),
-                                Text(
-                                  "${price = 123} EGP",
-                                  style: const TextStyle(
-                                      color: Color(0xFF4C7E72),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w600),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Container(
-                                        height: MediaQuery.of(context).size.height *
-                                            0.03,
-                                        width: MediaQuery.of(context).size.width *
-                                            0.23,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(26),
-                                          color: Colors.AppTheme.loco,
-                                        ),
-                                        child: const Center(
-                                          child: Text(
-                                            'View product',
-                                            style: TextStyle(
-                                                color: Colors.AppTheme.white,
-                                                fontSize: 8),
-                                          ),
-                                        )),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 140,
-                            width: 180,
-                            decoration: BoxDecoration(
-                                image: const DecorationImage(
-                                  image: AssetImage('lib/resources/images/hoodie1.png'),
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: BorderRadius.circular(13),
-                                color: Colors.AppTheme.loco),
-                          ),
-                        ],
-                      ),
                     ),
                   ],
                 ),
