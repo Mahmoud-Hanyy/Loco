@@ -20,7 +20,7 @@ class OnBoarding1 extends StatelessWidget {
           Text('Are you an owner ?',textAlign: TextAlign.left,style: Theme.of(context).textTheme.bodyLarge),
           const SizedBox(height: 20,),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Text('if you are the brand owner himself,you are in the right place because Loco will help you promote your brand instead of paying a lot of money for ads you can subscribe with us with much less cost and better spread .',
                 style: Theme.of(context).textTheme.bodySmall),
           ),

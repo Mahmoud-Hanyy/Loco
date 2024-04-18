@@ -21,8 +21,8 @@ class OnBoarding extends StatelessWidget {
             style:Theme.of(context).textTheme.bodyLarge,),
           const SizedBox(height: 15,),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text('Loco is the place where the local brands are gathered together so you can find them easily',
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: Text(' Loco is the place where the local brands are gathered together so you can find them easily',
               style: Theme.of(context).textTheme.bodySmall,
             ),
           ),

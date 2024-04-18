@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loco/components/button.dart';
 import '../../../constants/theme.dart' as Colors;
 
 //ignore: must_be_immutable
@@ -205,6 +206,13 @@ class AddToCart extends StatelessWidget {
                     ],
                   )),
             ],
+          ),
+          const SizedBox(
+            height: 60,
+          ),
+          LocoButton(
+              buttonText: 'Checkout',
+              onPressed: (){},
           ),
         ],
       ),

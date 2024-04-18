@@ -1,64 +1,132 @@
 import 'package:flutter/material.dart';
-import 'package:loco/components/button.dart';
+
+import '../../constants/theme.dart' as Colors ;
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
-
+  static const String routename = 'Settings';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 50),
-            child: Row(
-              children:[
-                Image.asset('lib/resources/images/icon.png',
-                  height: 100,
-                  width: 100,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 60.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children:[
+              const Text('Profile',
+                  style: TextStyle(
+                      color: Colors.AppTheme.loco,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                  ),
+              ),
+              const SizedBox(height: 30),
+              Image(
+                image: const AssetImage("lib/resources/images/icon.png"),
+                width: MediaQuery.of(context).size.width * 0.4,
+                height: MediaQuery.of(context).size.width * 0.4,
+              ),
+              const SizedBox(height: 10),
+              const Text('Mike Arteta',
+                style: TextStyle(
+                  color: Colors.AppTheme.loco,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                 ),
-                const SizedBox(width: 20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              const SizedBox(height: 40),
+               Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10.0),
+                child: Column(
                   children: [
-                    Text('Thomas Jefferson',
-                      style: Theme.of(context).textTheme.bodyMedium
+                    InkWell(
+                      onTap: () {},
+                      child: const Row(
+                        children: [
+                          Icon(Icons.person, color: Colors.AppTheme.loco,),
+                          SizedBox(width: 10),
+                          Text('Personal Information',
+                            style: TextStyle(
+                              color: Colors.AppTheme.loco,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(Icons.arrow_forward_ios_outlined,
+                            color: Colors.AppTheme.loco,),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 5),
-                    const Text('Thomas1@gmail.com',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontFamily: 'Clash'
-                        ),
+                    const SizedBox(height: 40),
+                    InkWell(
+                      onTap: () {},
+                      child: const Row(
+                        children: [
+                          Icon(Icons.history_outlined, color: Colors.AppTheme.loco,),
+                          SizedBox(width: 10),
+                          Text('History of Payment',
+                            style: TextStyle(
+                              color: Colors.AppTheme.loco,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(Icons.arrow_forward_ios_outlined,
+                            color: Colors.AppTheme.loco,),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 40),
+                    InkWell(
+                      onTap: () {},
+                      child: const Row(
+                        children: [
+                          Icon(Icons.settings_outlined, color: Colors.AppTheme.loco,),
+                          SizedBox(width: 10),
+                          Text('Settings',
+                            style: TextStyle(
+                              color: Colors.AppTheme.loco,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(Icons.arrow_forward_ios_outlined,
+                            color: Colors.AppTheme.loco,),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 40),
+                    InkWell(
+                      onTap: () {},
+                      child: const Row(
+                        children: [
+                          Icon(Icons.sell_outlined, color: Colors.AppTheme.loco,),
+                          SizedBox(width: 10),
+                          Text('Become a Seller',
+                            style: TextStyle(
+                              color: Colors.AppTheme.loco,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(Icons.arrow_forward_ios_outlined,
+                            color: Colors.AppTheme.loco,),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-              ]
-            ),
+              ),
+            ]
           ),
-          const SizedBox(height: 20),
-          ProfileButton(
-              buttonText: 'Personal Information',
-              onPressed: (){}
-          ),
-          const SizedBox(height: 20),
-          ProfileButton(
-              buttonText: 'History of Orders',
-              onPressed: (){}
-          ),
-          const SizedBox(height: 20),
-          ProfileButton(
-              buttonText: 'Settings',
-              onPressed: (){}
-          ),
-          const SizedBox(height: 20),
-          ProfileButton(
-              buttonText: 'Become a Brand',
-              onPressed: (){}
-          ),
-        ],
-      )
+        ),
+      ),
     );
   }
 }

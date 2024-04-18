@@ -20,7 +20,7 @@ class OnBoarding2 extends StatelessWidget {
           Text('Benefits ?',style: Theme.of(context).textTheme.bodyLarge),
           const SizedBox(height:10,),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Text("if you asked yourself what are the benefits from subscribing with Loco , your products will be shown to much more people now and don't worry about the shipment or the orders because we provide an orders page that controls your sells with time and location . Don't forget that the app is under Periodic maintenance .",
                 style:Theme.of(context).textTheme.bodySmall),
           ),

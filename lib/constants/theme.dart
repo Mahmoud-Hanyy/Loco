@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loco/constants/theme.dart' as Colors;
 
 class AppTheme {
   static const loco =  Color(0xFF366A6A);
@@ -26,7 +27,8 @@ class AppTheme {
           fontFamily: 'Clash',
         ),
       ),
-      scaffoldBackgroundColor: white,
+      scaffoldBackgroundColor: Colors.AppTheme.white,
+
   );
   static ThemeData darkTheme = ThemeData(
     textTheme: const TextTheme(

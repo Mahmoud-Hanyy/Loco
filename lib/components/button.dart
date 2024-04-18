@@ -31,7 +31,9 @@ class LocoButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
           ),
-          child: Text(buttonText,style: Theme.of(context).textTheme.labelSmall,)
+          child: Text(buttonText,
+            style: Theme.of(context).textTheme.labelSmall,
+          )
       ),
     );
   }

@@ -55,7 +55,8 @@ class LogIn extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 15,),
-            LocoButton(buttonText: 'Log In',
+            LocoButton(
+                buttonText: 'Log In',
                 onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=>const NavigationPage())
             );}),

@@ -38,7 +38,7 @@ class NavigationPage extends StatelessWidget {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.favorite),
-                  label: 'Favorite',
+                  label: 'Favorites',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),
