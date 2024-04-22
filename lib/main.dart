@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:loco/modules/cart/add_to_cart.dart';
-import 'package:loco/modules/log_in/log_in.dart';
-import 'package:loco/modules/profile/profiles/settings.dart';
-import 'constants/theme.dart';
-import 'modules/on_boarding/on_boarding.dart';
-import 'modules/on_boarding/on_boarding1.dart';
-import 'modules/on_boarding/on_boarding2.dart';
-import 'modules/product_details/product_details.dart';
-import 'modules/register/register.dart';
+import 'core/utils/themes.dart';
+import 'features/cart/add_to_cart.dart';
+import 'features/categories/categories.dart';
+import 'features/log_in/log_in.dart';
+import 'features/on_boarding/on_boarding.dart';
+import 'features/on_boarding/on_boarding1.dart';
+import 'features/on_boarding/on_boarding2.dart';
+import 'features/product_details/product_details.dart';
+import 'features/profile/profiles/settings.dart';
+import 'features/register/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,10 +31,9 @@ class MyApp extends StatelessWidget {
           ProductDetails.routename: (context) => const ProductDetails(),
           AddToCart.routename: (context) => AddToCart(),
           Settings.routeName:(context)=>const Settings(),
+          Categories.routeName:(context)=>const Categories(),
         },
-      themeMode: ThemeMode.system,
-      theme: AppTheme.darkTheme,
-      darkTheme:AppTheme.darkTheme,
+      theme: lightMode,
     );
   }
 }
