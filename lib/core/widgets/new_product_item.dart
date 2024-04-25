@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loco/core/widgets/product_item.dart';
 import '../../features/product_details/product_details.dart';
+import '../utils/assets.dart';
 
 class NewProductsItem extends StatelessWidget {
   const NewProductsItem({super.key});
@@ -19,6 +20,6 @@ class NewProductsItem extends StatelessWidget {
         child: ProductItem(
             price: 123,
             productName: 'hoodie1',
-            imagePath: 'lib/resources/images/hoodie1.png'));
+            imagePath: Assets.hoodie1));
   }
 }

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:loco/core/utils/colors.dart';
+import 'package:loco/core/widgets/loco_button.dart';
+import 'package:loco/features/payment/done.dart';
+
+import '../../core/utils/assets.dart';
+import '../../core/utils/styles.dart';
 
 class PaymentMethod extends StatefulWidget {
   const PaymentMethod({super.key});
-
+  static const String routeName="Pay";
   @override
   State<PaymentMethod> createState() => _PaymentMethodState();
 }
@@ -14,123 +18,173 @@ class _PaymentMethodState extends State<PaymentMethod> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back),
-        title: const Text('Payment method'),
+        title: Text(
+            'Payment Method ',
+            style: Styles.textStyle30.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+            )
+        ),
         centerTitle: true,
+        toolbarHeight: 70,
+        backgroundColor: Theme.of(context).colorScheme.background,
+        elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Radio(
-                  value: 1,
-                  groupValue: _value,
-                  onChanged: (value){
-                    setState(() {
-                      _value= value!;
-                    });
-                  },
-                ),
-                const SizedBox(width: 8,),
-                const Text('Pay by card',style: TextStyle(fontSize: 18),),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
+      body: Container(
+        color:Theme.of(context).colorScheme.background,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 children: [
-                  InkWell(child: Image.asset('lib/resources/images/visa.png'),
-                    onTap: (){},),
-                  const SizedBox(width: 15,),
-                  InkWell(child: Image.asset('lib/resources/images/paypal.png',),
-                    onTap: (){},),
-                  const SizedBox(width: 15,),
-                  InkWell(child: Image.asset('lib/resources/images/apple-pay.png'),
-                    onTap: (){},),
+                  Radio(
+                    activeColor: Theme.of(context).colorScheme.primary,
+                    focusColor: Theme.of(context).colorScheme.primary,
+                    value: 1,
+                    groupValue: _value,
+                    onChanged: (value){
+                      setState(() {
+                        _value= value!;
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 8,),
+                   Text('Pay by card',
+                    style: Styles.textStyle16.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    )
+                   ),
                 ],
               ),
-            ),
-            Row(
-              children: [
-                Radio(
-                  value: 2,
-                  groupValue: _value,
-                  onChanged: (value){
-                    setState(() {
-                      _value=value!;
-                    });
-                  },
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    InkWell(child: Image.asset(Assets.visa),
+                      onTap: (){},),
+                    const SizedBox(width: 15,),
+                    InkWell(child: Image.asset(Assets.paypal),
+                      onTap: (){},),
+                    const SizedBox(width: 15,),
+                    InkWell(child: Image.asset(Assets.apple),
+                      onTap: (){},),
+                  ],
                 ),
-                const SizedBox(width: 8,),
-                const Text('Cash on delivery',style: TextStyle(fontSize: 18),),
-              ],
-            ),
-            const SizedBox(height: 6,),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: InkWell(child: Image.asset('lib/resources/images/cash.png'),
-                onTap: (){},),
-            ),
-            const SizedBox(height: 23,),
-
-            const Text('Vouchers',style: TextStyle(fontSize: 25),),
-            const SizedBox(height: 13,),
-            TextFormField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15)
-                ),
-                hintText: 'Voucher',
               ),
-            ),
-            const SizedBox(height: 20,),
-            Center(
-              child: ElevatedButton(onPressed: (){},
-                style: const ButtonStyle( backgroundColor:MaterialStatePropertyAll<Color>(loco) ), child: const Text('Apply'),),
-            ),
-            const Divider(thickness: 0.3),
-            const Row(
-              children: [
-                Text('SubTotal',style: TextStyle(fontSize: 18)),
-                Padding(padding: EdgeInsets.only(left: 200)),
-                Text('410.00 LE',style: TextStyle(fontSize: 18)),
-              ],
-            ),
-            const SizedBox(height: 16,),
-            const Row(
-              children: [
-                Text('Shipping fee',style: TextStyle(fontSize: 18)),
-                Padding(padding: EdgeInsets.only(left: 170)),
-                Text('30.00 LE',style: TextStyle(fontSize: 18)),
-              ],
-            ),
-            const SizedBox(height: 16,),
-            const Row(
-              children: [
-                Text('Discount',style: TextStyle(fontSize: 18)),
-                Padding(padding: EdgeInsets.only(left: 200)),
-                Text('-10 LE',style: TextStyle(fontSize: 18)),
-              ],
-            ),
-            const Divider(thickness: 0.3,),
-            const Row(
-              children: [
-                Text('Total',style: TextStyle(fontSize: 18)),
-                Padding(padding: EdgeInsets.only(left: 235)),
-                Text('430 LE',style: TextStyle(fontSize: 18)),
-              ],
-            ),
-            const SizedBox(height: 25,),
-            Center(
-              child: ElevatedButton(onPressed: (){},
-                style: const ButtonStyle(
-                    backgroundColor:MaterialStatePropertyAll<Color>(loco)),
-                child: const Text('Confirm'),),
-            ),
-          ],
+              Row(
+                children: [
+                  Radio(
+                    activeColor: Theme.of(context).colorScheme.primary,
+                    focusColor: Theme.of(context).colorScheme.primary,
+                    value: 2,
+                    groupValue: _value,
+                    onChanged: (value){
+                      setState(() {
+                        _value=value!;
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 8,),
+                  Text('Cash on delivery',
+                      style:Styles.textStyle16.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ) ),
+                ],
+              ),
+              const SizedBox(height: 23,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('Vouchers',
+                    style: Styles.textStyle30.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold
+                ),
+                ),
+              ),
+              const SizedBox(height: 13,),
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.07,
+                width: MediaQuery.of(context).size.width*0.95,
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    focusColor: Theme.of(context).colorScheme.primary,
+                    fillColor: Theme.of(context).colorScheme.primary,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)
+                    ),
+                    hintText: 'Voucher',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20,),
+              Center(
+                child: LocoButton(textOfButton: 'Apply', onPressed: (){},)
+              ),
+              const Divider(thickness: 0.3),
+              Row(
+                children: [
+                  Text('SubTotal',
+                    style:Styles.textStyle18.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                  ),
+                  ),
+                  const Padding(padding: EdgeInsets.only(left: 200)),
+                  Text('410.00 LE',
+                    style: Styles.textStyle18.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16,),
+               Row(
+                children: [
+                  Text('Shipping fee',style:Styles.textStyle18.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),),
+                  const Padding(padding: EdgeInsets.only(left: 170)),
+                  Text('30.00 LE',style:Styles.textStyle18.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),),
+                ],
+              ),
+              const SizedBox(height: 16,),
+               Row(
+                children: [
+                  Text('Discount',style:Styles.textStyle18.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),),
+                  const Padding(padding: EdgeInsets.only(left: 200)),
+                  Text('-10 LE',style:Styles.textStyle18.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),),
+                ],
+              ),
+              const Divider(thickness: 0.8,),
+               Row(
+                children: [
+                  Text('Total',style:Styles.textStyle18.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),),
+                  const Padding(padding: EdgeInsets.only(left: 235)),
+                  Text('430 LE',style:Styles.textStyle18.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),),
+                ],
+              ),
+              const SizedBox(height: 25,),
+              Center(
+                child: LocoButton(textOfButton: 'Confirm', onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(
+                          builder: (context) => const PaymentDone(),
+                      )
+                  );
+                },)
+              ),
+            ],
+          ),
         ),
       ) ,
     );

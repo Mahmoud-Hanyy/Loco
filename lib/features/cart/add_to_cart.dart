@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../core/utils/colors.dart';
+import 'package:loco/core/utils/assets.dart';
+import '../../core/utils/styles.dart';
 import '../../core/widgets/loco_button.dart';
+import '../payment/payment_method.dart';
 
 //ignore: must_be_immutable
 class AddToCart extends StatelessWidget {
@@ -16,31 +18,23 @@ class AddToCart extends StatelessWidget {
       appBar: AppBar(
         leading: Transform.scale(
           scale: 1.2,
-          child: const BackButton(
-            color: Color(0xFF366A6A),
+          child: BackButton(
+            color: Theme.of(context).colorScheme.primary,
           ),
         ),
-        title: const Text(
+        title: Text(
           'Cart',
-          style: TextStyle(
-              fontFamily: 'Clash', fontSize: 40, color: Color(0xFF366A6A)),
+          style: Styles.textOfLabel.copyWith(
+            color: Theme.of(context).colorScheme.primary,
+            fontSize: 40,
+      ),
         ),
         centerTitle: true,
         toolbarHeight: 70,
-        backgroundColor: white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 15.0),
-            child: Icon(
-              Icons.search,
-              color: Color(0xFF366A6A),
-              size: 35,
-            ),
-          )
-        ],
       ),
-      backgroundColor: white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
           const SizedBox(
@@ -55,34 +49,33 @@ class AddToCart extends StatelessWidget {
                 width: 95,
                 decoration: BoxDecoration(
                     image: const DecorationImage(
-                        image: AssetImage('lib/resources/images/hoodie1.png'),
+                        image: AssetImage(Assets.hoodie1),
                         fit: BoxFit.cover),
                     borderRadius: BorderRadius.circular(13),
-                    color: loco),
+                    color: Theme.of(context).colorScheme.primary,),
                 child: const Center(),
               ),
               Column(
                 children: [
                   Text(
                     productName = 'Hoodie 1',
-                    style: const TextStyle(
-                        color: Color(0xFF4C7E72),
-                        fontSize: 25,
-                        fontWeight: FontWeight.normal),
+                    style: Styles.textStyle30.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                    )
                   ),
-                  const Text(
+                  Text(
                     'White | XL',
-                    style: TextStyle(
-                        color: Color(0xFF4C7E72),
-                        fontSize: 17,
-                        fontWeight: FontWeight.normal),
+                    style: Styles.textStyle20.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.normal
+    )
                   ),
                   Text(
                     "${price = 123} EGP",
-                    style: const TextStyle(
-                        color: Color(0xFF4C7E72),
-                        fontSize: 20,
-                        fontWeight: FontWeight.normal),
+                    style: Styles.textStyle20.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.normal
+                    )
                   ),
                 ],
               ),
@@ -92,34 +85,34 @@ class AddToCart extends StatelessWidget {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: loco.withOpacity(0.5),
+                        color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                         spreadRadius: 1,
                         blurRadius: 4,
                         offset: const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                     borderRadius: BorderRadius.circular(26),
-                    color: loco,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
                           onPressed: () {},
-                          icon: const Icon(
-                            Icons.remove_circle,
-                            color: white,
+                          icon: Icon(
+                            Icons.add_circle,
+                            color: Theme.of(context).colorScheme.background,
                           )),
                       Text(
                         '$quantity',
                         style:
-                        const TextStyle(color: white, fontSize: 25),
+                         TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 25),
                       ),
                       IconButton(
                           onPressed: () {},
-                          icon: const Icon(
-                            Icons.add_circle,
-                            color: white,
+                          icon: Icon(
+                            Icons.remove_circle,
+                            color: Theme.of(context).colorScheme.background,
                           )),
                     ],
                   )),
@@ -136,35 +129,34 @@ class AddToCart extends StatelessWidget {
                 height: 140,
                 width: 95,
                 decoration: BoxDecoration(
-                    image: const DecorationImage(
-                        image: AssetImage('lib/resources/images/hoodie1.png'),
-                        fit: BoxFit.cover),
-                    borderRadius: BorderRadius.circular(13),
-                    color: loco),
+                  image: const DecorationImage(
+                      image: AssetImage(Assets.hoodie1),
+                      fit: BoxFit.cover),
+                  borderRadius: BorderRadius.circular(13),
+                  color: Theme.of(context).colorScheme.primary,),
                 child: const Center(),
               ),
               Column(
                 children: [
                   Text(
-                    productName = 'Hoodie 1',
-                    style: const TextStyle(
-                        color: Color(0xFF4C7E72),
-                        fontSize: 25,
-                        fontWeight: FontWeight.normal),
-                  ),
-                  const Text(
-                    'White | XL',
-                    style: TextStyle(
-                        color: Color(0xFF4C7E72),
-                        fontSize: 17,
-                        fontWeight: FontWeight.normal),
+                      productName = 'Hoodie 1',
+                      style: Styles.textStyle30.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      )
                   ),
                   Text(
-                    "${price = 123} EGP",
-                    style: const TextStyle(
-                        color: Color(0xFF4C7E72),
-                        fontSize: 20,
-                        fontWeight: FontWeight.normal),
+                      'White | XL',
+                      style: Styles.textStyle20.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.normal
+                      )
+                  ),
+                  Text(
+                      "${price = 123} EGP",
+                      style: Styles.textStyle20.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.normal
+                      )
                   ),
                 ],
               ),
@@ -174,44 +166,48 @@ class AddToCart extends StatelessWidget {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: loco.withOpacity(0.5),
+                        color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                         spreadRadius: 1,
                         blurRadius: 4,
                         offset: const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                     borderRadius: BorderRadius.circular(26),
-                    color: loco,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
                           onPressed: () {},
-                          icon: const Icon(
-                            Icons.remove_circle,
-                            color: white,
+                          icon: Icon(
+                            Icons.add_circle,
+                            color: Theme.of(context).colorScheme.background,
                           )),
                       Text(
                         '$quantity',
                         style:
-                        const TextStyle(color: white, fontSize: 25),
+                        TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 25),
                       ),
                       IconButton(
                           onPressed: () {},
-                          icon: const Icon(
-                            Icons.add_circle,
-                            color: white,
+                          icon: Icon(
+                            Icons.remove_circle,
+                            color: Theme.of(context).colorScheme.background,
                           )),
                     ],
                   )),
             ],
           ),
-          const SizedBox(
-            height: 60,
-          ),
+          const Spacer(),
           LocoButton(
-              onPressed: (){}, textOfButton: 'Checkout', style: null,
+              onPressed: (){
+                Navigator.pushNamed(context,PaymentMethod.routeName);
+              },
+            textOfButton: 'Checkout',
+            style: Styles.textStyle20.copyWith(
+            color: Theme.of(context).colorScheme.background,
+          ),
           ),
         ],
       ),

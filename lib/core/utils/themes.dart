@@ -7,15 +7,15 @@ ThemeData lightMode = ThemeData(
   colorScheme: const ColorScheme.light(
     background: white,
     primary : loco,
-    secondary: black,
+    secondary: light,
   ),
 );
 
 ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: const ColorScheme.dark(
-    background: Colors.black12,
+    background: Colors.black,
     primary : white,
-    secondary: loco,
+    secondary: Colors.black38,
   ),
 );

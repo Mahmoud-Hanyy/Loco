@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loco/core/utils/styles.dart';
 
 import '../utils/colors.dart';
 
@@ -32,13 +33,15 @@ class LocoButton extends StatelessWidget {
           onPressed: () {
             onPressed();
           },
-          color: loco,
-          textColor: white,
+          color: Theme.of(context).colorScheme.primary,
+          textColor: Theme.of(context).colorScheme.background,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
           ),
           child: Text(textOfButton,
-            style: style,
+            style: Styles.textStyle20.copyWith(
+              color: Theme.of(context).colorScheme.background,
+            ),
           )
       ),
     );

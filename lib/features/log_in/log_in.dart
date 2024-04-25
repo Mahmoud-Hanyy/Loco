@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/colors.dart';
+import 'package:loco/features/navigation/navigation.dart';
 import '../../core/utils/assets.dart';
 import '../../core/utils/styles.dart';
-import '../../core/widgets/loco_button.dart';
-import '../navigation/navigation.dart';
+import '../../core/widgets/start_button.dart';
 import '../register/register.dart';
 
 class LogIn extends StatelessWidget {
@@ -13,15 +13,10 @@ class LogIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery
-        .of(context)
-        .size
-        .height * 0.45;
-    var width = MediaQuery
-        .of(context)
-        .size
-        .width * 0.9;
+    var height = MediaQuery.of(context).size.height * 0.45;
+    var width = MediaQuery.of(context).size.width * 0.9;
     return Scaffold(
+      backgroundColor: white,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -72,12 +67,12 @@ class LogIn extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 15,),
-            LocoButton(
+            StartButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const NavigationPage())
-                );
-              }, textOfButton: 'Log In', style: Styles.textOfButton,),
+                Navigator.pushNamed(context, NavigationPage.routeName);
+              },
+              textOfButton: 'Log In',
+            ),
             const SizedBox(height: 15,),
             const Text('or login with',
               style: Styles.textStyle16,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:loco/features/on_boarding/on_boarding2.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../core/utils/assets.dart';
 import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
-import '../../core/widgets/loco_button.dart';
-import 'on_boarding2.dart';
+import '../../core/widgets/start_button.dart';
 
 class OnBoarding1 extends StatelessWidget {
   static const String routeName="onBoarding1";
@@ -29,7 +29,7 @@ class OnBoarding1 extends StatelessWidget {
                 style: Styles.textStyle16),
           ),
           const SizedBox(height: 40,),
-          LocoButton(
+          StartButton(
             onPressed: () {
               Navigator.push(
                   context, PageTransition(
@@ -37,9 +37,9 @@ class OnBoarding1 extends StatelessWidget {
                   type: PageTransitionType.rightToLeft
               )
               );
-            }, textOfButton: 'Continue',style: Styles.textOfButton,
-
-          )
+            },
+            textOfButton: 'Continue',
+          ),
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/utils/colors.dart';
+import '../../core/utils/styles.dart';
 import '../../core/widgets/product_item.dart';
 
 //ignore:must_be_immutable
@@ -10,18 +10,19 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'loco',
-            style: TextStyle(
-                fontFamily: 'Clash', fontSize: 50, color: Color(0xFF366A6A)),
+          title: Text(
+            'Loco',
+            style: Styles.textOfLabel.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+            )
           ),
           centerTitle: true,
           toolbarHeight: 70,
-          backgroundColor: white,
+          backgroundColor: Theme.of(context).colorScheme.background,
           elevation: 0,
         ),
         body: Container(
-          color: white,
+          color: Theme.of(context).colorScheme.background,
           child: Column(
             children: [
               Padding(
@@ -35,40 +36,31 @@ class Categories extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.8,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(26),
-                          color: white,
+                          color: Theme.of(context).colorScheme.background,
                           border:
-                              (Border.all(color: loco, width: 2)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: loco.withOpacity(0.5),
-                              spreadRadius: 3,
-                              blurRadius: 7,
-                              offset: const Offset(
-                                  0, 5), // changes position of shadow
-                            ),
-                          ],
+                              (Border.all(color: Theme.of(context).colorScheme.primary, width: 2)),
                         ),
                         child: Row(
                           children: [
                             IconButton(
                                 onPressed: () {},
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.search,
-                                  color: loco,
+                                  color: Theme.of(context).colorScheme.primary,
                                   size: 30,
                                 )),
                             Text(
                               'Search for your product',
                               style: TextStyle(
-                                  color: loco.withOpacity(0.6), fontSize: 15),
+                                  color: Theme.of(context).colorScheme.primary.withOpacity(0.6), fontSize: 15),
                             ),
                           ],
                         )),
                     IconButton(
                         onPressed: () {},
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.filter_alt_outlined,
-                          color: loco,
+                          color: Theme.of(context).colorScheme.primary,
                           size: 35,
                         )),
                   ],
@@ -79,90 +71,66 @@ class Categories extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: loco,
+                      color: Theme.of(context).colorScheme.primary,
                       borderRadius: BorderRadius.circular(8),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: light,
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
                     ),
                     height: 45,
                     width: 110,
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
                           'Category',
                           style: TextStyle(
-                              fontSize: 15, color: white),
+                              fontSize: 15, color: Theme.of(context).colorScheme.background),
                         ),
                         Icon(
                           Icons.expand_circle_down_outlined,
-                          color: white,
+                          color: Theme.of(context).colorScheme.background,
                         )
                       ],
                     ),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: loco,
+                      color: Theme.of(context).colorScheme.primary,
                       borderRadius: BorderRadius.circular(8),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: light,
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
                     ),
                     height: 45,
                     width: 110,
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
                           'Price',
                           style: TextStyle(
-                              fontSize: 15, color: white),
+                              fontSize: 15, color: Theme.of(context).colorScheme.background),
                         ),
                         Icon(
                           Icons.expand_circle_down_outlined,
-                          color: white,
+                          color: Theme.of(context).colorScheme.background,
                         )
                       ],
                     ),
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: loco,
+                      color: Theme.of(context).colorScheme.primary,
                       borderRadius: BorderRadius.circular(8),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: light,
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
                     ),
                     height: 45,
                     width: 110,
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
                           'Newest',
                           style: TextStyle(
-                              fontSize: 15, color: white),
+                              fontSize: 15, color: Theme.of(context).colorScheme.background),
                         ),
                         Icon(
                           Icons.expand_circle_down_outlined,
-                          color: white,
+                          color: Theme.of(context).colorScheme.background,
                         )
                       ],
                     ),

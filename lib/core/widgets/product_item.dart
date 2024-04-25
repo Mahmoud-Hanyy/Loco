@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:loco/core/utils/styles.dart';
 import '../utils/colors.dart';
 
 //ignore: must_be_immutable
@@ -24,7 +23,7 @@ class ProductItem extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.3,
           width: 180,
           decoration: BoxDecoration(
-              border: Border.all(color: loco),
+              border: Border.all(color: Theme.of(context).colorScheme.primary,),
               borderRadius: BorderRadius.circular(13)),
               child: Column(
                 children: [
@@ -33,17 +32,17 @@ class ProductItem extends StatelessWidget {
               ),
               Text(
                 productName,
-                style: const TextStyle(
-                    color: Color(0xFF4C7E72),
-                    fontSize: 13,
-                    fontWeight: FontWeight.normal),
+                style: Styles.textStyle16.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 13,
+                )
               ),
               Text(
                 "$price EGP",
-                style: const TextStyle(
-                    color: Color(0xFF4C7E72),
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600),
+                style: Styles.textStyle16.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 13,
+                ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
@@ -57,13 +56,13 @@ class ProductItem extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.23,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(26),
-                        color: loco,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
-                      child: const Center(
+                      child:  Center(
                         child: Text(
                           'View product',
                           style: TextStyle(
-                              color: white, fontSize: 8),
+                              color: Theme.of(context).colorScheme.background, fontSize: 8),
                         ),
                       )),
                 ],

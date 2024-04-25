@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:loco/core/widgets/loco_button.dart';
 import '../../core/utils/assets.dart';
 import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
+import '../../core/widgets/start_button.dart';
 import '../log_in/log_in.dart';
 import '../navigation/navigation.dart';
 
@@ -119,11 +119,12 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30,),
             Center(
-              child: LocoButton(
-                  onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const NavigationPage())
-                      );
-                  }, textOfButton: 'Register',style: Styles.textOfButton,),
+              child: StartButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, NavigationPage.routeName);
+                },
+                textOfButton: 'Register',
+              ),
             ),
             const SizedBox(height: 20,),
             Row(

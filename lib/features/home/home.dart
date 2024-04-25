@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/utils/colors.dart';
+import 'package:loco/core/utils/assets.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/new_product_item.dart';
 import '../cart/add_to_cart.dart';
@@ -8,16 +8,18 @@ import '../cart/add_to_cart.dart';
 class HomePage extends StatelessWidget {
   late String productName;
   late int price;
-
+  static const String routename = 'Home';
   HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'loco',
-          style: Styles.textOfLabel
+        title: Text(
+          'Loco',
+          style: Styles.textOfLabel.copyWith(
+            color: Theme.of(context).colorScheme.primary,
+          )
         ),
         centerTitle: true,
         toolbarHeight: 70,
@@ -26,7 +28,7 @@ class HomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: white,
+          color: Theme.of(context).colorScheme.background,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -41,32 +43,24 @@ class HomePage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.8,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(26),
-                          color: white,
+                          color:  Theme.of(context).colorScheme.background,
                           border: (Border.all(
-                              color: loco, width: 2)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: loco.withOpacity(0.5),
-                              spreadRadius: 3,
-                              blurRadius: 7,
-                              offset: const Offset(
-                                  0, 5), // changes position of shadow
-                            ),
-                          ],
+                              color: Theme.of(context).colorScheme.primary, width: 2)),
                         ),
                         child: Row(
                           children: [
                             IconButton(
                                 onPressed: () {},
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.search,
-                                  color: loco,
+                                  color: Theme.of(context).colorScheme.primary,
                                   size: 30,
                                 )),
-                            const Text(
+                             Text(
                               'Search for your product',
-                              style: TextStyle(
-                                  color: Color(0xA05B5B5B), fontSize: 15),
+                              style: Styles.textStyle16.copyWith(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                             ),
                           ],
                         )),
@@ -74,9 +68,9 @@ class HomePage extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pushNamed(AddToCart.routename);
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.shopping_cart_outlined,
-                          color: loco,
+                          color: Theme.of(context).colorScheme.primary,
                           size: 35,
                         )),
                   ],
@@ -88,34 +82,35 @@ class HomePage extends StatelessWidget {
                     width: MediaQuery.of(context).size.height * 0.4,
                     decoration: BoxDecoration(
                       image: const DecorationImage(
-                        image: AssetImage('lib/resources/images/photo1.png'),
+                        image: AssetImage(Assets.photo1),
                         fit: BoxFit.fill,
                       ),
                       borderRadius: BorderRadius.circular(26),
-                      color: loco,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                     child: const Center()),
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                         left: 15, right: 0, bottom: 25, top: 10),
                     child: Text(
                       'Categories',
-                      style: TextStyle(
-                          fontFamily: 'Clash',
-                          fontSize: 30,
-                          color: Color(0xFF366A6A),
-                          fontWeight: FontWeight.w300),
+                      style: Styles.textStyle30.copyWith(
+                        color: Theme.of(context).colorScheme.primary
+                      )
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(right: 20, bottom: 10),
+                    padding: const EdgeInsets.only(right: 20, bottom: 10),
                     child: Text(
                       'view all',
-                      style: TextStyle(color: Color(0xA6508576), fontSize: 15),
+                      style: Styles.textStyle16.copyWith(
+                        fontSize: 14,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                     ),
                   ),
                 ],
@@ -130,22 +125,24 @@ class HomePage extends StatelessWidget {
                         Container(
                           height: MediaQuery.of(context).size.height * 0.14,
                           width: MediaQuery.of(context).size.height * 0.14,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('lib/resources/images/man.png'),
+                          decoration:BoxDecoration(
+                            image: const DecorationImage(
+                              image: AssetImage(Assets.man),
                               fit: BoxFit.cover,
                             ),
                             shape: BoxShape.circle,
-                            color: loco,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        const Text(
+                        Text(
                           'Men',
-                          style:
-                              TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
+                          style: Styles.textStyle16.copyWith(
+                            fontSize: 15,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ],
                     ),
@@ -157,23 +154,25 @@ class HomePage extends StatelessWidget {
                         Container(
                           height: MediaQuery.of(context).size.height * 0.14,
                           width: MediaQuery.of(context).size.height * 0.14,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
+                          decoration: BoxDecoration(
+                            image: const DecorationImage(
                               image:
-                                  AssetImage('lib/resources/images/woman.png'),
+                                  AssetImage(Assets.woman),
                               fit: BoxFit.cover,
                             ),
                             shape: BoxShape.circle,
-                            color: loco,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        const Text(
+                         Text(
                           'Women',
-                          style:
-                              TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
+                          style:Styles.textStyle16.copyWith(
+                            fontSize: 15,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ],
                     ),
@@ -185,22 +184,24 @@ class HomePage extends StatelessWidget {
                         Container(
                           height: MediaQuery.of(context).size.height * 0.14,
                           width: MediaQuery.of(context).size.height * 0.14,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('lib/resources/images/kid.png'),
+                          decoration: BoxDecoration(
+                            image: const DecorationImage(
+                              image: AssetImage(Assets.kid),
                               fit: BoxFit.fill,
                             ),
                             shape: BoxShape.circle,
-                            color: loco,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        const Text(
+                         Text(
                           'Kids',
-                          style:
-                              TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
+                          style: Styles.textStyle16.copyWith(
+                            fontSize: 15,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ],
                     ),
@@ -212,22 +213,24 @@ class HomePage extends StatelessWidget {
                         Container(
                           height: MediaQuery.of(context).size.height * 0.14,
                           width: MediaQuery.of(context).size.height * 0.14,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('lib/resources/images/acc.png'),
+                          decoration:  BoxDecoration(
+                            image: const DecorationImage(
+                              image: AssetImage(Assets.acc),
                               fit: BoxFit.fill,
                             ),
                             shape: BoxShape.circle,
-                            color: loco,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        const Text(
+                         Text(
                           'Accessories',
-                          style:
-                              TextStyle(color: Color(0xFF4C7E72), fontSize: 15),
+                          style:Styles.textStyle16.copyWith(
+                            fontSize: 15,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                         ),
                       ],
                     ),
@@ -237,19 +240,19 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                         left: 15, right: 0, bottom: 25, top: 10),
                     child: Text(
                       'New Products',
-                      style: TextStyle(
-                          fontFamily: 'Clash',
-                          fontSize: 30,
-                          color: Color(0xFF366A6A),
-                          fontWeight: FontWeight.w300),
+                      style: Styles.textStyle16.copyWith(
+                        fontSize: 30,
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w300
+                      ),
                     ),
                   ),
                 ],

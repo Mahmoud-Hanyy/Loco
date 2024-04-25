@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../core/utils/assets.dart';
+import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
-import '../../core/widgets/loco_button.dart';
+import '../../core/widgets/start_button.dart';
 import '../log_in/log_in.dart';
 
 //ignore: must_be_immutable
@@ -11,13 +12,12 @@ class OnBoarding2 extends StatelessWidget {
   const OnBoarding2({super.key});
   @override
   Widget build(BuildContext context) {
-return Scaffold(
+    return Scaffold(
+      backgroundColor: white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(Assets.contact,
-            height: 300,
-            width: 200,
           ),
           Text('Benefits ?',
               style: Styles.textStyle24.copyWith(
@@ -31,11 +31,12 @@ return Scaffold(
             ),
           ),
           const SizedBox(height: 40,),
-          LocoButton(
+          StartButton(
             onPressed: () {
-              Navigator.pushNamed(context,LogIn.routeName);
-            }, textOfButton: 'Start Now',style: Styles.textOfButton,
-          )
+              Navigator.pushNamed(context, LogIn.routeName);
+            },
+            textOfButton: 'Start Now ',
+          ),
         ],
       ),
     );

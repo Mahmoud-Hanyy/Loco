@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/styles.dart';
-import '../../core/utils/colors.dart';
+
+import '../../core/utils/assets.dart';
 
 //ignore: must_be_immutable
 class Favorites extends StatefulWidget {
@@ -16,23 +17,19 @@ class _FavoritesState extends State<Favorites> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back,color: loco,),
-        title: const Text(
+        title: Text(
           'Favorites',
-          style: Styles.textStyle30
+          style: Styles.textOfLabel.copyWith(
+            color: Theme.of(context).colorScheme.primary,
+          )
         ),
-        actions: const [
-          Icon(Icons.search,size: 30,color: loco,),
-          SizedBox(width: 10,),
-          Icon(Icons.shopping_cart_outlined,size: 30,color:loco,),
-        ],
         centerTitle: true,
         toolbarHeight: 70,
-        backgroundColor: white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
       ),
       body:Container(
-        color: white,
+        color: Theme.of(context).colorScheme.background,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           child: Column(
@@ -43,17 +40,13 @@ class _FavoritesState extends State<Favorites> {
                   itemCount: 5,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Card(
                           elevation: 6,
-                          shadowColor: loco,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(width: 1.5, color: loco),
-                            ),
-                            width: 200,
-                            height: 130,
+                          shadowColor: Theme.of(context).colorScheme.primary,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width*0.3,
+                            height: MediaQuery.of(context).size.height *0.18,
                             child: Row(
                               children: [
                                 Container(
@@ -63,7 +56,7 @@ class _FavoritesState extends State<Favorites> {
                                     decoration:BoxDecoration(
                                       borderRadius: BorderRadius.circular(9),
                                     ),
-                                    child: Image.asset('lib/resources/images/hoodie.png',
+                                    child: Image.asset(Assets.hoodie1,
                                       fit: BoxFit.cover,)),
                                 Expanded(
                                   child: Padding(
@@ -71,16 +64,23 @@ class _FavoritesState extends State<Favorites> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.stretch,
                                       children: [
-                                        const Text('Black Micheal Angelo Hoodie'),
+                                        Text('Black Micheal Angelo Hoodie',
+                                        style: Styles.textStyle20.copyWith(
+                                          color: Theme.of(context).colorScheme.primary,
+                                        ),
+                                        ),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            const Text('EGP 430'),
+                                            Text('EGP 430',
+                                              style: Styles.textStyle20.copyWith(
+                                              color: Theme.of(context).colorScheme.primary,
+                                            ),),
                                             IconButton(onPressed: (){
                                               setState(() {
                                                 isTap =! isTap;
                                               });
-                                            }, icon:Icon(Icons.favorite,color: isTap?loco:white,)),
+                                            }, icon:Icon(Icons.favorite,color: isTap?Theme.of(context).colorScheme.primary:Theme.of(context).colorScheme.background,)),
                                           ],
                                         ),
                                       ],
