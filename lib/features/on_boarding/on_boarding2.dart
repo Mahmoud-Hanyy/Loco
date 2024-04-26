@@ -14,30 +14,32 @@ class OnBoarding2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(Assets.contact,
-          ),
-          Text('Benefits ?',
-              style: Styles.textStyle24.copyWith(
-                fontWeight: FontWeight.bold,
-              ),),
-          const SizedBox(height:10,),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
-            child: Text("if you asked yourself what are the benefits from subscribing with loco , your products will be shown to much more people now and don't worry about the shipment or the orders because we provide an orders page that controls your sells with time and location . Don't forget that the app is under Periodic maintenance .",
-                style:Styles.textStyle16
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(Assets.contact,
             ),
-          ),
-          const SizedBox(height: 40,),
-          StartButton(
-            onPressed: () {
-              Navigator.pushNamed(context, LogIn.routeName);
-            },
-            textOfButton: 'Start Now ',
-          ),
-        ],
+            Text('Benefits ?',
+                style: Styles.textStyle24.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),),
+            const SizedBox(height:10,),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Text("if you asked yourself what are the benefits from subscribing with loco , your products will be shown to much more people now and don't worry about the shipment or the orders because we provide an orders page that controls your sells with time and location . Don't forget that the app is under Periodic maintenance .",
+                  style:Styles.textStyle16
+              ),
+            ),
+            const SizedBox(height: 40,),
+            StartButton(
+              onPressed: () {
+                Navigator.pushNamed(context, LogIn.routeName);
+              },
+              textOfButton: 'Start Now ',
+            ),
+          ],
+        ),
       ),
     );
   }

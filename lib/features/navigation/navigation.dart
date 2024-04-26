@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //ignore: must_be_immutable
 class NavigationPage extends StatelessWidget {
@@ -26,22 +27,22 @@ class NavigationPage extends StatelessWidget {
               onTap: (index) {
                 cubit.changeIndex(index);
               },
-              items: const [
+              items:  [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.home),
-                  label: 'Home',
+                  label:AppLocalizations.of(context)!.home,
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.category),
-                  label: 'Categories',
+                  label:AppLocalizations.of(context)!.category,
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.favorite),
-                  label: 'Favorites',
+                  label:AppLocalizations.of(context)!.favorites,
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),
-                  label: 'Profile',
+                  label: AppLocalizations.of(context)!.profile,
                 ),
               ],
             ),
