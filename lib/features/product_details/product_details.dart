@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:loco/domain/entities/ProductResponseEntity.dart';
+
 import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
 
@@ -16,12 +18,12 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)?.settings.arguments as ProductDetailsArgs;
+    var args = ModalRoute.of(context)?.settings.arguments as ProductEntity;
     return Scaffold(
       backgroundColor: white,
       appBar: AppBar(
         leading: const BackButton(color: Color(0xFF366A6A) // <-- SEE HERE
-        ),
+            ),
         title: const Text(
           'Product Details',
           style: TextStyle(
@@ -44,14 +46,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                 height: MediaQuery.of(context).size.height * 0.25,
                 width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage('lib/resources/images/photo1.png'),
-                    fit: BoxFit.cover,
-
-                  ),
-                    borderRadius: BorderRadius.circular(13),
-                    color: loco),
-                child: const Center(),
+                  borderRadius: BorderRadius.circular(13),
+                  border: Border.all(color: loco, width: 2),
+                ),
+                child: Image.network(args.imageUrl ?? ""),
               ),
               Padding(
                 padding:
@@ -60,7 +58,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      args.productName,
+                      args.name ?? "",
                       style: const TextStyle(
                           color: Color(0xFF4C7E72),
                           fontSize: 23,
@@ -164,8 +162,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.06,
                   ),
-                  const Text(
-                    'bla bla bla bla bla bla bla bla bla bla bla bla bla bla\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla',
+                  Text(
+                    args.description ?? "",
                     style: TextStyle(color: Color(0xA65D5D5D), fontSize: 15),
                   ),
                 ],

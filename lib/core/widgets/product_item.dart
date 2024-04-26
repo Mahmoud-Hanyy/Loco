@@ -1,44 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/styles.dart';
+
+import '../../domain/entities/ProductResponseEntity.dart';
 import '../utils/colors.dart';
 
 //ignore: must_be_immutable
 class ProductItem extends StatelessWidget {
-  int price;
-  String productName;
-  String imagePath;
+  ProductEntity productEntity;
 
-  ProductItem({super.key,
-    required this.price,
-    required this.productName,
-    required this.imagePath,
-  });
+  ProductItem({super.key, required this.productEntity});
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Stack(
-          children: [
-            Container(
+      child: Stack(children: [
+        Container(
           height: MediaQuery.of(context).size.height * 0.3,
           width: 180,
           decoration: BoxDecoration(
-              border: Border.all(color: Theme.of(context).colorScheme.primary,),
+              border: Border.all(
+                color: Theme.of(context).colorScheme.primary,
+              ),
               borderRadius: BorderRadius.circular(13)),
-              child: Column(
-                children: [
+          child: Column(
+            children: [
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.195,
               ),
+              Text(productEntity.name ?? "",
+                  style: Styles.textStyle16.copyWith(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontSize: 13,
+                  )),
               Text(
-                productName,
-                style: Styles.textStyle16.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontSize: 13,
-                )
-              ),
-              Text(
-                "$price EGP",
+                "${productEntity.price} EGP",
                 style: Styles.textStyle16.copyWith(
                   color: Theme.of(context).colorScheme.primary,
                   fontSize: 13,
@@ -71,15 +66,13 @@ class ProductItem extends StatelessWidget {
           ),
         ),
             Container(
-          height: MediaQuery.of(context).size.height * 0.19,
+              height: MediaQuery.of(context).size.height * 0.19,
           width: 180,
           decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: BorderRadius.circular(13),
-              color: loco),
+            borderRadius: BorderRadius.circular(13),
+            border: Border.all(color: loco, width: 1),
+          ),
+          child: Image.network(productEntity.imageUrl ?? ""),
         ),
       ]),
     );

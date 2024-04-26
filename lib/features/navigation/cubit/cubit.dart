@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loco/features/navigation/cubit/states.dart';
-import '../../categories/categories.dart';
+
+import '../../categories/widgets/categories.dart';
 import '../../favorites/favorites.dart';
 import '../../home/home.dart';
 import '../../profile/profile.dart';
 
-class NavigationCubit extends Cubit<NavigationState>{
+class NavigationCubit extends Cubit<NavigationState> {
   NavigationCubit() : super(InitialState());
 
   static NavigationCubit get(context) => BlocProvider.of(context);
@@ -14,9 +15,9 @@ class NavigationCubit extends Cubit<NavigationState>{
   int currentIndex = 0;
   List<Widget> pages = [
     HomePage(),
-    const Categories(),
-    const Favorites(),
-    const Profile(),
+    Categories(),
+    Favorites(),
+    Profile(),
   ];
 
   void changeIndex(int index){

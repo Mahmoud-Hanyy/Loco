@@ -5,6 +5,11 @@ import '../../core/utils/assets.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/start_button.dart';
 import '../register/register.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+
+
+
 
 class LogIn extends StatelessWidget {
   static const String routeName = 'login';
@@ -24,7 +29,7 @@ class LogIn extends StatelessWidget {
               height: height,
               width: width,
             ),
-            Text('Welcome back !',
+            Text(AppLocalizations.of(context)!.welcome_back,
                 style: Styles.textStyle24.copyWith(
                   fontWeight: FontWeight.bold,
                 )
@@ -33,8 +38,9 @@ class LogIn extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'Email address',
+                decoration:  InputDecoration(
+                  hintText:
+                  AppLocalizations.of(context)!.email_address,
                   hintStyle: Styles.textStyle16,
                   border: OutlineInputBorder(
                     borderSide: BorderSide(color: loco),),
@@ -46,8 +52,8 @@ class LogIn extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'Password',
+                decoration:  InputDecoration(
+                  hintText:AppLocalizations.of(context)!.password ,
                   hintStyle: Styles.textStyle16,
                   border: OutlineInputBorder(
                     borderSide: BorderSide(color: loco),),
@@ -57,11 +63,12 @@ class LogIn extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 15,),
-            const Row(
+             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text('Forget your password?',
+                Text(AppLocalizations.of(context)!.forget_your_password,
+
                   style: Styles.textStyle16,
                   textAlign: TextAlign.right,),
               ],
@@ -71,10 +78,10 @@ class LogIn extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, NavigationPage.routeName);
               },
-              textOfButton: 'Log In',
+              textOfButton: AppLocalizations.of(context)!.log_in,
             ),
             const SizedBox(height: 15,),
-            const Text('or login with',
+             Text(AppLocalizations.of(context)!.or_login_with,
               style: Styles.textStyle16,
             ),
             const SizedBox(height: 10,),
@@ -87,7 +94,7 @@ class LogIn extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, RegisterScreen.routeName);
               },
-              child: Text("Don't have an account ? Register",
+              child: Text(AppLocalizations.of(context)!.dont_have_an_account_register,
                 style: Styles.textStyle16.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
