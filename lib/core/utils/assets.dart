@@ -15,5 +15,5 @@ class Assets{
   static const visa ='lib/resources/images/visa.png';
   static const paypal='lib/resources/images/paypal.png';
   static const apple = 'lib/resources/images/apple-pay.png';
-  static const done = "lib/resources/images/done.png";
+  static const done = "lib/resources/images/done.jpg";
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:loco/core/utils/styles.dart';
 
 import '../../core/utils/assets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //ignore: must_be_immutable
 class Favorites extends StatefulWidget {
@@ -18,7 +19,7 @@ class _FavoritesState extends State<Favorites> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Favorites',
+          AppLocalizations.of(context)!.favorites,
           style: Styles.textOfLabel.copyWith(
             color: Theme.of(context).colorScheme.primary,
           )

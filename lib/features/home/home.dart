@@ -3,6 +3,7 @@ import 'package:loco/core/utils/assets.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/new_product_item.dart';
 import '../cart/add_to_cart.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //ignore:must_be_immutable
 class HomePage extends StatelessWidget {
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Loco',
+          AppLocalizations.of(context)!.loco,
           style: Styles.textOfLabel.copyWith(
             color: Theme.of(context).colorScheme.primary,
           )
@@ -57,7 +58,7 @@ class HomePage extends StatelessWidget {
                                   size: 30,
                                 )),
                              Text(
-                              'Search for your product',
+                              AppLocalizations.of(context)!.search_for_your_product,
                               style: Styles.textStyle16.copyWith(
                                 color: Theme.of(context).colorScheme.primary,
                               ),
@@ -97,7 +98,7 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 15, right: 0, bottom: 25, top: 10),
                     child: Text(
-                      'Categories',
+                      AppLocalizations.of(context)!.categories,
                       style: Styles.textStyle30.copyWith(
                         color: Theme.of(context).colorScheme.primary
                       )
@@ -106,7 +107,7 @@ class HomePage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 20, bottom: 10),
                     child: Text(
-                      'view all',
+                      AppLocalizations.of(context)!.view_all,
                       style: Styles.textStyle16.copyWith(
                         fontSize: 14,
                         color: Theme.of(context).colorScheme.primary,
@@ -138,7 +139,7 @@ class HomePage extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          'Men',
+                          AppLocalizations.of(context)!.men,
                           style: Styles.textStyle16.copyWith(
                             fontSize: 15,
                             color: Theme.of(context).colorScheme.primary,
@@ -168,7 +169,7 @@ class HomePage extends StatelessWidget {
                           height: 10,
                         ),
                          Text(
-                          'Women',
+                          AppLocalizations.of(context)!.women,
                           style:Styles.textStyle16.copyWith(
                             fontSize: 15,
                             color: Theme.of(context).colorScheme.primary,
@@ -197,7 +198,7 @@ class HomePage extends StatelessWidget {
                           height: 10,
                         ),
                          Text(
-                          'Kids',
+                          AppLocalizations.of(context)!.kids,
                           style: Styles.textStyle16.copyWith(
                             fontSize: 15,
                             color: Theme.of(context).colorScheme.primary,
@@ -226,7 +227,7 @@ class HomePage extends StatelessWidget {
                           height: 10,
                         ),
                          Text(
-                          'Accessories',
+                          AppLocalizations.of(context)!.accessories,
                           style:Styles.textStyle16.copyWith(
                             fontSize: 15,
                             color: Theme.of(context).colorScheme.primary,
@@ -247,7 +248,7 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 15, right: 0, bottom: 25, top: 10),
                     child: Text(
-                      'New Products',
+                      AppLocalizations.of(context)!.new_products,
                       style: Styles.textStyle16.copyWith(
                         fontSize: 30,
                         color: Theme.of(context).colorScheme.primary,

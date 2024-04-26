@@ -5,6 +5,7 @@ import '../../core/utils/styles.dart';
 import '../../core/widgets/start_button.dart';
 import '../log_in/log_in.dart';
 import '../navigation/navigation.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RegisterScreen extends StatelessWidget {
   static const String routeName='registerScreen';
@@ -47,20 +48,23 @@ class RegisterScreen extends StatelessWidget {
             ),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal:25),
-                child: Text('Register',
+                child: Text(AppLocalizations.of(context)!.register,
                     style: Styles.textOfLabel.copyWith(
                       fontWeight: FontWeight.bold
                     ))),
              const SizedBox(height: 5,),
-            const Padding(
+             Padding(
                 padding: EdgeInsets.symmetric(horizontal:25),
-                child: Text('Register to enjoy our features',style: Styles.textStyle20)),
+                child: Text(AppLocalizations.of(context)!.register_to_enjoy_our_features,
+
+                    style: Styles.textStyle20)),
             const SizedBox(height: 15,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'First name',
+                decoration:  InputDecoration(
+                  hintText: AppLocalizations.of(context)!.first_name,
+
                   hintStyle: Styles.textStyle16,
                   border: OutlineInputBorder(borderSide: BorderSide(color: loco),),
                   prefixIcon: Icon(Icons.person,color: loco,),
@@ -71,8 +75,9 @@ class RegisterScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'Last name',
+                decoration:  InputDecoration(
+                  hintText: AppLocalizations.of(context)!.last_name,
+
                   hintStyle: Styles.textStyle16,
                   border: OutlineInputBorder(borderSide: BorderSide(color: loco),),
                   prefixIcon: Icon(Icons.person,color: loco,),
@@ -83,8 +88,8 @@ class RegisterScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'Email address',
+                decoration:  InputDecoration(
+                  hintText: AppLocalizations.of(context)!.email_address,
                   hintStyle: Styles.textStyle16,
                   border: OutlineInputBorder(borderSide: BorderSide(color: loco),),
                   prefixIcon: Icon(Icons.email,color: loco,),
@@ -95,8 +100,8 @@ class RegisterScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'Password',
+                decoration:  InputDecoration(
+                  hintText: AppLocalizations.of(context)!.password,
                   hintStyle: Styles.textStyle16,
                   border: OutlineInputBorder(borderSide: BorderSide(color: loco),),
                   prefixIcon: Icon(Icons.lock,color: loco,),
@@ -108,8 +113,8 @@ class RegisterScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'Confirm Password',
+                decoration:  InputDecoration(
+                  hintText:AppLocalizations.of(context)!.confirm_password,
                   hintStyle: Styles.textStyle16,
                   border: OutlineInputBorder(borderSide: BorderSide(color: loco),),
                   prefixIcon: Icon(Icons.lock,color: loco,),
@@ -123,7 +128,7 @@ class RegisterScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, NavigationPage.routeName);
                 },
-                textOfButton: 'Register',
+                textOfButton: AppLocalizations.of(context)!.register,
               ),
             ),
             const SizedBox(height: 20,),
@@ -135,7 +140,7 @@ class RegisterScreen extends StatelessWidget {
                     onTap: (){
                       Navigator.pushNamed(context, LogIn.routeName);
                     },
-                    child: Text('Already have an account ? Login',style: Styles.textStyle20.copyWith(
+                    child: Text(AppLocalizations.of(context)!.already_have_an_account_Login,style: Styles.textStyle20.copyWith(
                       fontWeight: FontWeight.bold
                     ))),
               ],

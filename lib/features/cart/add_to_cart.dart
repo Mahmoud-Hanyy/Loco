@@ -3,6 +3,7 @@ import 'package:loco/core/utils/assets.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/loco_button.dart';
 import '../payment/payment_method.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //ignore: must_be_immutable
 class AddToCart extends StatelessWidget {
@@ -23,7 +24,7 @@ class AddToCart extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Cart',
+          AppLocalizations.of(context)!.cart,
           style: Styles.textOfLabel.copyWith(
             color: Theme.of(context).colorScheme.primary,
             fontSize: 40,
@@ -204,7 +205,7 @@ class AddToCart extends StatelessWidget {
               onPressed: (){
                 Navigator.pushNamed(context,PaymentMethod.routeName);
               },
-            textOfButton: 'Checkout',
+            textOfButton: AppLocalizations.of(context)!.checkout,
             style: Styles.textStyle20.copyWith(
             color: Theme.of(context).colorScheme.background,
           ),
