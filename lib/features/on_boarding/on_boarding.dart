@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:loco/core/widgets/start_button.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../core/utils/assets.dart';
 import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
+import '../../core/widgets/start_button.dart';
 import 'on_boarding1.dart';
 
 class OnBoarding extends StatelessWidget {

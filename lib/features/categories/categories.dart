@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/product_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //ignore:must_be_immutable
 class Categories extends StatelessWidget {
@@ -11,7 +12,7 @@ class Categories extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Loco',
+            AppLocalizations.of(context)!.loco,
             style: Styles.textOfLabel.copyWith(
               color: Theme.of(context).colorScheme.primary,
             )
@@ -50,7 +51,7 @@ class Categories extends StatelessWidget {
                                   size: 30,
                                 )),
                             Text(
-                              'Search for your product',
+                              AppLocalizations.of(context)!.search_for_your_product,
                               style: TextStyle(
                                   color: Theme.of(context).colorScheme.primary.withOpacity(0.6), fontSize: 15),
                             ),
@@ -80,7 +81,7 @@ class Categories extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          'Category',
+                          AppLocalizations.of(context)!.category,
                           style: TextStyle(
                               fontSize: 15, color: Theme.of(context).colorScheme.background),
                         ),
@@ -102,7 +103,7 @@ class Categories extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          'Price',
+                          AppLocalizations.of(context)!.price,
                           style: TextStyle(
                               fontSize: 15, color: Theme.of(context).colorScheme.background),
                         ),
@@ -124,7 +125,7 @@ class Categories extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          'Newest',
+                          AppLocalizations.of(context)!.newest,
                           style: TextStyle(
                               fontSize: 15, color: Theme.of(context).colorScheme.background),
                         ),
