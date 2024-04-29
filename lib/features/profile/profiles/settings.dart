@@ -19,6 +19,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     var provider=Provider.of<AppConfigProvider>(context);
     return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           body: Padding(
             padding: const EdgeInsets.symmetric(vertical: 40.0),
             child: Column(
@@ -66,8 +67,8 @@ class _SettingsState extends State<Settings> {
                                 showLanguageBottomSheet();
                               },
                               child: Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
+                              padding: const EdgeInsets.all(8),
+                              decoration: const BoxDecoration(
                                 color: white,
                                             
                               ),
@@ -79,7 +80,7 @@ class _SettingsState extends State<Settings> {
                                       AppLocalizations.of(context)!.english:
                                       AppLocalizations.of(context)!.arabic,
                                       style: Styles.textStyle20,),
-                                    Icon(Icons.arrow_drop_down,
+                                    const Icon(Icons.arrow_drop_down,
                                       color: loco,)
                                                     
                                   ],
@@ -94,12 +95,12 @@ class _SettingsState extends State<Settings> {
                 ),
               ],
             ),
-          )
+          ),
       );
   }
 
   void showLanguageBottomSheet() {
     showModalBottomSheet(context: context,
-        builder: (context)=>LanguageBottomSheet());
+        builder: (context)=>const LanguageBottomSheet());
   }
 }

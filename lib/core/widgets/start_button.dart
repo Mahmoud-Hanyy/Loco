@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
 import '../utils/colors.dart';
 import '../utils/styles.dart';
 
@@ -43,11 +39,7 @@ class StartButton extends StatelessWidget {
           ),
           child: Text(textOfButton,
             style: Styles.textStyle20.copyWith(
-<<<<<<< HEAD
-              color: white
-=======
                 color: white
->>>>>>> origin/main
             ),
           )
       ),

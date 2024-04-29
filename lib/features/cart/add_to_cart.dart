@@ -65,13 +65,6 @@ class AddToCart extends StatelessWidget {
                     )
                   ),
                   Text(
-                    'White | XL',
-                    style: Styles.textStyle20.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.normal
-    )
-                  ),
-                  Text(
                     "${price = 123} EGP",
                     style: Styles.textStyle20.copyWith(
                         color: Theme.of(context).colorScheme.primary,

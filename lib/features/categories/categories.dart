@@ -11,8 +11,9 @@ class Categories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(
-            AppLocalizations.of(context)!.loco,
+            AppLocalizations.of(context)!.categories,
             style: Styles.textOfLabel.copyWith(
               color: Theme.of(context).colorScheme.primary,
             )
@@ -52,8 +53,9 @@ class Categories extends StatelessWidget {
                                 )),
                             Text(
                               AppLocalizations.of(context)!.search_for_your_product,
-                              style: TextStyle(
-                                  color: Theme.of(context).colorScheme.primary.withOpacity(0.6), fontSize: 15),
+                              style: Styles.textStyle16.copyWith(
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                             ),
                           ],
                         )),

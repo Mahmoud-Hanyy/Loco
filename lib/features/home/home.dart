@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/assets.dart';
+import 'package:loco/features/categories/categories.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/new_product_item.dart';
 import '../cart/add_to_cart.dart';
@@ -16,6 +17,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           AppLocalizations.of(context)!.loco,
           style: Styles.textOfLabel.copyWith(
@@ -106,12 +108,17 @@ class HomePage extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 20, bottom: 10),
-                    child: Text(
-                      AppLocalizations.of(context)!.view_all,
-                      style: Styles.textStyle16.copyWith(
-                        fontSize: 14,
-                        color: Theme.of(context).colorScheme.primary,
+                    child: TextButton(
+                      child: Text(
+                        AppLocalizations.of(context)!.view_all,
+                        style: Styles.textStyle16.copyWith(
+                          fontSize: 14,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                       ),
+                      onPressed: (){
+                        Navigator.of(context).pushNamed(Categories.routeName);
+                      },
                     ),
                   ),
                 ],
@@ -121,6 +128,7 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+                    const SizedBox(width: 20,),
                     Column(
                       children: [
                         Container(
@@ -148,7 +156,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 20,
                     ),
                     Column(
                       children: [
@@ -178,7 +186,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 20,
                     ),
                     Column(
                       children: [
@@ -207,7 +215,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 20,
                     ),
                     Column(
                       children: [
@@ -234,6 +242,9 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                    const SizedBox(
+                      width: 20,
                     ),
                   ],
                 ),

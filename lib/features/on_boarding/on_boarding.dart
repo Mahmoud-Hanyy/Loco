@@ -14,39 +14,44 @@ class OnBoarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Text('Welcome in Loco',
-              textAlign: TextAlign.center,
-              style: Styles.textOfLabel
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Text('Welcome in Loco',
+                  textAlign: TextAlign.center,
+                  style: Styles.textOfLabel
+              ),
+              const SizedBox(height: 15,),
+              Image.asset(Assets.shopping,
+                  width: MediaQuery.of(context).size.width*0.8,
+              ),
+              Text('Loco ?',
+                style:Styles.textStyle24.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),),
+              const SizedBox(height: 15,),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(' loco is the place where the local brands are gathered together so you can find them easily',
+                  style: Styles.textStyle16
+                ),
+              ),
+              const SizedBox(height: 40,),
+              StartButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, PageTransition(
+                      child: const OnBoarding1(),
+                      type: PageTransitionType.rightToLeft
+                  )
+                  );
+                },
+                textOfButton: 'Continue',
+              ),
+            ],
           ),
-          Image.asset(Assets.shopping),
-          Text('Loco ?',
-            style:Styles.textStyle24.copyWith(
-              fontWeight: FontWeight.bold,
-            ),),
-          const SizedBox(height: 15,),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text(' loco is the place where the local brands are gathered together so you can find them easily',
-              style: Styles.textStyle16
-            ),
-          ),
-          const SizedBox(height: 40,),
-          StartButton(
-            onPressed: () {
-              Navigator.push(
-                  context, PageTransition(
-                  child: const OnBoarding1(),
-                  type: PageTransitionType.rightToLeft
-              )
-              );
-            },
-            textOfButton: 'Continue',
-          ),
-        ],
+        ),
       ),
     );
   }

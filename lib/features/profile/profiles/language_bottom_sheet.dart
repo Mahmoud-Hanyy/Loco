@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/styles.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../provider/app_config_provider.dart';
 
 class LanguageBottomSheet extends StatefulWidget {
+  const LanguageBottomSheet({super.key});
 
 
   @override
@@ -47,7 +47,7 @@ Widget getSelectedItemWidget(String text){
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Text(text,style: Styles.textStyle20,),
-      Icon(Icons.check)
+      const Icon(Icons.check)
     ],
   ),
   );

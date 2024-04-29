@@ -30,8 +30,8 @@ abstract class Styles{
   static const textOfButton =TextStyle(
       color: white,
       fontSize: 20,
-      fontFamily: 'Clash');
-
+      fontFamily: 'Clash'
+  );
   static const textOfLabel =TextStyle(
       color: loco,
       fontSize: 50,

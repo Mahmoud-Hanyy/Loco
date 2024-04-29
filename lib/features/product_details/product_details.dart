@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:loco/core/widgets/loco_button.dart';
+import '../../core/utils/assets.dart';
 import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
 
@@ -18,18 +20,20 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as ProductDetailsArgs;
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        leading: const BackButton(color: Color(0xFF366A6A) // <-- SEE HERE
+        leading: BackButton(
+            color: Theme.of(context).colorScheme.primary
         ),
-        title: const Text(
+        title: Text(
           'Product Details',
-          style: TextStyle(
-              fontFamily: 'Clash', fontSize: 30, color: Color(0xFF366A6A)),
+          style: Styles.textStyle30.copyWith(
+            color: Theme.of(context).colorScheme.primary,
+          )
         ),
         centerTitle: true,
         toolbarHeight: 70,
-        backgroundColor: white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -37,7 +41,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
+                height: MediaQuery.of(context).size.height * 0.01,
               ),
               Container(
                 // color: loco,
@@ -45,7 +49,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
                   image: const DecorationImage(
-                    image: AssetImage('lib/resources/images/photo1.png'),
+                    image: AssetImage(Assets.product),
                     fit: BoxFit.cover,
 
                   ),
@@ -56,105 +60,52 @@ class _ProductDetailsState extends State<ProductDetails> {
               Padding(
                 padding:
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 45),
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       args.productName,
-                      style: const TextStyle(
-                          color: Color(0xFF4C7E72),
-                          fontSize: 23,
-                          fontWeight: FontWeight.normal),
+                      style: Styles.textStyle30.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                     ),
-                    Text(
-                      "${args.price} EGP",
-                      style: const TextStyle(
-                          color: Color(0xFF4C7E72),
-                          fontSize: 23,
-                          fontWeight: FontWeight.normal),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "${args.price} EGP",
+                          style: Styles.textStyle30.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.favorite_border_outlined,
+                              color: Theme.of(context).colorScheme.primary,
+                              size: 35,
+                            )),
+                      ],
                     ),
+
                   ],
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.03,
+              const SizedBox(
+                height: 5
               ),
               Row(
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.3,
-                  ),
-                  Container(
-                      height: MediaQuery.of(context).size.height * 0.06,
-                      width: MediaQuery.of(context).size.width * 0.38,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: loco.withOpacity(0.5),
-                            spreadRadius: 1,
-                            blurRadius: 4,
-                            offset: const Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(26),
-                        color: loco,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconButton(
-                              onPressed: () {
-                                quantitySub();
-                                setState(() {});
-                              },
-                              icon: const Icon(
-                                Icons.remove_circle,
-                                color: white,
-                              )),
-                          Text(
-                            '$quantity',
-                            style: const TextStyle(
-                                color: white, fontSize: 25),
-                          ),
-                          IconButton(
-                              onPressed: () {
-                                quantityAdd();
-                                setState(() {});
-                              },
-                              icon: const Icon(
-                                Icons.add_circle,
-                                color: white,
-                              )),
-                        ],
-                      )),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.06,
-                  ),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.favorite_border_outlined,
-                        color: loco,
-                        size: 35,
-                      ))
-                ],
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
-              ),
-              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                         left: 23, right: 0, bottom: 10, top: 10),
                     child: Text(
                       'Description',
-                      style: TextStyle(
-                          fontFamily: 'Clash',
-                          fontSize: 30,
-                          color: Color(0xFF366A6A),
-                          fontWeight: FontWeight.w300),
+                      style: Styles.textStyle30.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      )
                     ),
                   ),
                 ],
@@ -164,25 +115,26 @@ class _ProductDetailsState extends State<ProductDetails> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.06,
                   ),
-                  const Text(
-                    'bla bla bla bla bla bla bla bla bla bla bla bla bla bla\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla',
-                    style: TextStyle(color: Color(0xA65D5D5D), fontSize: 15),
-                  ),
+                   Text(
+                    'Good prodi;pkadnmsdnaopsdnadonasdnas',
+                    style: Styles.textStyle16.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontSize: 14
+                    )
+                   ),
                 ],
               ),
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                         left: 23, right: 0, bottom: 20, top: 25),
                     child: Text(
                       'Size',
-                      style: TextStyle(
-                          fontFamily: 'Clash',
-                          fontSize: 30,
-                          color: Color(0xFF366A6A),
-                          fontWeight: FontWeight.w300),
+                      style: Styles.textStyle24.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                      )
                     ),
                   ),
                 ],
@@ -194,22 +146,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                     height: MediaQuery.of(context).size.height * 0.07,
                     width: MediaQuery.of(context).size.height * 0.07,
                     decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: loco.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset: const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
                       shape: BoxShape.circle,
-                      color: loco,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
-                    child: const Center(
+                    child: Center(
                         child: Text(
                           'M',
                           style:
-                          TextStyle(color: white, fontSize: 18),
+                          TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 18),
                         )),
                   ),
                   Container(
@@ -218,20 +162,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: loco.withOpacity(0.5),
+                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                           spreadRadius: 1,
                           blurRadius: 4,
                           offset: const Offset(0, 3), // changes position of shadow
                         ),
                       ],
                       shape: BoxShape.circle,
-                      color: loco,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
-                    child: const Center(
+                    child: Center(
                         child: Text(
                           'L',
                           style:
-                          TextStyle(color: white, fontSize: 18),
+                          TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 18),
                         )),
                   ),
                   Container(
@@ -240,20 +184,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: loco.withOpacity(0.5),
+                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                           spreadRadius: 1,
                           blurRadius: 4,
                           offset: const Offset(0, 3), // changes position of shadow
                         ),
                       ],
-                      border: (Border.all(color: loco, width: 1)),
+                      border: (Border.all(color: Theme.of(context).colorScheme.primary, width: 1)),
                       shape: BoxShape.circle,
-                      color: white,
+                      color: Theme.of(context).colorScheme.background,
                     ),
-                    child: const Center(
+                    child: Center(
                         child: Text(
                           'XL',
-                          style: TextStyle(color: loco, fontSize: 18),
+                          style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 18),
                         )),
                   ),
                   Container(
@@ -262,122 +206,57 @@ class _ProductDetailsState extends State<ProductDetails> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: loco.withOpacity(0.5),
+                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                           spreadRadius: 1,
                           blurRadius: 4,
                           offset: const Offset(0, 3), // changes position of shadow
                         ),
                       ],
                       shape: BoxShape.circle,
-                      color: loco,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
-                    child: const Center(
+                    child: Center(
                         child: Text(
                           'XXL',
                           style:
-                          TextStyle(color: white, fontSize: 18),
+                          TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 18),
                         )),
                   ),
                 ],
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
+              const SizedBox(
+                height: 10
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(
-                        left: 23, right: 0, bottom: 20, top: 0),
+                    padding: const EdgeInsets.only(
+                        left: 23, right: 0, bottom: 20, top: 10),
                     child: Text(
-                      'Color',
-                      style: TextStyle(
-                          fontFamily: 'Clash',
-                          fontSize: 30,
-                          color: Color(0xFF366A6A),
-                          fontWeight: FontWeight.w300),
+                        'Color',
+                        style: Styles.textStyle24.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        )
                     ),
                   ),
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    width: MediaQuery.of(context).size.height * 0.07,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: loco.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset: const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                      shape: BoxShape.circle,
-                      color: black,
-                    ),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    width: MediaQuery.of(context).size.height * 0.07,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: loco.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset: const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                      border: (Border.all(color: loco, width: 1)),
-                      shape: BoxShape.circle,
-                      color: white,
-                    ),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    width: MediaQuery.of(context).size.height * 0.07,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: loco.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset: const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                      shape: BoxShape.circle,
-                      color: const Color(0xFFFF0000),
+                  const SizedBox(width: 40,),
+                  Text(
+                    'White',
+                    style: Styles.textStyle20.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ],
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.06,
+              const SizedBox(
+                height: 30
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: loco,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      color: loco.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 4,
-                      offset: const Offset(0, 6), // changes position of shadow
-                    ),
-                  ],
-                ),
-                height: MediaQuery.of(context).size.height * 0.08,
-                width: MediaQuery.of(context).size.width * 0.5,
-                child: const Center(
-                    child: Text(
-                      'add to cart',
-                      style: Styles.textOfButton,
-                    )),
-              ),
+              LocoButton(textOfButton: 'Add to cart', onPressed: (){}),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.03,
               ),

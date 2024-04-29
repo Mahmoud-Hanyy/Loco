@@ -18,6 +18,7 @@ class _FavoritesState extends State<Favorites> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           AppLocalizations.of(context)!.favorites,
           style: Styles.textOfLabel.copyWith(

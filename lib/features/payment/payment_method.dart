@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:loco/core/widgets/loco_button.dart';
-
-
 import '../../core/utils/assets.dart';
 import '../../core/utils/styles.dart';
 import 'done.dart';
@@ -33,6 +31,8 @@ class _PaymentMethodState extends State<PaymentMethod> {
         elevation: 0,
       ),
       body: Container(
+        width: 800,
+        height: 800,
         color:Theme.of(context).colorScheme.background,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -148,7 +148,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       color: Theme.of(context).colorScheme.primary,
                     ),),
                     const Padding(padding: EdgeInsets.only(left: 170)),
-                    Text('30.00 LE',style:Styles.textStyle18.copyWith(
+                    Text('40.00 LE',style:Styles.textStyle18.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                     ),),
                   ],
@@ -160,7 +160,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       color: Theme.of(context).colorScheme.primary,
                     ),),
                     const Padding(padding: EdgeInsets.only(left: 200)),
-                    Text('-10 LE',style:Styles.textStyle18.copyWith(
+                    Text('-50 LE',style:Styles.textStyle18.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                     ),),
                   ],
@@ -172,7 +172,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       color: Theme.of(context).colorScheme.primary,
                     ),),
                     const Padding(padding: EdgeInsets.only(left: 235)),
-                    Text('430 LE',style:Styles.textStyle18.copyWith(
+                    Text('400 LE',style:Styles.textStyle18.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                     ),),
                   ],

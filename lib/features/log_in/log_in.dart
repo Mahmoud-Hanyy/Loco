@@ -7,10 +7,6 @@ import '../../core/widgets/start_button.dart';
 import '../register/register.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
-
-
-
 class LogIn extends StatelessWidget {
   static const String routeName = 'login';
 
@@ -18,17 +14,19 @@ class LogIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height * 0.45;
+    var height = MediaQuery.of(context).size.height * 0.4;
     var width = MediaQuery.of(context).size.width * 0.9;
     return Scaffold(
       backgroundColor: white,
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const SizedBox(height: 30,),
             Image.asset(Assets.signIn,
               height: height,
               width: width,
             ),
+            const SizedBox(height: 15,),
             Text(AppLocalizations.of(context)!.welcome_back,
                 style: Styles.textStyle24.copyWith(
                   fontWeight: FontWeight.bold,
@@ -39,12 +37,12 @@ class LogIn extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextFormField(
                 decoration:  InputDecoration(
-                  hintText:
-                  AppLocalizations.of(context)!.email_address,
+                  hintText: AppLocalizations.of(context)!.email_address,
                   hintStyle: Styles.textStyle16,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: loco),),
-                  prefixIcon: Icon(Icons.email, color: loco,),
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide(color: loco),
+                  ),
+                  prefixIcon: const Icon(Icons.email, color: loco,),
                 ),
               ),
             ),
@@ -55,10 +53,10 @@ class LogIn extends StatelessWidget {
                 decoration:  InputDecoration(
                   hintText:AppLocalizations.of(context)!.password ,
                   hintStyle: Styles.textStyle16,
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                     borderSide: BorderSide(color: loco),),
-                  prefixIcon: Icon(Icons.lock, color: loco,),
-                  suffixIcon: Icon(Icons.visibility_off, color: loco,),
+                  prefixIcon: const Icon(Icons.lock, color: loco,),
+                  suffixIcon: const Icon(Icons.visibility_off, color: loco,),
                 ),
               ),
             ),
