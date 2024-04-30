@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/assets.dart';
 import 'package:loco/features/categories/categories.dart';
@@ -11,6 +12,13 @@ class HomePage extends StatelessWidget {
   late String productName;
   late int price;
   static const String routename = 'Home';
+
+  final List<String> imageList = [
+    Assets.photo1,
+    Assets.asili,
+    Assets.tomato,
+  ];
+
   HomePage({super.key});
 
   @override
@@ -80,18 +88,31 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Center(
+
                 child: Container(
                     height: MediaQuery.of(context).size.height * 0.24,
-                    width: MediaQuery.of(context).size.height * 0.4,
+                    width: MediaQuery.of(context).size.width * 0.9,
                     decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage(Assets.photo1),
-                        fit: BoxFit.fill,
-                      ),
-                      borderRadius: BorderRadius.circular(26),
-                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.circular(10),
+                      color: Theme.of(context).colorScheme.background,
                     ),
-                    child: const Center()),
+                    child: CarouselSlider(
+                        items: [
+                          Image.asset(Assets.asili,),
+                          Image.asset(Assets.photo1,),
+                          Image.asset(Assets.tomato,),
+                          Image.asset(Assets.donna,),
+                      ],
+                        options: (
+                          CarouselOptions(
+                            autoPlay: true,
+                            autoPlayInterval: const Duration(seconds: 2),
+                            enlargeFactor: 2,
+                            enlargeCenterPage: true,
+                        )
+                      )
+                    ),
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
