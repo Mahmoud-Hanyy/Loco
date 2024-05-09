@@ -7,7 +7,6 @@ import '../../../provider/app_config_provider.dart';
 class LanguageBottomSheet extends StatefulWidget {
   const LanguageBottomSheet({super.key});
 
-
   @override
   State<LanguageBottomSheet> createState() => _LanguageBottomSheetState();
 }
@@ -15,51 +14,52 @@ class LanguageBottomSheet extends StatefulWidget {
 class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    var provider=Provider.of<AppConfigProvider>(context);
+    var provider = Provider.of<AppConfigProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         InkWell(
-          onTap: (){
+          onTap: () {
             provider.changeLanguage('en');
           },
-          child: provider.appLanguage=='en'?
-         getSelectedItemWidget(AppLocalizations.of(context)!.english):
-          getUnselectedItemWidget(AppLocalizations.of(context)!.english),
+          child: provider.appLanguage == 'en'
+              ? getSelectedItemWidget(AppLocalizations.of(context)!.english)
+              : getUnselectedItemWidget(AppLocalizations.of(context)!.english),
         ),
         InkWell(
-          onTap: (){
+          onTap: () {
             provider.changeLanguage('ar');
           },
-          child: provider.appLanguage=='ar'?
-          getSelectedItemWidget(AppLocalizations.of(context)!.arabic):
-          getUnselectedItemWidget(AppLocalizations.of(context)!.arabic),
+          child: provider.appLanguage == 'ar'
+              ? getSelectedItemWidget(AppLocalizations.of(context)!.arabic)
+              : getUnselectedItemWidget(AppLocalizations.of(context)!.arabic),
         ),
-
       ],
     );
   }
 }
-Widget getSelectedItemWidget(String text){
-  return Padding(
-      padding: const EdgeInsets.all(8),
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text(text,style: Styles.textStyle20,),
-      const Icon(Icons.check)
-    ],
-  ),
-  );
 
-}
-Widget getUnselectedItemWidget(String text){
+Widget getSelectedItemWidget(String text) {
   return Padding(
     padding: const EdgeInsets.all(8),
-    child:Text(
-      text,
-      style: Styles.textStyle20,
-    )
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          text,
+          style: Styles.textStyle20,
+        ),
+        const Icon(Icons.check)
+      ],
+    ),
   );
+}
 
+Widget getUnselectedItemWidget(String text) {
+  return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Text(
+        text,
+        style: Styles.textStyle20,
+      ));
 }

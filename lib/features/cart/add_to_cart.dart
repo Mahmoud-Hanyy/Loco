@@ -12,7 +12,7 @@ class AddToCart extends StatelessWidget {
   late int price;
   int quantity = 1;
   AddToCart({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +28,7 @@ class AddToCart extends StatelessWidget {
           style: Styles.textOfLabel.copyWith(
             color: Theme.of(context).colorScheme.primary,
             fontSize: 40,
-      ),
+          ),
         ),
         centerTitle: true,
         toolbarHeight: 70,
@@ -49,28 +49,23 @@ class AddToCart extends StatelessWidget {
                 height: 140,
                 width: 95,
                 decoration: BoxDecoration(
-                    image: const DecorationImage(
-                        image: AssetImage(Assets.hoodie1),
-                        fit: BoxFit.cover),
-                    borderRadius: BorderRadius.circular(13),
-                    color: Theme.of(context).colorScheme.primary,),
+                  image: const DecorationImage(
+                      image: AssetImage(Assets.hoodie1), fit: BoxFit.cover),
+                  borderRadius: BorderRadius.circular(13),
+                  color: Theme.of(context).colorScheme.primary,
+                ),
                 child: const Center(),
               ),
               Column(
                 children: [
-                  Text(
-                    productName = 'Hoodie 1',
-                    style: Styles.textStyle30.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                    )
-                  ),
-                  Text(
-                    "${price = 123} EGP",
-                    style: Styles.textStyle20.copyWith(
+                  Text(productName = 'Hoodie 1',
+                      style: Styles.textStyle30.copyWith(
                         color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.normal
-                    )
-                  ),
+                      )),
+                  Text("${price = 123} EGP",
+                      style: Styles.textStyle20.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.normal)),
                 ],
               ),
               Container(
@@ -79,10 +74,14 @@ class AddToCart extends StatelessWidget {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.5),
                         spreadRadius: 1,
                         blurRadius: 4,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                     borderRadius: BorderRadius.circular(26),
@@ -99,8 +98,9 @@ class AddToCart extends StatelessWidget {
                           )),
                       Text(
                         '$quantity',
-                        style:
-                         TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 25),
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.background,
+                            fontSize: 25),
                       ),
                       IconButton(
                           onPressed: () {},
@@ -124,34 +124,26 @@ class AddToCart extends StatelessWidget {
                 width: 95,
                 decoration: BoxDecoration(
                   image: const DecorationImage(
-                      image: AssetImage(Assets.hoodie1),
-                      fit: BoxFit.cover),
+                      image: AssetImage(Assets.hoodie1), fit: BoxFit.cover),
                   borderRadius: BorderRadius.circular(13),
-                  color: Theme.of(context).colorScheme.primary,),
+                  color: Theme.of(context).colorScheme.primary,
+                ),
                 child: const Center(),
               ),
               Column(
                 children: [
-                  Text(
-                      productName = 'Hoodie 1',
+                  Text(productName = 'Hoodie 1',
                       style: Styles.textStyle30.copyWith(
                         color: Theme.of(context).colorScheme.primary,
-                      )
-                  ),
-                  Text(
-                      'White | XL',
+                      )),
+                  Text('White | XL',
                       style: Styles.textStyle20.copyWith(
                           color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.normal
-                      )
-                  ),
-                  Text(
-                      "${price = 123} EGP",
+                          fontWeight: FontWeight.normal)),
+                  Text("${price = 123} EGP",
                       style: Styles.textStyle20.copyWith(
                           color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.normal
-                      )
-                  ),
+                          fontWeight: FontWeight.normal)),
                 ],
               ),
               Container(
@@ -160,10 +152,14 @@ class AddToCart extends StatelessWidget {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.5),
                         spreadRadius: 1,
                         blurRadius: 4,
-                        offset: const Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                     borderRadius: BorderRadius.circular(26),
@@ -180,8 +176,9 @@ class AddToCart extends StatelessWidget {
                           )),
                       Text(
                         '$quantity',
-                        style:
-                        TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 25),
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.background,
+                            fontSize: 25),
                       ),
                       IconButton(
                           onPressed: () {},
@@ -195,13 +192,13 @@ class AddToCart extends StatelessWidget {
           ),
           const Spacer(),
           LocoButton(
-              onPressed: (){
-                Navigator.pushNamed(context,PaymentMethod.routeName);
-              },
+            onPressed: () {
+              Navigator.pushNamed(context, PaymentMethod.routeName);
+            },
             textOfButton: AppLocalizations.of(context)!.checkout,
             style: Styles.textStyle20.copyWith(
-            color: Theme.of(context).colorScheme.background,
-          ),
+              color: Theme.of(context).colorScheme.background,
+            ),
           ),
         ],
       ),

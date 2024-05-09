@@ -21,78 +21,110 @@ class LogIn extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 30,),
-            Image.asset(Assets.signIn,
+            const SizedBox(
+              height: 30,
+            ),
+            Image.asset(
+              Assets.signIn,
               height: height,
               width: width,
             ),
-            const SizedBox(height: 15,),
+            const SizedBox(
+              height: 15,
+            ),
             Text(AppLocalizations.of(context)!.welcome_back,
                 style: Styles.textStyle24.copyWith(
                   fontWeight: FontWeight.bold,
-                )
+                )),
+            const SizedBox(
+              height: 15,
             ),
-            const SizedBox(height: 15,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextFormField(
-                decoration:  InputDecoration(
+                decoration: InputDecoration(
                   hintText: AppLocalizations.of(context)!.email_address,
                   hintStyle: Styles.textStyle16,
                   border: const OutlineInputBorder(
                     borderSide: BorderSide(color: loco),
                   ),
-                  prefixIcon: const Icon(Icons.email, color: loco,),
+                  prefixIcon: const Icon(
+                    Icons.email,
+                    color: loco,
+                  ),
                 ),
               ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: TextFormField(
-                decoration:  InputDecoration(
-                  hintText:AppLocalizations.of(context)!.password ,
+                decoration: InputDecoration(
+                  hintText: AppLocalizations.of(context)!.password,
                   hintStyle: Styles.textStyle16,
                   border: const OutlineInputBorder(
-                    borderSide: BorderSide(color: loco),),
-                  prefixIcon: const Icon(Icons.lock, color: loco,),
-                  suffixIcon: const Icon(Icons.visibility_off, color: loco,),
+                    borderSide: BorderSide(color: loco),
+                  ),
+                  prefixIcon: const Icon(
+                    Icons.lock,
+                    color: loco,
+                  ),
+                  suffixIcon: const Icon(
+                    Icons.visibility_off,
+                    color: loco,
+                  ),
                 ),
               ),
             ),
-            const SizedBox(height: 15,),
-             Row(
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(AppLocalizations.of(context)!.forget_your_password,
-
+                Text(
+                  AppLocalizations.of(context)!.forget_your_password,
                   style: Styles.textStyle16,
-                  textAlign: TextAlign.right,),
+                  textAlign: TextAlign.right,
+                ),
               ],
             ),
-            const SizedBox(height: 15,),
+            const SizedBox(
+              height: 15,
+            ),
             StartButton(
               onPressed: () {
                 Navigator.pushNamed(context, NavigationPage.routeName);
               },
               textOfButton: AppLocalizations.of(context)!.log_in,
             ),
-            const SizedBox(height: 15,),
-             Text(AppLocalizations.of(context)!.or_login_with,
+            const SizedBox(
+              height: 15,
+            ),
+            Text(
+              AppLocalizations.of(context)!.or_login_with,
               style: Styles.textStyle16,
             ),
-            const SizedBox(height: 10,),
-            Image.asset('lib/resources/images/google.jpg',
+            const SizedBox(
+              height: 10,
+            ),
+            Image.asset(
+              'lib/resources/images/google.jpg',
               height: 50,
               width: 50,
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, RegisterScreen.routeName);
               },
-              child: Text(AppLocalizations.of(context)!.dont_have_an_account_register,
+              child: Text(
+                AppLocalizations.of(context)!.dont_have_an_account_register,
                 style: Styles.textStyle16.copyWith(
                   fontWeight: FontWeight.bold,
                 ),

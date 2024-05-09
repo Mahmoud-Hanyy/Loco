@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:loco/core/utils/styles.dart';
-
 import '../utils/colors.dart';
+import '../utils/styles.dart';
 
-//ignore: must_be_immutable
-class LocoButton extends StatelessWidget {
-  LocoButton(
+//ignore:must_be_immutable
+class ViewProductButton extends StatelessWidget {
+  ViewProductButton(
       {super.key,
-      required this.textOfButton,
-      required this.onPressed,
-      this.style});
+        required this.textOfButton,
+        required this.onPressed,
+        this.style});
 
   String textOfButton;
   Function onPressed;
@@ -28,8 +27,8 @@ class LocoButton extends StatelessWidget {
           ),
         ],
       ),
-      height: 50,
-      width: 200,
+      height: 30,
+      width: 100,
       child: MaterialButton(
           onPressed: () {
             onPressed();
@@ -40,9 +39,11 @@ class LocoButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
           ),
           child: Text(
+            textAlign: TextAlign.center,
             textOfButton,
-            style: Styles.textStyle20.copyWith(
+            style: Styles.textStyle16.copyWith(
               color: Theme.of(context).colorScheme.background,
+              fontSize: 11
             ),
           )),
     );

@@ -22,15 +22,11 @@ class _ProductDetailsState extends State<ProductDetails> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        leading: BackButton(
-            color: Theme.of(context).colorScheme.primary
-        ),
-        title: Text(
-          'Product Details',
-          style: Styles.textStyle30.copyWith(
-            color: Theme.of(context).colorScheme.primary,
-          )
-        ),
+        leading: BackButton(color: Theme.of(context).colorScheme.primary),
+        title: Text('Product Details',
+            style: Styles.textStyle30.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+            )),
         centerTitle: true,
         toolbarHeight: 70,
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -48,18 +44,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                 height: MediaQuery.of(context).size.height * 0.25,
                 width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage(Assets.product),
-                    fit: BoxFit.cover,
-
-                  ),
+                    image: const DecorationImage(
+                      image: AssetImage(Assets.product),
+                      fit: BoxFit.cover,
+                    ),
                     borderRadius: BorderRadius.circular(13),
                     color: loco),
                 child: const Center(),
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(vertical: 15, horizontal: 45),
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 45),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -88,25 +83,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                             )),
                       ],
                     ),
-
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 5
-              ),
+              const SizedBox(height: 5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 23, right: 0, bottom: 10, top: 10),
-                    child: Text(
-                      'Description',
-                      style: Styles.textStyle30.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                      )
-                    ),
+                    child: Text('Description',
+                        style: Styles.textStyle30.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        )),
                   ),
                 ],
               ),
@@ -115,27 +105,22 @@ class _ProductDetailsState extends State<ProductDetails> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.06,
                   ),
-                   Text(
-                    'Good prodi;pkadnmsdnaopsdnadonasdnas',
-                    style: Styles.textStyle16.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: 14
-                    )
-                   ),
+                  Text('Good prodi;pkadnmsdnaopsdnadonasdnas',
+                      style: Styles.textStyle16.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 14)),
                 ],
               ),
-               Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 23, right: 0, bottom: 20, top: 25),
-                    child: Text(
-                      'Size',
-                      style: Styles.textStyle24.copyWith(
+                    child: Text('Size',
+                        style: Styles.textStyle24.copyWith(
                           color: Theme.of(context).colorScheme.primary,
-                      )
-                    ),
+                        )),
                   ),
                 ],
               ),
@@ -151,10 +136,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     child: Center(
                         child: Text(
-                          'M',
-                          style:
-                          TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 18),
-                        )),
+                      'M',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.background,
+                          fontSize: 18),
+                    )),
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.07,
@@ -162,10 +148,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withOpacity(0.5),
                           spreadRadius: 1,
                           blurRadius: 4,
-                          offset: const Offset(0, 3), // changes position of shadow
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
                         ),
                       ],
                       shape: BoxShape.circle,
@@ -173,10 +163,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     child: Center(
                         child: Text(
-                          'L',
-                          style:
-                          TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 18),
-                        )),
+                      'L',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.background,
+                          fontSize: 18),
+                    )),
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.07,
@@ -184,21 +175,29 @@ class _ProductDetailsState extends State<ProductDetails> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withOpacity(0.5),
                           spreadRadius: 1,
                           blurRadius: 4,
-                          offset: const Offset(0, 3), // changes position of shadow
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
                         ),
                       ],
-                      border: (Border.all(color: Theme.of(context).colorScheme.primary, width: 1)),
+                      border: (Border.all(
+                          color: Theme.of(context).colorScheme.primary,
+                          width: 1)),
                       shape: BoxShape.circle,
                       color: Theme.of(context).colorScheme.background,
                     ),
                     child: Center(
                         child: Text(
-                          'XL',
-                          style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 18),
-                        )),
+                      'XL',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 18),
+                    )),
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.07,
@@ -206,10 +205,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withOpacity(0.5),
                           spreadRadius: 1,
                           blurRadius: 4,
-                          offset: const Offset(0, 3), // changes position of shadow
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
                         ),
                       ],
                       shape: BoxShape.circle,
@@ -217,34 +220,33 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     child: Center(
                         child: Text(
-                          'XXL',
-                          style:
-                          TextStyle(color: Theme.of(context).colorScheme.background, fontSize: 18),
-                        )),
+                      'XXL',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.background,
+                          fontSize: 18),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 10
-              ),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 23, right: 0, bottom: 20, top: 10),
-                    child: Text(
-                        'Color',
+                    child: Text('Color',
                         style: Styles.textStyle24.copyWith(
                           color: Theme.of(context).colorScheme.primary,
-                        )
-                    ),
+                        )),
                   ),
                 ],
               ),
               Row(
                 children: [
-                  const SizedBox(width: 40,),
+                  const SizedBox(
+                    width: 40,
+                  ),
                   Text(
                     'White',
                     style: Styles.textStyle20.copyWith(
@@ -253,10 +255,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 30
-              ),
-              LocoButton(textOfButton: 'Add to cart', onPressed: (){}),
+              const SizedBox(height: 30),
+              LocoButton(textOfButton: 'Add to cart', onPressed: () {}),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.03,
               ),

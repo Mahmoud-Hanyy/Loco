@@ -4,14 +4,15 @@ import '../utils/styles.dart';
 
 //ignore: must_be_immutable
 class StartButton extends StatelessWidget {
-  StartButton({super.key,
-    required this.textOfButton,
-    required this.onPressed,
-    this.style});
+  StartButton(
+      {super.key,
+      required this.textOfButton,
+      required this.onPressed,
+      this.style});
 
   String textOfButton;
   Function onPressed;
-  TextStyle ? style ;
+  TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +38,10 @@ class StartButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
           ),
-          child: Text(textOfButton,
-            style: Styles.textStyle20.copyWith(
-                color: white
-            ),
-          )
-      ),
+          child: Text(
+            textOfButton,
+            style: Styles.textStyle20.copyWith(color: white),
+          )),
     );
   }
 }

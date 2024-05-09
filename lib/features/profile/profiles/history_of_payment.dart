@@ -13,12 +13,11 @@ class HistoryOfPayment extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.background,
         body: Column(
           children: [
-            Text(AppLocalizations.of(context)!.history_of_payment,
+            Text(
+              AppLocalizations.of(context)!.history_of_payment,
               style: Styles.textStyle30.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontSize: 37
-              )
-              ,),
+                  color: Theme.of(context).colorScheme.primary, fontSize: 37),
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -31,28 +30,34 @@ class HistoryOfPayment extends StatelessWidget {
                     child: Card(
                         elevation: 6,
                         child: SizedBox(
-                          width: MediaQuery.of(context).size.width*0.3,
-                          height: MediaQuery.of(context).size.height *0.17,
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          height: MediaQuery.of(context).size.height * 0.17,
                           child: Row(
                             children: [
                               Container(
                                   clipBehavior: Clip.antiAlias,
-                                  width:140,
+                                  width: 140,
                                   height: 145,
-                                  decoration:BoxDecoration(
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(9),
                                   ),
-                                  child: Image.asset(Assets.hoodie1,
-                                    fit: BoxFit.cover,)),
+                                  child: Image.asset(
+                                    Assets.hoodie1,
+                                    fit: BoxFit.cover,
+                                  )),
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.all(6.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
                                     children: [
-                                      Text('Black Micheal Angelo Hoodie',
+                                      Text(
+                                        'Black Micheal Angelo Hoodie',
                                         style: Styles.textStyle20.copyWith(
-                                          color: Theme.of(context).colorScheme.primary,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                         ),
                                       ),
                                       const SizedBox(
@@ -60,13 +65,23 @@ class HistoryOfPayment extends StatelessWidget {
                                       ),
                                       Row(
                                         children: [
-                                          Text('Order is delivered',
+                                          Text(
+                                            'Order is delivered',
                                             style: Styles.textStyle16.copyWith(
-                                              color: Theme.of(context).colorScheme.primary,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .primary,
                                             ),
                                           ),
-                                          const SizedBox(width: 20,),
-                                          Icon(Icons.check_circle,color: Theme.of(context).colorScheme.primary,),
+                                          const SizedBox(
+                                            width: 20,
+                                          ),
+                                          Icon(
+                                            Icons.check_circle,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                          ),
                                         ],
                                       )
                                     ],
@@ -75,11 +90,10 @@ class HistoryOfPayment extends StatelessWidget {
                               ),
                             ],
                           ),
-                        )
-                    ),
+                        )),
                   );
-
-                },),
+                },
+              ),
             ),
           ],
         ),

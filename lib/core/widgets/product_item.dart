@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/styles.dart';
-import '../utils/colors.dart';
+import 'package:loco/core/widgets/view_product_button.dart';
 
 //ignore: must_be_immutable
 class ProductItem extends StatelessWidget {
@@ -8,7 +9,8 @@ class ProductItem extends StatelessWidget {
   String productName;
   String imagePath;
 
-  ProductItem({super.key,
+  ProductItem({
+    super.key,
     required this.price,
     required this.productName,
     required this.imagePath,
@@ -16,72 +18,54 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-          children: [
-            Container(
-          height: MediaQuery.of(context).size.height * 0.3,
-          width: 180,
-          decoration: BoxDecoration(
-              border: Border.all(color: Theme.of(context).colorScheme.primary,),
-              borderRadius: BorderRadius.circular(13)),
-              child: Column(
-                children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.195,
-              ),
-              Text(
-                productName,
-                style: Styles.textStyle16.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontSize: 13,
-                )
-              ),
-              Text(
-                "$price EGP",
-                style: Styles.textStyle16.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontSize: 13,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                      height: MediaQuery.of(context).size.height * 0.03,
-                      width: MediaQuery.of(context).size.width * 0.23,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(26),
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      child:  Center(
-                        child: Text(
-                          'View product',
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.background, fontSize: 8),
-                        ),
-                      )),
-                ],
-              ),
-            ],
+    return Container(
+      width: 200,
+      height: 150,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Theme.of(context).colorScheme.primary,
+        ),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        children: [
+          CachedNetworkImage(
+            imageUrl: imagePath,
+            height: MediaQuery.of(context).size.height * 0.169,
+            width: MediaQuery.of(context).size.width * 0.35,
+            fit: BoxFit.cover,
           ),
-        ),
-            Container(
-          height: MediaQuery.of(context).size.height * 0.19,
-          width: 180,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
+          const SizedBox(
+            height: 5,
+          ),
+          Text(productName,
+              style: Styles.textStyle16.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+                fontSize: 13,
               ),
-              borderRadius: BorderRadius.circular(13),
-              color: loco),
-        ),
-      ]),
+              overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            "$price EGP",
+            style: Styles.textStyle16.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+              fontSize: 13,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          ViewProductButton(
+            textOfButton: 'View Product',
+            onPressed: (){},
+          ),
+        ],
+      ),
     );
   }
 }
+

@@ -6,15 +6,15 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //ignore: must_be_immutable
 class NavigationPage extends StatelessWidget {
-   const NavigationPage({super.key});
-   static const String routeName = 'nav';
+  const NavigationPage({super.key});
+  static const String routeName = 'nav';
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => NavigationCubit(),
-      child: BlocConsumer<NavigationCubit,NavigationState>(
+      create: (context) => NavigationCubit(),
+      child: BlocConsumer<NavigationCubit, NavigationState>(
         listener: (context, state) {},
-        builder: (context,state){
+        builder: (context, state) {
           NavigationCubit cubit = NavigationCubit.get(context);
           return Scaffold(
             body: cubit.pages[cubit.currentIndex],
@@ -27,21 +27,21 @@ class NavigationPage extends StatelessWidget {
               onTap: (index) {
                 cubit.changeIndex(index);
               },
-              items:  [
+              items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label:AppLocalizations.of(context)!.home,
+                  icon: const Icon(Icons.home),
+                  label: AppLocalizations.of(context)!.home,
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.category),
-                  label:AppLocalizations.of(context)!.category,
+                  icon: const Icon(Icons.category),
+                  label: AppLocalizations.of(context)!.category,
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite),
-                  label:AppLocalizations.of(context)!.favorites,
+                  icon: const Icon(Icons.favorite),
+                  label: AppLocalizations.of(context)!.favorites,
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
+                  icon: const Icon(Icons.person),
                   label: AppLocalizations.of(context)!.profile,
                 ),
               ],

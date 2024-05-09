@@ -15,11 +15,11 @@ class PaymentDone extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(Assets.done),
-            Text(AppLocalizations.of(context)!.your_payment_is_done,
+            Text(
+              AppLocalizations.of(context)!.your_payment_is_done,
               style: Styles.textStyle30.copyWith(
                   color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.bold
-              ),
+                  fontWeight: FontWeight.bold),
             ),
           ],
         ),

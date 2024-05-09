@@ -19,18 +19,16 @@ class _FavoritesState extends State<Favorites> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
-          AppLocalizations.of(context)!.favorites,
-          style: Styles.textOfLabel.copyWith(
-            color: Theme.of(context).colorScheme.primary,
-          )
-        ),
+        title: Text(AppLocalizations.of(context)!.favorites,
+            style: Styles.textOfLabel.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+            )),
         centerTitle: true,
         toolbarHeight: 70,
         backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
       ),
-      body:Container(
+      body: Container(
         color: Theme.of(context).colorScheme.background,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -47,42 +45,65 @@ class _FavoritesState extends State<Favorites> {
                           elevation: 6,
                           shadowColor: Theme.of(context).colorScheme.primary,
                           child: SizedBox(
-                            width: MediaQuery.of(context).size.width*0.3,
-                            height: MediaQuery.of(context).size.height *0.18,
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            height: MediaQuery.of(context).size.height * 0.18,
                             child: Row(
                               children: [
                                 Container(
                                     clipBehavior: Clip.antiAlias,
-                                    width:140,
+                                    width: 140,
                                     height: 145,
-                                    decoration:BoxDecoration(
+                                    decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(9),
                                     ),
-                                    child: Image.asset(Assets.hoodie1,
-                                      fit: BoxFit.cover,)),
+                                    child: Image.asset(
+                                      Assets.hoodie1,
+                                      fit: BoxFit.cover,
+                                    )),
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.all(6.0),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
                                       children: [
-                                        Text('Black Micheal Angelo Hoodie',
-                                        style: Styles.textStyle20.copyWith(
-                                          color: Theme.of(context).colorScheme.primary,
-                                        ),
+                                        Text(
+                                          'Black Micheal Angelo Hoodie',
+                                          style: Styles.textStyle20.copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                          ),
                                         ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text('EGP 430',
-                                              style: Styles.textStyle20.copyWith(
-                                              color: Theme.of(context).colorScheme.primary,
-                                            ),),
-                                            IconButton(onPressed: (){
-                                              setState(() {
-                                                isTap =! isTap;
-                                              });
-                                            }, icon:Icon(Icons.favorite,color: isTap?Theme.of(context).colorScheme.primary:Theme.of(context).colorScheme.background,)),
+                                            Text(
+                                              'EGP 430',
+                                              style:
+                                                  Styles.textStyle20.copyWith(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .primary,
+                                              ),
+                                            ),
+                                            IconButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    isTap = !isTap;
+                                                  });
+                                                },
+                                                icon: Icon(
+                                                  Icons.favorite,
+                                                  color: isTap
+                                                      ? Theme.of(context)
+                                                          .colorScheme
+                                                          .primary
+                                                      : Theme.of(context)
+                                                          .colorScheme
+                                                          .background,
+                                                )),
                                           ],
                                         ),
                                       ],
@@ -91,11 +112,10 @@ class _FavoritesState extends State<Favorites> {
                                 ),
                               ],
                             ),
-                          )
-                      ),
+                          )),
                     );
-
-                  },),
+                  },
+                ),
               ),
             ],
           ),

@@ -18,120 +18,140 @@ class PersonalInformation extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Center(
-                  child: Text(AppLocalizations.of(context)!.personal_information,
+                  child: Text(
+                    AppLocalizations.of(context)!.personal_information,
                     style: Styles.textStyle30.copyWith(
                         color: Theme.of(context).colorScheme.primary,
-                        fontSize: 36
-                    )
-                    ,),
+                        fontSize: 36),
+                  ),
                 ),
-                const SizedBox(height: 40,),
+                const SizedBox(
+                  height: 40,
+                ),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Theme.of(context).colorScheme.primary,
                   ),
-                  width: MediaQuery.of(context).size.width*0.92,
-                  height: MediaQuery.of(context).size.height*0.08,
+                  width: MediaQuery.of(context).size.width * 0.92,
+                  height: MediaQuery.of(context).size.height * 0.08,
                   child: Row(
                     children: [
                       const SizedBox(
                         width: 20,
                       ),
-                      Text('Name : ',
+                      Text(
+                        'Name : ',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.background,
-                        ) ,),
+                        ),
+                      ),
                       const SizedBox(
                         width: 20,
                       ),
-                      Text('Mike Arteta',
+                      Text(
+                        'Mike Arteta',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.background,
-                        ) ,),
+                        ),
+                      ),
                       const Spacer(),
                       IconButton(
-                        icon: Icon(Icons.edit,color: Theme.of(context).colorScheme.background),
-                        onPressed: (){},
+                        icon: Icon(Icons.edit,
+                            color: Theme.of(context).colorScheme.background),
+                        onPressed: () {},
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 40,),
+                const SizedBox(
+                  height: 40,
+                ),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Theme.of(context).colorScheme.primary,
                   ),
-                  width: MediaQuery.of(context).size.width*0.92,
-                  height: MediaQuery.of(context).size.height*0.08,
+                  width: MediaQuery.of(context).size.width * 0.92,
+                  height: MediaQuery.of(context).size.height * 0.08,
                   child: Row(
                     children: [
                       const SizedBox(
                         width: 20,
                       ),
-                      Text('Email : ',
+                      Text(
+                        'Email : ',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.background,
-                        ) ,),
+                        ),
+                      ),
                       const SizedBox(
                         width: 20,
                       ),
-                      Text('Mike132@gmail.com',
+                      Text(
+                        'Mike132@gmail.com',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.background,
-                        ) ,),
+                        ),
+                      ),
                       const Spacer(),
                       IconButton(
-                        icon: Icon(Icons.edit,color: Theme.of(context).colorScheme.background),
-                        onPressed: (){},
+                        icon: Icon(Icons.edit,
+                            color: Theme.of(context).colorScheme.background),
+                        onPressed: () {},
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 40,),
+                const SizedBox(
+                  height: 40,
+                ),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Theme.of(context).colorScheme.primary,
                   ),
-                  width: MediaQuery.of(context).size.width*0.92,
-                  height: MediaQuery.of(context).size.height*0.08,
+                  width: MediaQuery.of(context).size.width * 0.92,
+                  height: MediaQuery.of(context).size.height * 0.08,
                   child: Row(
                     children: [
                       const SizedBox(
                         width: 20,
                       ),
-                      Text('Phone : ',
+                      Text(
+                        'Phone : ',
                         style: Styles.textStyle18.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.background,
-                        ) ,),
+                        ),
+                      ),
                       const SizedBox(
                         width: 20,
                       ),
-                      Text('+201069169594',
+                      Text(
+                        '+201069169594',
                         overflow: TextOverflow.ellipsis,
                         style: Styles.textStyle18.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.background,
-                        ) ,),
+                        ),
+                      ),
                       const Spacer(),
                       IconButton(
-                        icon: Icon(Icons.edit,color: Theme.of(context).colorScheme.background),
-                        onPressed: (){},
+                        icon: Icon(Icons.edit,
+                            color: Theme.of(context).colorScheme.background),
+                        onPressed: () {},
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-          )
-      ),
+          )),
     );
   }
 }

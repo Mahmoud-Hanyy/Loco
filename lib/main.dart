@@ -20,35 +20,34 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-      create: ((context)=>AppConfigProvider()),
-  child: const MyApp()));
+      create: ((context) => AppConfigProvider()), child: const Loco()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Loco extends StatelessWidget {
+  const Loco({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    var provider=Provider.of<AppConfigProvider>(context);
+    var provider = Provider.of<AppConfigProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute:'onBoarding',
+      initialRoute: 'onBoarding',
       routes: {
         OnBoarding.routeName: (context) => const OnBoarding(),
         OnBoarding1.routeName: (context) => const OnBoarding1(),
-        OnBoarding2.routeName:(context)=>const OnBoarding2(),
-        LogIn.routeName :(context)=>const LogIn(),
-        RegisterScreen.routeName:(context)=>const RegisterScreen(),
+        OnBoarding2.routeName: (context) => const OnBoarding2(),
+        LogIn.routeName: (context) => const LogIn(),
+        RegisterScreen.routeName: (context) => const RegisterScreen(),
         ProductDetails.routename: (context) => const ProductDetails(),
         AddToCart.routename: (context) => AddToCart(),
-        Settings.routeName:(context)=>const Settings(),
-        Categories.routeName:(context)=>const Categories(),
-        PaymentMethod.routeName:(context)=> const PaymentMethod(),
-        Profile.routename:(context)=> const Profile(),
-        HomePage.routename:(context)=> HomePage(),
-        NavigationPage.routeName : (context)=> const NavigationPage(),
-        PersonalInformation.routename : (context)=> const PersonalInformation()
+        Settings.routeName: (context) => const Settings(),
+        Categories.routeName: (context) => const Categories(),
+        PaymentMethod.routeName: (context) => const PaymentMethod(),
+        Profile.routename: (context) => const Profile(),
+        HomePage.routename: (context) => HomePage(),
+        NavigationPage.routeName: (context) => const NavigationPage(),
+        PersonalInformation.routename: (context) => const PersonalInformation()
       },
       darkTheme: darkMode,
       themeMode: ThemeMode.system,

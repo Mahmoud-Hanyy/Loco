@@ -6,7 +6,7 @@ import '../../favorites/favorites.dart';
 import '../../home/home.dart';
 import '../../profile/profile.dart';
 
-class NavigationCubit extends Cubit<NavigationState>{
+class NavigationCubit extends Cubit<NavigationState> {
   NavigationCubit() : super(InitialState());
 
   static NavigationCubit get(context) => BlocProvider.of(context);
@@ -19,11 +19,8 @@ class NavigationCubit extends Cubit<NavigationState>{
     const Profile(),
   ];
 
-  void changeIndex(int index){
+  void changeIndex(int index) {
     currentIndex = index;
     emit(ChangeIndexState());
   }
-
-
-
 }
