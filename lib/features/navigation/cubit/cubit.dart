@@ -13,7 +13,7 @@ class NavigationCubit extends Cubit<NavigationState> {
 
   int currentIndex = 0;
   List<Widget> pages = [
-    HomePage(),
+    const HomePage(),
     const Categories(),
     const Favorites(),
     const Profile(),

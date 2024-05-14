@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:loco/features/home/home.dart';
 import 'package:loco/features/payment/payment_method.dart';
 import 'package:loco/features/profile/profile.dart';
+import 'package:loco/features/search/search_page.dart';
 import 'package:loco/provider/app_config_provider.dart';
 import 'package:provider/provider.dart';
 import 'core/utils/themes.dart';
@@ -45,9 +46,10 @@ class Loco extends StatelessWidget {
         Categories.routeName: (context) => const Categories(),
         PaymentMethod.routeName: (context) => const PaymentMethod(),
         Profile.routename: (context) => const Profile(),
-        HomePage.routename: (context) => HomePage(),
+        HomePage.routename: (context) => const HomePage(),
         NavigationPage.routeName: (context) => const NavigationPage(),
-        PersonalInformation.routename: (context) => const PersonalInformation()
+        PersonalInformation.routename: (context) => const PersonalInformation(),
+        SearchPage.routename :(context)=> const SearchPage(),
       },
       darkTheme: darkMode,
       themeMode: ThemeMode.system,

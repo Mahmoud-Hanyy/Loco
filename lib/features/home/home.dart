@@ -1,20 +1,39 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/assets.dart';
 import 'package:loco/features/categories/categories.dart';
+import 'package:loco/features/search/search_page.dart';
 import '../../core/utils/styles.dart';
-import '../../core/widgets/new_product_item.dart';
 import '../cart/add_to_cart.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //ignore:must_be_immutable
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   static const String routename = 'Home';
-  HomePage({super.key});
+  const HomePage({super.key});
 
-  late String productName;
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
 
-  late int price;
+class _HomePageState extends State<HomePage> {
+  var jsonList;
+  void getData()async{
+    try{
+      var response = await Dio().get('https://products-api-5.onrender.com/api/products');
+      if(response.statusCode==200){
+        if (!mounted) return;
+        setState(() {
+          jsonList=response.data["Clothes"] as List ;
+        });
+      }else{
+        print(response.statusCode);
+      }
+    }catch(e){
+      print(e);
+    }
+  }
 
   final List<String> imageList = [
     Assets.photo1,
@@ -42,50 +61,53 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 20, bottom: 40, right: 0, left: 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                            height: MediaQuery.of(context).size.height * 0.07,
-                            width: MediaQuery.of(context).size.width * 0.8,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(26),
-                              color: Theme.of(context).colorScheme.background,
-                              border: (Border.all(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  width: 2)),
-                            ),
-                            child: Row(
-                              children: [
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.search,
-                                      color: Theme.of(context).colorScheme.primary,
-                                      size: 30,
-                                    )),
-                                Text(
-                                  AppLocalizations.of(context)!
-                                      .search_for_your_product,
-                                  style: Styles.textStyle16.copyWith(
+                  InkWell(
+                    onTap: () => Navigator.pushNamed(context, SearchPage.routename),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          top: 20, bottom: 40, right: 0, left: 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                              height: MediaQuery.of(context).size.height * 0.07,
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(26),
+                                color: Theme.of(context).colorScheme.background,
+                                border: (Border.all(
                                     color: Theme.of(context).colorScheme.primary,
+                                    width: 2)),
+                              ),
+                              child: Row(
+                                children: [
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.search,
+                                        color: Theme.of(context).colorScheme.primary,
+                                        size: 30,
+                                      )),
+                                  Text(
+                                    AppLocalizations.of(context)!
+                                        .search_for_your_product,
+                                    style: Styles.textStyle16.copyWith(
+                                      color: Theme.of(context).colorScheme.primary,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            )),
-                        IconButton(
-                            onPressed: () {
-                              Navigator.of(context).pushNamed(AddToCart.routename);
-                            },
-                            icon: Icon(
-                              Icons.shopping_cart_outlined,
-                              color: Theme.of(context).colorScheme.primary,
-                              size: 35,
-                            )),
-                      ],
+                                ],
+                              )),
+                          IconButton(
+                              onPressed: () {
+                                Navigator.of(context).pushNamed(AddToCart.routename);
+                              },
+                              icon: Icon(
+                                Icons.shopping_cart_outlined,
+                                color: Theme.of(context).colorScheme.primary,
+                                size: 35,
+                              )),
+                        ],
+                      ),
                     ),
                   ),
                   Center(
@@ -295,31 +317,7 @@ class HomePage extends StatelessWidget {
                   const SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(
-                          width: 15,
-                        ),
-                        NewProductsItem(),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        NewProductsItem(),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        NewProductsItem(),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        NewProductsItem(),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        NewProductsItem(),
-                        SizedBox(
-                          width: 15,
-                        ),
                       ],
                     ),
                   ),

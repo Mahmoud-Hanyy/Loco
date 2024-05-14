@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:loco/core/widgets/loco_button.dart';
 import '../../core/utils/assets.dart';
@@ -47,7 +49,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                       groupValue: _value,
                       onChanged: (value) {
                         setState(() {
-                          _value = value!;
+                          _value = value! ;
                         });
                       },
                     ),

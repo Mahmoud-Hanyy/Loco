@@ -4,12 +4,12 @@ import 'package:loco/core/utils/styles.dart';
 import 'package:loco/core/widgets/view_product_button.dart';
 
 //ignore: must_be_immutable
-class ProductItem extends StatelessWidget {
+class CategoryItem extends StatelessWidget {
   int price;
   String productName;
   String imagePath;
 
-  ProductItem({
+  CategoryItem({
     super.key,
     required this.price,
     required this.productName,
