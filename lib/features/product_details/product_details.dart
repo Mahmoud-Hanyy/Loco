@@ -40,20 +40,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                 height: MediaQuery.of(context).size.height * 0.01,
               ),
               Container(
-                height: MediaQuery.of(context).size.height * 0.25,
+                height: MediaQuery.of(context).size.height * 0.55,
                 width: MediaQuery.of(context).size.width * 0.8,
-                child: Center(
-                  child: CachedNetworkImage(
-                    imageUrl: args.imagePath,
-                    height: MediaQuery.of(context).size.height * 0.269,
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    fit: BoxFit.cover,
-                  ),
+                child: CachedNetworkImage(
+                  imageUrl: args.imagePath,
+                  fit: BoxFit.cover,
                 ),
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(vertical: 15, horizontal: 45),
+                    const EdgeInsets.symmetric(vertical: 0, horizontal: 45),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -63,16 +59,18 @@ class _ProductDetailsState extends State<ProductDetails> {
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.016,
+                    ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "${args.price} EGP",
                           style: Styles.textStyle30.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                              color: Theme.of(context).colorScheme.primary,
+                              fontSize: 25),
                         ),
-                        const Spacer(),
                         IconButton(
                             onPressed: () {},
                             icon: Icon(
@@ -85,15 +83,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ],
                 ),
               ),
-              const SizedBox(height: 5),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.016,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 23, right: 0, bottom: 10, top: 10),
+                        left: 23, right: 0, bottom: 10, top: 0),
                     child: Text('Description',
-                        style: Styles.textStyle30.copyWith(
+                        style: Styles.textStyle24.copyWith(
                           color: Theme.of(context).colorScheme.primary,
                         )),
                   ),
@@ -126,104 +126,89 @@ class _ProductDetailsState extends State<ProductDetails> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    width: MediaQuery.of(context).size.height * 0.07,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).colorScheme.primary,
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      width: MediaQuery.of(context).size.height * 0.07,
+                      decoration: BoxDecoration(
+                        border: (Border.all(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 1)),
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      child: Center(
+                          child: Text(
+                        'S',
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.surface,
+                            fontSize: 18),
+                      )),
                     ),
-                    child: Center(
-                        child: Text(
-                          'M',
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.surface,
-                          fontSize: 18),
-                        )),
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    width: MediaQuery.of(context).size.height * 0.07,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset:
-                          const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).colorScheme.primary,
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      width: MediaQuery.of(context).size.height * 0.07,
+                      decoration: BoxDecoration(
+                        border: (Border.all(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 1)),
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      child: Center(
+                          child: Text(
+                        'M',
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.surface,
+                            fontSize: 18),
+                      )),
                     ),
-                    child: Center(
-                        child: Text(
-                          'L',
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.surface,
-                          fontSize: 18),
-                        )),
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    width: MediaQuery.of(context).size.height * 0.07,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset:
-                              const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                      border: (Border.all(
-                          color: Theme.of(context).colorScheme.primary,
-                          width: 1)),
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).colorScheme.surface,
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      width: MediaQuery.of(context).size.height * 0.07,
+                      decoration: BoxDecoration(
+                        border: (Border.all(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 1)),
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      child: Center(
+                          child: Text(
+                        'L',
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.surface,
+                            fontSize: 18),
+                      )),
                     ),
-                    child: Center(
-                        child: Text(
-                          'XL',
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontSize: 18),
-                        )),
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    width: MediaQuery.of(context).size.height * 0.07,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 4,
-                          offset:
-                          const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).colorScheme.primary,
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      width: MediaQuery.of(context).size.height * 0.07,
+                      decoration: BoxDecoration(
+                        border: (Border.all(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 1)),
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      child: Center(
+                          child: Text(
+                        'XL',
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.surface,
+                            fontSize: 18),
+                      )),
                     ),
-                    child: Center(
-                        child: Text(
-                          'XXL',
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.surface,
-                          fontSize: 18),
-                        )),
                   ),
                 ],
               ),

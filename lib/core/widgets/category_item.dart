@@ -19,8 +19,6 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
-      height: 150,
       decoration: BoxDecoration(
         border: Border.all(
           color: Theme.of(context).colorScheme.primary,
@@ -29,6 +27,9 @@ class CategoryItem extends StatelessWidget {
       ),
       child: Column(
         children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.008,
+          ),
           CachedNetworkImage(
             imageUrl: imagePath,
             height: MediaQuery.of(context).size.height * 0.169,
@@ -38,8 +39,9 @@ class CategoryItem extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          Text(productName,
-              style: Styles.textStyle16.copyWith(
+          Text(
+            productName,
+            style: Styles.textStyle16.copyWith(
                 color: Theme.of(context).colorScheme.primary,
                 fontSize: 13,
               ),

@@ -183,7 +183,6 @@ class _CategoriesState extends State<Categories> {
                       crossAxisCount: 2,
                       mainAxisSpacing: 20,
                       childAspectRatio: 1 / 1.17
-
                       ///default 1/1
                       ),
                   itemCount: jsonList.length,
