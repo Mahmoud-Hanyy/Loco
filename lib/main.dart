@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loco/features/home/home.dart';
 import 'package:loco/features/payment/payment_method.dart';
 import 'package:loco/features/profile/profile.dart';
 import 'package:loco/features/search/search_page.dart';
 import 'package:loco/provider/app_config_provider.dart';
 import 'package:provider/provider.dart';
+
 import 'core/utils/themes.dart';
 import 'features/cart/add_to_cart.dart';
 import 'features/categories/categories.dart';
@@ -17,7 +19,6 @@ import 'features/product_details/product_details.dart';
 import 'features/profile/profiles/personal_info.dart';
 import 'features/profile/profiles/settings.dart';
 import 'features/register/register.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -40,7 +41,7 @@ class Loco extends StatelessWidget {
         OnBoarding2.routeName: (context) => const OnBoarding2(),
         LogIn.routeName: (context) => const LogIn(),
         RegisterScreen.routeName: (context) => const RegisterScreen(),
-        ProductDetails.routename: (context) => const ProductDetails(),
+        ProductDetails.routename: (context) => ProductDetails(),
         AddToCart.routename: (context) => AddToCart(),
         Settings.routeName: (context) => const Settings(),
         Categories.routeName: (context) => const Categories(),
@@ -49,7 +50,7 @@ class Loco extends StatelessWidget {
         HomePage.routename: (context) => const HomePage(),
         NavigationPage.routeName: (context) => const NavigationPage(),
         PersonalInformation.routename: (context) => const PersonalInformation(),
-        SearchPage.routename :(context)=> const SearchPage(),
+        SearchPage.routename: (context) => const SearchPage(),
       },
       darkTheme: darkMode,
       themeMode: ThemeMode.system,

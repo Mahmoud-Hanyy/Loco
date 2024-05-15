@@ -6,8 +6,9 @@ import '../../core/utils/styles.dart';
 
 class ProductDetails extends StatefulWidget {
   static const String routename = 'ProductDetails';
+  final List<String> sizes = ['S', 'M', 'L', 'XL'];
 
-  const ProductDetails({super.key});
+  ProductDetails({super.key});
 
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
@@ -15,6 +16,8 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   int quantity = 1;
+  String? selectedSize;
+  bool addedFav = false;
 
   @override
   Widget build(BuildContext context) {
@@ -72,9 +75,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                               fontSize: 25),
                         ),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                addedFav = !addedFav;
+                              });
+                            },
                             icon: Icon(
-                              Icons.favorite_border_outlined,
+                              addedFav == true
+                                  ? Icons.favorite
+                                  : Icons.favorite_border_outlined,
                               color: Theme.of(context).colorScheme.primary,
                               size: 35,
                             )),
@@ -105,9 +114,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                     width: MediaQuery.of(context).size.width * 0.06,
                   ),
                   Text('Good prodi;pkadnmsdnaopsdnadonasdnas',
-                      style: Styles.textStyle16.copyWith(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 14)),
+                      style: Styles.textStyle16
+                          .copyWith(color: Colors.black, fontSize: 18)),
                 ],
               ),
               Row(
@@ -123,118 +131,64 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      width: MediaQuery.of(context).size.height * 0.07,
-                      decoration: BoxDecoration(
-                        border: (Border.all(
-                            color: Theme.of(context).colorScheme.primary,
-                            width: 1)),
-                        shape: BoxShape.circle,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'S',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.surface,
-                            fontSize: 18),
-                      )),
-                    ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.1,
+                child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.12,
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      width: MediaQuery.of(context).size.height * 0.07,
-                      decoration: BoxDecoration(
-                        border: (Border.all(
-                            color: Theme.of(context).colorScheme.primary,
-                            width: 1)),
-                        shape: BoxShape.circle,
-                        color: Theme.of(context).colorScheme.primary,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: widget.sizes.length,
+                  itemBuilder: (context, index) {
+                    final size = widget.sizes[index];
+                    return GestureDetector(
+                      onTap: () => setState(() => selectedSize = size),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Container(
+                          height: MediaQuery.of(context).size.height * 0.07,
+                          width: MediaQuery.of(context).size.height * 0.07,
+                          decoration: BoxDecoration(
+                            border: (Border.all(
+                                color: Theme.of(context).colorScheme.primary,
+                                width: 1)),
+                            shape: BoxShape.circle,
+                            color: selectedSize == size
+                                ? Theme.of(context).colorScheme.surface
+                                : Theme.of(context).colorScheme.primary,
+                          ),
+                          child: Center(
+                              child: Text(
+                            size,
+                            style: TextStyle(
+                                color: selectedSize == size
+                                    ? Theme.of(context).colorScheme.primary
+                                    : Theme.of(context).colorScheme.surface,
+                                fontSize: 18),
+                          )),
+                        ),
                       ),
-                      child: Center(
-                          child: Text(
-                        'M',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.surface,
-                            fontSize: 18),
-                      )),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      width: MediaQuery.of(context).size.height * 0.07,
-                      decoration: BoxDecoration(
-                        border: (Border.all(
-                            color: Theme.of(context).colorScheme.primary,
-                            width: 1)),
-                        shape: BoxShape.circle,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'L',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.surface,
-                            fontSize: 18),
-                      )),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: MediaQuery.of(context).size.height * 0.07,
-                      width: MediaQuery.of(context).size.height * 0.07,
-                      decoration: BoxDecoration(
-                        border: (Border.all(
-                            color: Theme.of(context).colorScheme.primary,
-                            width: 1)),
-                        shape: BoxShape.circle,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      child: Center(
-                          child: Text(
-                        'XL',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.surface,
-                            fontSize: 18),
-                      )),
-                    ),
-                  ),
-                ],
+                    );
+                  },
+                ),
               ),
               const SizedBox(height: 10),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 23, right: 0, bottom: 20, top: 10),
+                        left: 0, right: 0, bottom: 20, top: 10),
                     child: Text('Color',
                         style: Styles.textStyle24.copyWith(
                           color: Theme.of(context).colorScheme.primary,
                         )),
                   ),
-                ],
-              ),
-              Row(
-                children: [
-                  const SizedBox(
-                    width: 40,
-                  ),
                   Text(
                     'White',
                     style: Styles.textStyle20.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
+                      color: Colors.black,
                     ),
                   ),
                 ],
