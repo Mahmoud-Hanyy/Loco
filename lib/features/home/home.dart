@@ -1,12 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loco/core/utils/assets.dart';
 import 'package:loco/features/categories/categories.dart';
 import 'package:loco/features/search/search_page.dart';
+
 import '../../core/utils/styles.dart';
 import '../cart/add_to_cart.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //ignore:must_be_immutable
 class HomePage extends StatefulWidget {
@@ -18,22 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var jsonList;
-  void getData()async{
-    try{
-      var response = await Dio().get('https://products-api-5.onrender.com/api/products');
-      if(response.statusCode==200){
-        if (!mounted) return;
-        setState(() {
-          jsonList=response.data["Clothes"] as List ;
-        });
-      }else{
-        print(response.statusCode);
-      }
-    }catch(e){
-      print(e);
-    }
-  }
 
   final List<String> imageList = [
     Assets.photo1,
@@ -46,39 +30,39 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            title: Text(AppLocalizations.of(context)!.loco,
-                style: Styles.textOfLabel.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                )),
-            centerTitle: true,
-            toolbarHeight: 70,
-            backgroundColor: Theme.of(context).colorScheme.background,
-            elevation: 0,
-          ),
+        title: Text(AppLocalizations.of(context)!.loco,
+            style: Styles.textOfLabel.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+            )),
+        centerTitle: true,
+        toolbarHeight: 70,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        elevation: 0,
+      ),
           body: SingleChildScrollView(
             child: Container(
-              color: Theme.of(context).colorScheme.background,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  InkWell(
-                    onTap: () => Navigator.pushNamed(context, SearchPage.routename),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          top: 20, bottom: 40, right: 0, left: 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
+              color: Theme.of(context).colorScheme.surface,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InkWell(
+                onTap: () => Navigator.pushNamed(context, SearchPage.routename),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      top: 20, bottom: 40, right: 0, left: 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
                           Container(
                               height: MediaQuery.of(context).size.height * 0.07,
                               width: MediaQuery.of(context).size.width * 0.8,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(26),
-                                color: Theme.of(context).colorScheme.background,
-                                border: (Border.all(
-                                    color: Theme.of(context).colorScheme.primary,
-                                    width: 2)),
-                              ),
+                            color: Theme.of(context).colorScheme.surface,
+                            border: (Border.all(
+                                color: Theme.of(context).colorScheme.primary,
+                                width: 2)),
+                          ),
                               child: Row(
                                 children: [
                                   IconButton(
@@ -116,8 +100,8 @@ class _HomePageState extends State<HomePage> {
                       width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Theme.of(context).colorScheme.background,
-                      ),
+                    color: Theme.of(context).colorScheme.surface,
+                  ),
                       child: CarouselSlider(
                           items: [
                             Image.asset(
@@ -305,7 +289,7 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.only(
                             left: 15, right: 0, bottom: 25, top: 10),
                         child: Text(
-                          AppLocalizations.of(context)!.new_products,
+                          AppLocalizations.of(context)!.our_packages,
                           style: Styles.textStyle16.copyWith(
                               fontSize: 30,
                               color: Theme.of(context).colorScheme.primary,
@@ -318,6 +302,7 @@ class _HomePageState extends State<HomePage> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
+
                       ],
                     ),
                   ),

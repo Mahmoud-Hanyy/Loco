@@ -1,7 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/core/widgets/loco_button.dart';
-import '../../core/utils/assets.dart';
-import '../../core/utils/colors.dart';
+
 import '../../core/utils/styles.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -20,7 +20,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as ProductDetailsArgs;
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         leading: BackButton(color: Theme.of(context).colorScheme.primary),
         title: Text('Product Details',
@@ -29,7 +29,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             )),
         centerTitle: true,
         toolbarHeight: 70,
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -40,21 +40,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                 height: MediaQuery.of(context).size.height * 0.01,
               ),
               Container(
-                // color: loco,
                 height: MediaQuery.of(context).size.height * 0.25,
                 width: MediaQuery.of(context).size.width * 0.8,
-                decoration: BoxDecoration(
-                    image: const DecorationImage(
-                      image: AssetImage(Assets.product),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(13),
-                    color: loco),
-                child: const Center(),
+                child: Center(
+                  child: CachedNetworkImage(
+                    imageUrl: args.imagePath,
+                    height: MediaQuery.of(context).size.height * 0.269,
+                    width: MediaQuery.of(context).size.width * 0.45,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 45),
+                const EdgeInsets.symmetric(vertical: 15, horizontal: 45),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -136,11 +135,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     child: Center(
                         child: Text(
-                      'M',
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.background,
+                          'M',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.surface,
                           fontSize: 18),
-                    )),
+                        )),
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.07,
@@ -155,7 +154,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           spreadRadius: 1,
                           blurRadius: 4,
                           offset:
-                              const Offset(0, 3), // changes position of shadow
+                          const Offset(0, 3), // changes position of shadow
                         ),
                       ],
                       shape: BoxShape.circle,
@@ -163,11 +162,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     child: Center(
                         child: Text(
-                      'L',
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.background,
+                          'L',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.surface,
                           fontSize: 18),
-                    )),
+                        )),
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.07,
@@ -189,15 +188,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                           color: Theme.of(context).colorScheme.primary,
                           width: 1)),
                       shape: BoxShape.circle,
-                      color: Theme.of(context).colorScheme.background,
+                      color: Theme.of(context).colorScheme.surface,
                     ),
                     child: Center(
                         child: Text(
-                      'XL',
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 18),
-                    )),
+                          'XL',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontSize: 18),
+                        )),
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height * 0.07,
@@ -212,7 +211,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           spreadRadius: 1,
                           blurRadius: 4,
                           offset:
-                              const Offset(0, 3), // changes position of shadow
+                          const Offset(0, 3), // changes position of shadow
                         ),
                       ],
                       shape: BoxShape.circle,
@@ -220,11 +219,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                     child: Center(
                         child: Text(
-                      'XXL',
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.background,
+                          'XXL',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.surface,
                           fontSize: 18),
-                    )),
+                        )),
                   ),
                 ],
               ),
@@ -284,13 +283,13 @@ class _ProductDetailsState extends State<ProductDetails> {
 
 class ProductDetailsArgs {
   String productName;
-
-  // int index;
+  String imagePath;
   int price;
 
   ProductDetailsArgs({
     required this.productName /* required this.index*/,
     required this.price,
+    required this.imagePath,
     /* required int index*/
   });
 }
