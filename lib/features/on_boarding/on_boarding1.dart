@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loco/features/on_boarding/on_boarding2.dart';
-import 'package:page_transition/page_transition.dart';
+
 import '../../core/utils/assets.dart';
 import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
@@ -42,11 +42,7 @@ class OnBoarding1 extends StatelessWidget {
               ),
               StartButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      PageTransition(
-                          child: const OnBoarding2(),
-                          type: PageTransitionType.rightToLeft));
+                  Navigator.pushNamed(context, OnBoarding2.routeName);
                 },
                 textOfButton: 'Continue',
               ),

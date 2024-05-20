@@ -1,4 +1,4 @@
-class Assets {
+class Assets{
   static const shopping = 'lib/resources/images/shopping.png';
   static const marketing = 'lib/resources/images/marketing.png';
   static const contact = 'lib/resources/images/contact.png';
@@ -15,12 +15,9 @@ class Assets {
   static const visa = 'lib/resources/images/visa.png';
   static const paypal = 'lib/resources/images/paypal.png';
   static const apple = 'lib/resources/images/apple-pay.png';
-  static const done = "lib/resources/images/done.png";
-  static const product = 'lib/resources/images/photo1.png';
+  static const done = "lib/resources/images/done.jpg";
   static const asili = 'lib/resources/images/asili.png';
   static const tomato = 'lib/resources/images/tomato.png';
   static const donna = 'lib/resources/images/donna.png';
   static const rika = 'lib/resources/images/rika.png';
-
-
 }
