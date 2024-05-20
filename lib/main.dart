@@ -3,13 +3,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loco/features/home/home.dart';
 import 'package:loco/features/payment/payment_method.dart';
 import 'package:loco/features/profile/profile.dart';
-import 'package:loco/features/search/search_page.dart';
 import 'package:loco/provider/app_config_provider.dart';
 import 'package:provider/provider.dart';
-
 import 'core/utils/themes.dart';
 import 'features/cart/add_to_cart.dart';
-import 'features/categories/categories.dart';
 import 'features/log_in/log_in.dart';
 import 'features/navigation/navigation.dart';
 import 'features/on_boarding/on_boarding.dart';
@@ -44,13 +41,11 @@ class Loco extends StatelessWidget {
         ProductDetails.routename: (context) => ProductDetails(),
         AddToCart.routename: (context) => AddToCart(),
         Settings.routeName: (context) => const Settings(),
-        Categories.routeName: (context) => const Categories(),
         PaymentMethod.routeName: (context) => const PaymentMethod(),
         Profile.routename: (context) => const Profile(),
-        HomePage.routename: (context) => const HomePage(),
+        HomePage.routename: (context) =>  HomePage(),
         NavigationPage.routeName: (context) => const NavigationPage(),
         PersonalInformation.routename: (context) => const PersonalInformation(),
-        SearchPage.routename: (context) => const SearchPage(),
       },
       darkTheme: darkMode,
       themeMode: ThemeMode.system,

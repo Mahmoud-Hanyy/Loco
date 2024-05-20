@@ -190,8 +190,7 @@ class Categories extends StatelessWidget {
                                   onTap: () {
                                     Navigator.of(context).pushNamed(
                                         ProductDetails.routename,
-                                        arguments:
-                                            viewModel.productList[index]);
+                                        arguments: viewModel.productList[index]);
                                   },
                                   child: ProductItem(
                                       productEntity:

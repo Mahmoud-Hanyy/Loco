@@ -1,8 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:loco/core/widgets/loco_button.dart';
+import 'package:loco/domain/entities/ProductResponseEntity.dart';
 
+import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
+import '../../core/widgets/loco_button.dart';
 
 class ProductDetails extends StatefulWidget {
   static const String routename = 'ProductDetails';
@@ -21,7 +22,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)?.settings.arguments as ProductDetailsArgs;
+    var args = ModalRoute.of(context)?.settings.arguments as ProductEntity;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
@@ -45,35 +46,38 @@ class _ProductDetailsState extends State<ProductDetails> {
               Container(
                 height: MediaQuery.of(context).size.height * 0.55,
                 width: MediaQuery.of(context).size.width * 0.8,
-                child: CachedNetworkImage(
-                  imageUrl: args.imagePath,
-                  fit: BoxFit.cover,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(13),
+                  border: Border.all(color: black, width: 2),
                 ),
+                child: Image.network(args.imageUrl ?? ""),
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 0, horizontal: 45),
+                EdgeInsets.symmetric(vertical: 0, horizontal: 45),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      args.productName,
-                      style: Styles.textStyle30.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        args.name ?? "",
+                        style: const TextStyle(
+                            color: black,
+                            fontSize: 23,
+                            fontWeight: FontWeight.normal),
                       ),
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.016,
-                    ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
                           "${args.price} EGP",
                           style: Styles.textStyle30.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
+                              color: black,
                               fontSize: 25),
                         ),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.4,),
                         IconButton(
                             onPressed: () {
                               setState(() {
@@ -87,11 +91,57 @@ class _ProductDetailsState extends State<ProductDetails> {
                               color: Theme.of(context).colorScheme.primary,
                               size: 35,
                             )),
+
                       ],
                     ),
+
                   ],
                 ),
               ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.3,
+                  ),
+
+                ],
+              ),
+              // Row(
+              //   children: [
+              //     SizedBox(
+              //       width: MediaQuery.of(context).size.width * 0.06,
+              //     ),
+              //     Text(
+              //       args.description ?? "",
+              //       style: TextStyle(color: Color(0xA65D5D5D), fontSize: 15),
+              //     ),
+              //   ],
+              // ),
+              //  Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Padding(
+              //       padding: EdgeInsets.only(
+              //           left: 23, right: 0, bottom: 20, top: 25),
+              //       child: Text(
+              //         'Size',
+              //         style: TextStyle(
+              //             fontFamily: 'Clash',
+              //             fontSize: 30,
+              //             color: Color(0xFF366A6A),
+              //             fontWeight: FontWeight.w300),
+              //       )
+              //       ,),
+              //       SizedBox(
+              //         height: MediaQuery.of(context).size.height * 0.016,
+              //       ),
+              //
+              //     ],
+              //   ),
+
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.016,
               ),
@@ -113,7 +163,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.06,
                   ),
-                  Text('Good prodi;pkadnmsdnaopsdnadonasdnas',
+                  Text(args.description ?? "",
                       style: Styles.textStyle16
                           .copyWith(color: Colors.black, fontSize: 18)),
                 ],
@@ -160,13 +210,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                           ),
                           child: Center(
                               child: Text(
-                            size,
-                            style: TextStyle(
-                                color: selectedSize == size
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Theme.of(context).colorScheme.surface,
-                                fontSize: 18),
-                          )),
+                                size,
+                                style: TextStyle(
+                                    color: selectedSize == size
+                                        ? Theme.of(context).colorScheme.primary
+                                        : Theme.of(context).colorScheme.surface,
+                                    fontSize: 18),
+                              )),
                         ),
                       ),
                     );
