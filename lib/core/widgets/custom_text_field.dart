@@ -1,17 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/styles.dart';
-import '../utils/colors.dart';
 
+//ignore: must_be_immutable
 class CustomTextFormField extends StatelessWidget {
   String label;
   TextEditingController controller;
   String? Function(String?) validator;
   bool isPassword;
-  CustomTextFormField({required this.label,
+  IconData? icon;
+
+  CustomTextFormField({super.key, required this.label,
     required this.controller,
     required this.validator,
     this.isPassword = false,
+    this.icon = Icons.person,
   });
 
   @override
@@ -24,10 +26,12 @@ class CustomTextFormField extends StatelessWidget {
         obscureText: isPassword ,
         decoration:  InputDecoration(
           hintText: label,
-          hintStyle: Styles.textStyle16,
+          hintStyle: Styles.textStyle16.copyWith(
+            color: Theme.of(context).colorScheme.primary
+          ),
           border: OutlineInputBorder(
-            borderSide: BorderSide(color: loco),),
-          prefixIcon: Icon(Icons.person,color: loco,),
+            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),),
+            prefixIcon: Icon(icon,color: Theme.of(context).colorScheme.primary,),
         ),
       ),
     );

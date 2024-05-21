@@ -35,13 +35,13 @@ class HomePage extends StatelessWidget {
                       )),
                   centerTitle: true,
                   toolbarHeight: 70,
-                  backgroundColor: Theme.of(context).colorScheme.background,
+                  backgroundColor: Theme.of(context).colorScheme.surface,
                   elevation: 0,
                   automaticallyImplyLeading: false,
                 ),
                 body: SingleChildScrollView(
                   child: Container(
-                    color: Theme.of(context).colorScheme.background,
+                    color: Theme.of(context).colorScheme.surface,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(26),
                                     color: Theme.of(context)
                                         .colorScheme
-                                        .background,
+                                        .surface,
                                     border: (Border.all(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -112,7 +112,7 @@ class HomePage extends StatelessWidget {
                             width: MediaQuery.of(context).size.width * 0.9,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Theme.of(context).colorScheme.background,
+                              color: Theme.of(context).colorScheme.surface,
                             ),
                             child: CarouselSlider(
                                 items: [

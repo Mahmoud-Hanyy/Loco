@@ -32,10 +32,10 @@ class AddToCart extends StatelessWidget {
         ),
         centerTitle: true,
         toolbarHeight: 70,
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 0,
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Column(
         children: [
           const SizedBox(
@@ -94,19 +94,19 @@ class AddToCart extends StatelessWidget {
                           onPressed: () {},
                           icon: Icon(
                             Icons.add_circle,
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.surface,
                           )),
                       Text(
                         '$quantity',
                         style: TextStyle(
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.surface,
                             fontSize: 25),
                       ),
                       IconButton(
                           onPressed: () {},
                           icon: Icon(
                             Icons.remove_circle,
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.surface,
                           )),
                     ],
                   )),
@@ -172,19 +172,19 @@ class AddToCart extends StatelessWidget {
                           onPressed: () {},
                           icon: Icon(
                             Icons.add_circle,
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.surface,
                           )),
                       Text(
                         '$quantity',
                         style: TextStyle(
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.surface,
                             fontSize: 25),
                       ),
                       IconButton(
                           onPressed: () {},
                           icon: Icon(
                             Icons.remove_circle,
-                            color: Theme.of(context).colorScheme.background,
+                            color: Theme.of(context).colorScheme.surface,
                           )),
                     ],
                   )),
@@ -197,7 +197,7 @@ class AddToCart extends StatelessWidget {
             },
             textOfButton: AppLocalizations.of(context)!.checkout,
             style: Styles.textStyle20.copyWith(
-              color: Theme.of(context).colorScheme.background,
+              color: Theme.of(context).colorScheme.surface,
             ),
           ),
         ],

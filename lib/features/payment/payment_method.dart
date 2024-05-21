@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:loco/core/widgets/loco_button.dart';
 import '../../core/utils/assets.dart';
@@ -27,13 +25,13 @@ class _PaymentMethodState extends State<PaymentMethod> {
             )),
         centerTitle: true,
         toolbarHeight: 70,
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         elevation: 0,
       ),
       body: Container(
         width: 800,
         height: 800,
-        color: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.surface,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SingleChildScrollView(

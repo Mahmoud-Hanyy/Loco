@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loco/features/profile/profiles/history_of_payment.dart';
 import 'package:loco/features/profile/profiles/personal_info.dart';
 import 'package:loco/features/profile/profiles/settings.dart';
-
 import '../../core/utils/assets.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/profile_button.dart';

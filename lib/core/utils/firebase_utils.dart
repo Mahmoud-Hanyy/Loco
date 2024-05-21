@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../../features/model/my-user.dart';
+import '../../features/model/my_user.dart';
 
 class FirebaseUtils{
   static CollectionReference<MyUser> getUsersCollection(){

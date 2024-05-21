@@ -36,7 +36,9 @@ class OnBoarding2 extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                 child: Text(
                     "if you asked yourself what are the benefits from subscribing with loco , your products will be shown to much more people now and don't worry about the shipment or the orders because we provide an orders page that controls your sells with time and location . Don't forget that the app is under Periodic maintenance .",
-                    style: Styles.textStyle16),
+                    style: Styles.textStyle16,
+                    textAlign: TextAlign.center,
+                ),
               ),
               const SizedBox(
                 height: 40,

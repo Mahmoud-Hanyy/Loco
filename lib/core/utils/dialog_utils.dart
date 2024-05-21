@@ -10,8 +10,8 @@ class DialogUtils{
           return AlertDialog(
             content: Row(
               children: [
-                CircularProgressIndicator(),
-                SizedBox(width: 12,),
+                const CircularProgressIndicator(),
+                const SizedBox(width: 12,),
                 Text(message),
               ],
             ),

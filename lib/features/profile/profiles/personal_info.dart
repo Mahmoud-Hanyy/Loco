@@ -10,7 +10,7 @@ class PersonalInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           body: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -44,23 +44,23 @@ class PersonalInformation extends StatelessWidget {
                         'Name : ',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.background,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       const SizedBox(
                         width: 20,
                       ),
                       Text(
-                        'Mike Arteta',
+                        'Mike Areta',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.background,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       const Spacer(),
                       IconButton(
                         icon: Icon(Icons.edit,
-                            color: Theme.of(context).colorScheme.background),
+                            color: Theme.of(context).colorScheme.surface),
                         onPressed: () {},
                       ),
                     ],
@@ -85,7 +85,7 @@ class PersonalInformation extends StatelessWidget {
                         'Email : ',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.background,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       const SizedBox(
@@ -95,13 +95,13 @@ class PersonalInformation extends StatelessWidget {
                         'Mike132@gmail.com',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.background,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       const Spacer(),
                       IconButton(
                         icon: Icon(Icons.edit,
-                            color: Theme.of(context).colorScheme.background),
+                            color: Theme.of(context).colorScheme.surface),
                         onPressed: () {},
                       ),
                     ],
@@ -126,7 +126,7 @@ class PersonalInformation extends StatelessWidget {
                         'Phone : ',
                         style: Styles.textStyle18.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.background,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       const SizedBox(
@@ -137,13 +137,13 @@ class PersonalInformation extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: Styles.textStyle18.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.background,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       const Spacer(),
                       IconButton(
                         icon: Icon(Icons.edit,
-                            color: Theme.of(context).colorScheme.background),
+                            color: Theme.of(context).colorScheme.surface),
                         onPressed: () {},
                       ),
                     ],

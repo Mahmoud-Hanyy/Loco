@@ -34,7 +34,7 @@ void main() async{
   await Firebase.initializeApp();
   runApp(ChangeNotifierProvider(
       create: ((context)=>AppConfigProvider()),
-      child: Loco()));
+      child: const Loco()));
 }
 
 class Loco extends StatelessWidget {
@@ -51,8 +51,8 @@ class Loco extends StatelessWidget {
         OnBoarding.routeName: (context) => const OnBoarding(),
         OnBoarding1.routeName: (context) => const OnBoarding1(),
         OnBoarding2.routeName: (context) => const OnBoarding2(),
-        LogIn.routeName: (context) =>  LogIn(),
-        RegisterScreen.routeName: (context) =>  RegisterScreen(),
+        LogIn.routeName: (context) =>  const LogIn(),
+        RegisterScreen.routeName: (context) =>  const RegisterScreen(),
         ProductDetails.routename: (context) => ProductDetails(),
         AddToCart.routename: (context) => AddToCart(),
         Settings.routeName: (context) => const Settings(),

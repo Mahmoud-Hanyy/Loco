@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:loco/features/on_boarding/on_boarding2.dart';
-
 import '../../core/utils/assets.dart';
 import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
@@ -35,7 +34,9 @@ class OnBoarding1 extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                 child: Text(
                     'if you are the brand owner himself,you are in the right place because loco will help you promote your brand instead of paying a lot of money for ads you can subscribe with us with much less cost and better spread .',
-                    style: Styles.textStyle16),
+                    style: Styles.textStyle16,
+                    textAlign: TextAlign.center
+                ),
               ),
               const SizedBox(
                 height: 40,

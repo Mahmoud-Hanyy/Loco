@@ -20,4 +20,5 @@ class Assets{
   static const tomato = 'lib/resources/images/tomato.png';
   static const donna = 'lib/resources/images/donna.png';
   static const rika = 'lib/resources/images/rika.png';
+  static const google = 'lib/resources/images/google.png';
 }

@@ -5,7 +5,7 @@ import 'colors.dart';
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
-    background: white,
+    surface: white,
     primary: loco,
     secondary: light,
   ),
@@ -14,7 +14,7 @@ ThemeData lightMode = ThemeData(
 ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: const ColorScheme.dark(
-    background: Colors.black,
+    surface: Colors.black,
     primary: white,
     secondary: Colors.black38,
   ),

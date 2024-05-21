@@ -1,34 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loco/features/home/home.dart';
-import 'package:loco/features/model/my-user.dart';
+import 'package:loco/features/log_in/log_in.dart';
+import 'package:loco/features/model/my_user.dart';
+import 'package:loco/features/navigation/navigation.dart';
 import '../../core/utils/assets.dart';
-import '../../core/utils/colors.dart';
-import '../../core/utils/dialog-utils.dart';
-import '../../core/utils/firebase-utils.dart';
+import '../../core/utils/dialog_utils.dart';
+import '../../core/utils/firebase_utils.dart';
 import '../../core/utils/styles.dart';
-import '../../core/widgets/custom-text-field.dart';
+import '../../core/widgets/custom_text_field.dart';
 import '../../core/widgets/start_button.dart';
-import '../log_in/log_in.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String routeName='registerScreen';
+
+  const RegisterScreen({super.key});
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  var firstNameController=TextEditingController(text: 'Mira');
+  var firstNameController=TextEditingController(text: '');
 
-  var lastNameController=TextEditingController(text: 'gerges');
+  var lastNameController=TextEditingController(text: '');
 
-  var emailController=TextEditingController(text: 'Miro@gmail.com');
+  var emailController=TextEditingController(text: '');
 
-  var passwordController=TextEditingController(text: '1234567');
+  var passwordController=TextEditingController(text: '');
 
-  var ConfirmPasswordController=TextEditingController(text: '123456');
+  var confirmPasswordController=TextEditingController(text: '');
 
   var formKey = GlobalKey<FormState>();
 
@@ -37,7 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     var height = MediaQuery.of(context).size.height*0.45 ;
     var width = MediaQuery.of(context).size.width*0.85 ;
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Form(
         key: formKey,
         child: SingleChildScrollView(
@@ -72,14 +73,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   padding: const EdgeInsets.symmetric(horizontal:25),
                   child: Text(AppLocalizations.of(context)!.register,
                       style: Styles.textOfLabel.copyWith(
-                          fontWeight: FontWeight.bold
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary
                       ))),
               const SizedBox(height: 5,),
               Padding(
-                  padding: EdgeInsets.symmetric(horizontal:25),
+                  padding: const EdgeInsets.symmetric(horizontal:25),
                   child: Text(AppLocalizations.of(context)!.register_to_enjoy_our_features,
-                      style: Styles.textStyle20)),
-
+                      style: Styles.textStyle20.copyWith(
+                          color : Theme.of(context).colorScheme.primary
+                      ),
+                  ),
+              ),
               const SizedBox(height: 15,),
               CustomTextFormField(
                 label: AppLocalizations.of(context)!.first_name,
@@ -104,6 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(height: 15,),
               CustomTextFormField(label: AppLocalizations.of(context)!.email_address,
                 controller: emailController,
+                icon: Icons.email,
                 validator: (text){
                   if(text==null|| text.trim().isEmpty){
                     return 'Please enter email';
@@ -120,6 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               CustomTextFormField(
                 label:AppLocalizations.of(context)!.password,
                 controller: passwordController,
+                icon: Icons.lock,
                 validator: (text){
                   if(text==null|| text.trim().isEmpty){
                     return 'Please enter password';
@@ -133,7 +140,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 15,),
               CustomTextFormField(label: AppLocalizations.of(context)!.confirm_password,
-                controller: ConfirmPasswordController,
+                controller: confirmPasswordController,
+                icon: Icons.lock,
                 validator: (text){
                   if(text==null|| text.trim().isEmpty){
                     return 'Please enter confirm password';
@@ -165,7 +173,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Navigator.pushNamed(context, LogIn.routeName);
                       },
                       child: Text(AppLocalizations.of(context)!.already_have_an_account_Login,style: Styles.textStyle20.copyWith(
-                          fontWeight: FontWeight.bold
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary
                       ))),
                 ],
               )
@@ -197,7 +206,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             title: 'Success',
             posActionName: 'ok',
             posAction: (){
-              Navigator.of(context).pushReplacementNamed(HomePage.routename);
+              Navigator.of(context).pushReplacementNamed(NavigationPage.routeName);
             }
         );
         print('register successfully');
@@ -218,7 +227,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         }
       } catch (e) {
         DialogUtils.hideLoading(context);
-        DialogUtils.showMessage(context, '${e.toString()}',
+        DialogUtils.showMessage(context, e.toString(),
             title: 'Error ',
             posActionName: 'ok');
         print(e);

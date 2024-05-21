@@ -19,7 +19,7 @@ class NavigationPage extends StatelessWidget {
           return Scaffold(
             body: cubit.pages[cubit.currentIndex],
             bottomNavigationBar: BottomNavigationBar(
-              selectedItemColor: Theme.of(context).colorScheme.background,
+              selectedItemColor: Theme.of(context).colorScheme.surface,
               backgroundColor: Theme.of(context).colorScheme.primary,
               unselectedItemColor: Theme.of(context).colorScheme.secondary,
               currentIndex: cubit.currentIndex,

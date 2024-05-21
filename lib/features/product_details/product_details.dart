@@ -1,7 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/domain/entities/ProductResponseEntity.dart';
-
-import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/loco_button.dart';
 
@@ -47,14 +46,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                 height: MediaQuery.of(context).size.height * 0.55,
                 width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(13),
-                  border: Border.all(color: black, width: 2),
+                  border: Border.all(color: Theme.of(context).colorScheme.primary, width: 2),
                 ),
-                child: Image.network(args.imageUrl ?? ""),
+                child: CachedNetworkImage(
+                  imageUrl: args.imageUrl ?? "",
+                  fit: BoxFit.cover,
+                ),
               ),
               Padding(
                 padding:
-                EdgeInsets.symmetric(vertical: 0, horizontal: 45),
+                const EdgeInsets.symmetric(vertical: 0, horizontal: 45),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -62,36 +63,40 @@ class _ProductDetailsState extends State<ProductDetails> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         args.name ?? "",
-                        style: const TextStyle(
-                            color: black,
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
                             fontSize: 23,
                             fontWeight: FontWeight.normal),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
                           "${args.price} EGP",
                           style: Styles.textStyle30.copyWith(
-                              color: black,
-                              fontSize: 25),
+                              color: Theme.of(context).colorScheme.primary,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                          ),
                         ),
                         SizedBox(width: MediaQuery.of(context).size.width*0.4,),
-                        IconButton(
-                            onPressed: () {
-                              setState(() {
-                                addedFav = !addedFav;
-                              });
-                            },
-                            icon: Icon(
-                              addedFav == true
-                                  ? Icons.favorite
-                                  : Icons.favorite_border_outlined,
-                              color: Theme.of(context).colorScheme.primary,
-                              size: 35,
-                            )),
-
+                        Expanded(
+                          child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  addedFav = !addedFav;
+                                });
+                              },
+                              icon: Icon(
+                                addedFav == true
+                                    ? Icons.favorite
+                                    : Icons.favorite_border_outlined,
+                                color: Theme.of(context).colorScheme.primary,
+                                size: 35,
+                              )),
+                        ),
                       ],
                     ),
 
@@ -102,50 +107,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                 height: MediaQuery.of(context).size.height * 0.03,
               ),
               Row(
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.3,
-                  ),
-
-                ],
-              ),
-              // Row(
-              //   children: [
-              //     SizedBox(
-              //       width: MediaQuery.of(context).size.width * 0.06,
-              //     ),
-              //     Text(
-              //       args.description ?? "",
-              //       style: TextStyle(color: Color(0xA65D5D5D), fontSize: 15),
-              //     ),
-              //   ],
-              // ),
-              //  Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Padding(
-              //       padding: EdgeInsets.only(
-              //           left: 23, right: 0, bottom: 20, top: 25),
-              //       child: Text(
-              //         'Size',
-              //         style: TextStyle(
-              //             fontFamily: 'Clash',
-              //             fontSize: 30,
-              //             color: Color(0xFF366A6A),
-              //             fontWeight: FontWeight.w300),
-              //       )
-              //       ,),
-              //       SizedBox(
-              //         height: MediaQuery.of(context).size.height * 0.016,
-              //       ),
-              //
-              //     ],
-              //   ),
-
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.016,
-              ),
-              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
@@ -154,6 +115,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     child: Text('Description',
                         style: Styles.textStyle24.copyWith(
                           color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.bold,
                         )),
                   ),
                 ],
@@ -163,9 +125,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.06,
                   ),
-                  Text(args.description ?? "",
-                      style: Styles.textStyle16
-                          .copyWith(color: Colors.black, fontSize: 18)),
+                  Expanded(
+                    child: Text(args.description ?? "",
+                        style: Styles.textStyle16.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                        ),
+                    ),
+                  ),
                 ],
               ),
               Row(
@@ -177,6 +143,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     child: Text('Size',
                         style: Styles.textStyle24.copyWith(
                           color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.bold,
                         )),
                   ),
                 ],
@@ -223,22 +190,25 @@ class _ProductDetailsState extends State<ProductDetails> {
                   },
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 0, right: 0, bottom: 20, top: 10),
-                    child: Text('Color',
-                        style: Styles.textStyle24.copyWith(
-                          color: Theme.of(context).colorScheme.primary,
-                        )),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  Text('Available colors :',
+                      style: Styles.textStyle24.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  const SizedBox(
+                    width: 50,
                   ),
                   Text(
                     'White',
                     style: Styles.textStyle20.copyWith(
-                      color: Colors.black,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
                   ),
                 ],

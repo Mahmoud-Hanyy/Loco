@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../core/utils/assets.dart';
 import '../../core/utils/colors.dart';
 import '../../core/utils/styles.dart';
@@ -36,11 +35,10 @@ class OnBoarding extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                    ' loco is the place where the local brands are gathered together so you can find them easily',
-                    style: Styles.textStyle16),
+              const Text(
+                  ' loco is the place where the local brands are gathered together so you can find them easily',
+                  style: Styles.textStyle16,
+                  textAlign: TextAlign.center
               ),
               const SizedBox(
                 height: 40,
