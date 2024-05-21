@@ -1,3 +1,7 @@
+
+import 'dart:io';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loco/features/home/home.dart';
@@ -17,9 +21,20 @@ import 'features/profile/profiles/personal_info.dart';
 import 'features/profile/profiles/settings.dart';
 import 'features/register/register.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Platform.isAndroid?
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+        apiKey: "AIzaSyDq3vnxzDBMxLwplsqHQB904sTRlZduOa0",
+        appId:  "1:528924836776:android:a52865019acbde2913d39d",
+        messagingSenderId: "528924836776",
+        projectId: "loco-238a7"),
+  ):
+  await Firebase.initializeApp();
   runApp(ChangeNotifierProvider(
-      create: ((context) => AppConfigProvider()), child: const Loco()));
+      create: ((context)=>AppConfigProvider()),
+      child: Loco()));
 }
 
 class Loco extends StatelessWidget {
@@ -36,8 +51,8 @@ class Loco extends StatelessWidget {
         OnBoarding.routeName: (context) => const OnBoarding(),
         OnBoarding1.routeName: (context) => const OnBoarding1(),
         OnBoarding2.routeName: (context) => const OnBoarding2(),
-        LogIn.routeName: (context) => const LogIn(),
-        RegisterScreen.routeName: (context) => const RegisterScreen(),
+        LogIn.routeName: (context) =>  LogIn(),
+        RegisterScreen.routeName: (context) =>  RegisterScreen(),
         ProductDetails.routename: (context) => ProductDetails(),
         AddToCart.routename: (context) => AddToCart(),
         Settings.routeName: (context) => const Settings(),

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "528924836776",
+    "project_id": "loco-238a7",
+    "storage_bucket": "loco-238a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528924836776:android:a52865019acbde2913d39d",
+        "android_client_info": {
+          "package_name": "com.example.loco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528924836776-bsv30bbir79nbod8vplu7p7it0k41qqf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.loco",
+            "certificate_hash": "703418e5cd99ac48cae121552969c3f4a6f69ec5"
+          }
+        },
+        {
+          "client_id": "528924836776-hod04v4fef82ecsb9i5df91t3ukgecud.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq3vnxzDBMxLwplsqHQB904sTRlZduOa0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528924836776-hod04v4fef82ecsb9i5df91t3ukgecud.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
