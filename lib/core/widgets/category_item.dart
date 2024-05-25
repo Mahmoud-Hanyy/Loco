@@ -35,6 +35,14 @@ class CategoryItem extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.169,
             width: MediaQuery.of(context).size.width * 0.35,
             fit: BoxFit.cover,
+            imageBuilder: (context, imageProvider) => Container(
+              width: 96.0,
+              height: 96.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+              ),
+            ),
           ),
           const SizedBox(
             height: 5,
@@ -42,10 +50,10 @@ class CategoryItem extends StatelessWidget {
           Text(
             productName,
             style: Styles.textStyle16.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-                fontSize: 13,
-              ),
-              overflow: TextOverflow.ellipsis,
+              color: Theme.of(context).colorScheme.primary,
+              fontSize: 13,
+            ),
+            overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(
             height: 5,
@@ -63,11 +71,10 @@ class CategoryItem extends StatelessWidget {
           ),
           ViewProductButton(
             textOfButton: 'View Product',
-            onPressed: (){},
+            onPressed: () {},
           ),
         ],
       ),
     );
   }
 }
-

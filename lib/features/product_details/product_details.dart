@@ -1,8 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:loco/core/utils/firebase_utils.dart';
 import 'package:loco/domain/entities/ProductResponseEntity.dart';
+import 'package:loco/features/favorites/favorites.dart';
+import 'package:loco/features/model/user_fav.dart';
+import 'package:provider/provider.dart';
+
 import '../../core/utils/styles.dart';
 import '../../core/widgets/loco_button.dart';
+import '../../provider/auth_provider.dart';
+import '../../provider/fav_provider.dart';
 
 class ProductDetails extends StatefulWidget {
   static const String routename = 'ProductDetails';
@@ -18,10 +25,12 @@ class _ProductDetailsState extends State<ProductDetails> {
   int quantity = 1;
   String? selectedSize;
   bool addedFav = false;
+  late FavListProvider favlistProvider;
 
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as ProductEntity;
+    var authProvider = Provider.of<AuthProviders>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
@@ -86,6 +95,27 @@ class _ProductDetailsState extends State<ProductDetails> {
                           child: IconButton(
                               onPressed: () {
                                 setState(() {
+                                  Navigator.of(context).pushNamed(
+                                      Favorites.routename,
+                                      arguments: UserFav(
+                                          favProdName: args.name,
+                                          favProdPrice: args.price,
+                                          favProdImage: args.imageUrl,
+                                          favProdDescription:
+                                              args.description));
+                                  UserFav userFav = UserFav(
+                                      favProdName: args.name,
+                                      favProdPrice: args.price,
+                                      favProdImage: args.imageUrl,
+                                      favProdDescription: args.description);
+                                  FirebaseUtils.addProductToFireStore(userFav,
+                                          authProvider.currentUser!.id!)
+                                      .timeout(Duration(milliseconds: 500),
+                                          onTimeout: () {
+                                    print("product added successfully");
+                                    favlistProvider.getAllProductsFromFireStore(
+                                        authProvider.currentUser!.id!);
+                                  });
                                   addedFav = !addedFav;
                                 });
                               },
@@ -238,17 +268,4 @@ class _ProductDetailsState extends State<ProductDetails> {
     }
     return quantity;
   }
-}
-
-class ProductDetailsArgs {
-  String productName;
-  String imagePath;
-  int price;
-
-  ProductDetailsArgs({
-    required this.productName /* required this.index*/,
-    required this.price,
-    required this.imagePath,
-    /* required int index*/
-  });
 }

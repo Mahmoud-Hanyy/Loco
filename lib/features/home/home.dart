@@ -6,7 +6,6 @@ import 'package:loco/core/utils/assets.dart';
 import 'package:loco/domain/di.dart';
 import 'package:loco/features/home/cubit/home_tab_states.dart';
 import 'package:loco/features/home/cubit/home_tab_view_model.dart';
-import 'package:loco/features/search/products_search_delegate.dart';
 
 import '../../core/utils/styles.dart';
 import '../cart/add_to_cart.dart';
@@ -70,10 +69,7 @@ class HomePage extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       IconButton(
-                                          onPressed: () => showSearch(
-                                              context: context,
-                                              delegate:
-                                                  ProductsSearchDelegate()),
+                                          onPressed: () {},
                                           icon: Icon(
                                             Icons.search,
                                             color: Theme.of(context)
