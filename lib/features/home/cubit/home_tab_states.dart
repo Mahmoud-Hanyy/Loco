@@ -1,24 +1,44 @@
-import 'package:loco/domain/entities/CategoryEntity.dart';
+import 'package:loco/domain/entities/CategoryOrBrandResponseEntity.dart';
+
+import '../../../data/Api/failures.dart';
 
 abstract class HomeTabStates {}
 
 class HomeTabInitialState extends HomeTabStates {}
 
-class HomeTabLoadingState extends HomeTabStates {
+class HomeTabCategoryLoadingState extends HomeTabStates {
   String? loadingMessage;
 
-  HomeTabLoadingState({required this.loadingMessage});
+  HomeTabCategoryLoadingState({required this.loadingMessage});
 }
 
-class HomeTabErrorState extends HomeTabStates {
+class HomeTabCategoryErrorState extends HomeTabStates {
   String? errorMessage;
 
-  HomeTabErrorState({required this.errorMessage});
+  HomeTabCategoryErrorState({required this.errorMessage});
 }
 
-class HomeTabSuccessState extends HomeTabStates {
+class HomeTabCategorySuccessState extends HomeTabStates {
   //response-list of category
-  CategoryResponseEntity responseEntity;
+  CategoryOrBrandResponseEntity categoryEntity;
 
-  HomeTabSuccessState({required this.responseEntity});
+  HomeTabCategorySuccessState({required this.categoryEntity});
+}
+
+class HomeTabBrandLoadingStates extends HomeTabStates {
+  String? loadingMessage;
+
+  HomeTabBrandLoadingStates({this.loadingMessage});
+}
+
+class HomeTabBrandErrorStates extends HomeTabStates {
+  Failures errors;
+
+  HomeTabBrandErrorStates({required this.errors});
+}
+
+class HomeTabBrandSuccessStates extends HomeTabStates {
+  CategoryOrBrandResponseEntity categoryOrBrandEntity;
+
+  HomeTabBrandSuccessStates({required this.categoryOrBrandEntity});
 }

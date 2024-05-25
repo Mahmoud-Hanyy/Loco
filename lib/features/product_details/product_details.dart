@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/domain/entities/ProductResponseEntity.dart';
+
 import '../../core/utils/styles.dart';
 import '../../core/widgets/loco_button.dart';
 
@@ -49,7 +50,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   border: Border.all(color: Theme.of(context).colorScheme.primary, width: 2),
                 ),
                 child: CachedNetworkImage(
-                  imageUrl: args.imageUrl ?? "",
+                  imageUrl: args.imageCover ?? "",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -62,7 +63,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        args.name ?? "",
+                        args.title ?? "",
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.primary,
                             fontSize: 23,

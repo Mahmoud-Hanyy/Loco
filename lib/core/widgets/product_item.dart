@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/styles.dart';
 import 'package:loco/core/widgets/view_product_button.dart';
+
 import '../../domain/entities/ProductResponseEntity.dart';
 
 //ignore: must_be_immutable
@@ -28,7 +29,7 @@ class ProductItem extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.195,
               ),
-              Text(productEntity.name ?? "",
+              Text(productEntity.title ?? "",
                   style: Styles.textStyle16.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     overflow: TextOverflow.ellipsis,
@@ -65,8 +66,8 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           child: CachedNetworkImage(
-              fit: BoxFit.cover,
-              imageUrl: productEntity.imageUrl ?? "",
+            fit: BoxFit.cover,
+            imageUrl: productEntity.imageCover ?? "",
           ),
         ),
       ]),

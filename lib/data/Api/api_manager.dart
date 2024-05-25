@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:loco/data/Api/api_constatnts.dart';
 import 'package:loco/data/Api/failures.dart';
-import 'package:loco/data/model/response/CategoryResponseDto.dart';
+import 'package:loco/data/model/response/CategoryOrBrandResponseDto.dart';
 
 import '../model/response/ProductResponseDto.dart';
 
@@ -19,16 +19,17 @@ class ApiManager {
     return _instance!;
   }
 
-  Future<Either<Failures, CategoryResponseDto>> getCategories() async {
+  Future<
+      Either<Failures, CategoryOrBrandResponseDto>> getAllCategories() async {
     final connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
       // I am connected to a mobile network.
       Uri url =
-          Uri.https(ApiConstants.baseUrl, ApiConstants.getAllCategoriesApi);
-      var response = await http.get(url);
+      Uri.https(ApiConstants.baseUrl, ApiConstants.getAllCategoriesApi);
+      var response = await http.get(url,);
       var categoryResponse =
-          CategoryResponseDto.fromJson(jsonDecode(response.body));
+      CategoryOrBrandResponseDto.fromJson(jsonDecode(response.body));
       //response momkn ykoun success or fail
       //range 200 lai 300 7alet success
       if (response.statusCode >= 200 && response.statusCode < 300) {
@@ -41,6 +42,27 @@ class ApiManager {
       //no internet connection fa sa3tha haraga3 error
       return Left(
           NetworkError(errorMessage: 'Please Check Internet Connection'));
+    }
+  }
+
+  Future<Either<Failures, CategoryOrBrandResponseDto>> getAllBrands() async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      // I am connected to a mobile network or wifi .
+      Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.getAllBrandsApi);
+      var response = await http.get(url);
+      var responseBody = response.body;
+      var json = jsonDecode(responseBody);
+      var categoryOrBrandResponse = CategoryOrBrandResponseDto.fromJson(json);
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        return Right(categoryOrBrandResponse);
+      } else {
+        return Left(ServerError(errorMessage: categoryOrBrandResponse.message));
+      }
+    } else {
+      /// no internet connection
+      return Left(NetworkError(errorMessage: 'Check Internet connection'));
     }
   }
 
@@ -65,10 +87,10 @@ class ApiManager {
     }
   }
 
-  static Future<ProductResponseDto> searchProducts(String query) async {
+  static Future<ProductResponseDto> searchProducts() async {
     try {
       Uri url = Uri.https(
-          ApiConstants.baseUrl, ApiConstants.getAllProductsApi, {'q': query});
+        ApiConstants.baseUrl, ApiConstants.getAllProductsApi,);
       var response = await http.get(url);
       var bodyString = response.body;
       var json = jsonDecode(bodyString);

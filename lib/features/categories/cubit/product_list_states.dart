@@ -10,6 +10,12 @@ class ProductListTabSuccessState extends ProductListTabStates {
   ProductListTabSuccessState({required this.responseEntity});
 }
 
+class ProductListSearchState extends ProductListTabStates {
+  List<ProductEntity> productList = [];
+
+  ProductListSearchState({required this.productList});
+}
+
 class ProductListTabInitialState extends ProductListTabStates {}
 
 class ProductListTabLoadingState extends ProductListTabStates {

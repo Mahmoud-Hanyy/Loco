@@ -10,15 +10,27 @@ class ProductListViewModel extends Cubit<ProductListTabStates> {
   ProductListViewModel({required this.getAllProductsUseCase})
       : super(ProductListTabInitialState());
   List<ProductEntity> productList = [];
+  static ProductListViewModel get(context) => BlocProvider.of(context);
 
-  void getProducts() async {
+  getProducts() async {
     emit(ProductListTabLoadingState(loadingMessage: 'Loading...'));
     var either = await getAllProductsUseCase.invoke();
     either.fold((l) {
       emit(ProductListTabErrorState(errors: l));
     }, (response) {
-      productList = response.clothes ?? [];
+      productList = response.data ?? [];
       emit(ProductListTabSuccessState(responseEntity: response));
     });
+  }
+
+  Search(String query) {
+    List<ProductEntity> searchproducts = [];
+    for (int i = 0; i < productList!.length; i++) {
+      if (productList![i].title.toString().toLowerCase().startsWith(query)) {
+        searchproducts?.add(productList![i]);
+      }
+    }
+    emit(ProductListSearchState(productList: searchproducts));
+    print(query + searchproducts!.length.toString() ?? "");
   }
 }

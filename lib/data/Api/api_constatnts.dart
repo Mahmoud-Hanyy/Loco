@@ -1,5 +1,6 @@
 class ApiConstants {
-  static const String baseUrl = 'products-api-5.onrender.com';
-  static const String getAllCategoriesApi = '/api/products';
-  static const String getAllProductsApi = '/api/products';
+  static const String baseUrl = 'ecommerce.routemisr.com';
+  static const String getAllCategoriesApi = '/api/v1/categories';
+  static const String getAllBrandsApi = '/api/v1/brands';
+  static const String getAllProductsApi = '/api/v1/products';
 }
