@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/firebase_utils.dart';
 import 'package:loco/domain/entities/ProductResponseEntity.dart';
-import 'package:loco/features/favorites/favorites.dart';
 import 'package:loco/features/model/user_fav.dart';
 import 'package:provider/provider.dart';
 
@@ -85,18 +84,71 @@ class _ProductDetailsState extends State<ProductDetails> {
                         Text(
                           "${args.price} EGP",
                           style: Styles.textStyle30.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.primary,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(width: MediaQuery.of(context).size.width*0.4,),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                        ),
+
+                        // StreamBuilder(
+                        //   stream: FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser!.email).collection("fav").where("name",isEqualTo: args.name).snapshots(),
+                        //   builder: (BuildContext context,AsyncSnapshot snapchot){
+                        //     if(snapchot.data==null){
+                        //       return Text("");
+                        //     }
+                        //     return  Expanded(
+                        //         child: IconButton(
+                        //             onPressed: () {
+                        //               snapchot.data.docs.length==0?
+                        //               Navigator.of(context).pushNamed(
+                        //                   'fav',
+                        //                   arguments: UserFav(
+                        //                       favProdName: args.name,
+                        //                       favProdPrice: args.price,
+                        //                       favProdImage: args.imageUrl,
+                        //                       favProdDescription:
+                        //                       args.description)):
+                        //                   print("Already added");
+                        //               UserFav userFav = UserFav(
+                        //                   favProdName: args.name,
+                        //                   favProdPrice: args.price,
+                        //                   favProdImage: args.imageUrl,
+                        //                   favProdDescription: args.description);
+                        //               FirebaseUtils.addProductToFireStore(userFav,
+                        //                   authProvider.currentUser!.id!)
+                        //                   .timeout(Duration(milliseconds: 500),
+                        //                   onTimeout: () {
+                        //                     print("product added successfully");
+                        //                     favlistProvider.getAllProductsFromFireStore(
+                        //                         authProvider.currentUser!.id!);
+                        //                   });
+                        //
+                        //               setState(() {
+                        //                 addedFav = !addedFav;
+                        //               });
+                        //             },
+                        //             icon:snapchot.data.docs.length==0? Icon(
+                        //               Icons.favorite_border_outlined,
+                        //               color: Theme.of(context).colorScheme.primary,
+                        //               size: 35,
+                        //             ):Icon(
+                        //               Icons.favorite,
+                        //               color: Theme.of(context).colorScheme.primary,
+                        //               size: 35,
+                        //             )
+                        //         )
+                        //     );
+                        //   },
+                        //
+                        // ),
                         Expanded(
                           child: IconButton(
                               onPressed: () {
                                 setState(() {
-                                  Navigator.of(context).pushNamed(
-                                      Favorites.routename,
+                                  Navigator.of(context).pushNamed('fav',
                                       arguments: UserFav(
                                           favProdName: args.name,
                                           favProdPrice: args.price,
