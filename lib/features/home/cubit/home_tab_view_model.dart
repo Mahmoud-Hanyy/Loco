@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loco/features/home/cubit/home_tab_states.dart';
-
 import '../../../domain/entities/CategoryEntity.dart';
-import '../../../domain/usecases/get_all_categories_use_case.dart';
+import '../../../domain/use_cases/get_all_categories_use_case.dart';
 
 class HomeTabViewModel extends Cubit<HomeTabStates> {
   GetAllCategoriesUseCases getAllCategoryUseCase;

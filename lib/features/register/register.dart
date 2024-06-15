@@ -206,7 +206,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         var authProvider = Provider.of<AuthProviders>(context, listen: false);
         authProvider.updateUser(myUser);
         DialogUtils.hideLoading(context);
-        DialogUtils.showMessage(context, 'Register Successfully',
+        DialogUtils.showMessage(context, 'Register Successfully ✔️ ',
             title: 'Success', posActionName: 'ok', posAction: () {
           Navigator.of(context).pushReplacementNamed(NavigationPage.routeName);
         });

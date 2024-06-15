@@ -36,7 +36,7 @@ class OnBoarding extends StatelessWidget {
                 height: 15,
               ),
               const Text(
-                  ' loco is the place where the local brands are gathered together so you can find them easily',
+                  ' Loco is the place where the local brands are gathered together so you can find them easily',
                   style: Styles.textStyle16,
                   textAlign: TextAlign.center
               ),

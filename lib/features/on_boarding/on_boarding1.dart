@@ -33,7 +33,7 @@ class OnBoarding1 extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0),
                 child: Text(
-                    'if you are the brand owner himself,you are in the right place because loco will help you promote your brand instead of paying a lot of money for ads you can subscribe with us with much less cost and better spread .',
+                    'If you are the brand owner himself,you are in the right place because loco will help you promote your brand instead of paying a lot of money for ads you can subscribe with us with much less cost and better spread .',
                     style: Styles.textStyle16,
                     textAlign: TextAlign.center
                 ),

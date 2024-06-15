@@ -52,6 +52,10 @@ dependencies:
   firebase_core: ^2.27.0
   cloud_firestore: ^4.15.8
   firebase_auth: ^4.17.8
+  flutter_gemini: ^2.0.3
+  dash_chat_2: ^0.0.20
+  image_picker: ^1.0.8
+  flutter_colorpicker: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -98,6 +102,9 @@ flutter:
          - asset: lib/resources/fonts/ClashGrotesk-Regular.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
+     - family: Logo
+       fonts:
+         - asset: lib/resources/fonts/Yellowtail-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

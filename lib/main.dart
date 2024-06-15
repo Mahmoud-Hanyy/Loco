@@ -1,8 +1,9 @@
 import 'dart:io';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:loco/features/categories/widgets/categories.dart';
 import 'package:loco/features/favorites/favorites.dart';
 import 'package:loco/features/home/home.dart';
 import 'package:loco/features/payment/payment_method.dart';
@@ -11,9 +12,11 @@ import 'package:loco/provider/app_config_provider.dart';
 import 'package:loco/provider/auth_provider.dart';
 import 'package:loco/provider/fav_provider.dart';
 import 'package:provider/provider.dart';
-
+import 'core/utils/constants.dart';
 import 'core/utils/themes.dart';
 import 'features/cart/add_to_cart.dart';
+import 'features/color_picker/color_picker.dart';
+import 'features/loco_assistant/loco_assistant.dart';
 import 'features/log_in/log_in.dart';
 import 'features/navigation/navigation.dart';
 import 'features/on_boarding/on_boarding.dart';
@@ -25,16 +28,16 @@ import 'features/profile/profiles/settings.dart';
 import 'features/register/register.dart';
 
 void main() async {
+  Gemini.init(apiKey: geminiApiKey);
   WidgetsFlutterBinding.ensureInitialized();
-  Platform.isAndroid
-      ? await Firebase.initializeApp(
+  Platform.isAndroid ?
+  await Firebase.initializeApp(
           options: const FirebaseOptions(
               apiKey: "AIzaSyDq3vnxzDBMxLwplsqHQB904sTRlZduOa0",
               appId: "1:528924836776:android:a52865019acbde2913d39d",
               messagingSenderId: "528924836776",
               projectId: "loco-238a7"),
-        )
-      : await Firebase.initializeApp();
+        ) : await Firebase.initializeApp();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => AppConfigProvider()),
@@ -66,10 +69,13 @@ class Loco extends StatelessWidget {
         Settings.routeName: (context) => const Settings(),
         PaymentMethod.routeName: (context) => const PaymentMethod(),
         Profile.routename: (context) => const Profile(),
-        HomePage.routename: (context) => HomePage(),
-        'fav': (context) => Favorites(),
+        HomePage.routename: (context) => const HomePage(),
+        Favorites.routename: (context) => Favorites(),
         NavigationPage.routeName: (context) => const NavigationPage(),
         PersonalInformation.routename: (context) => const PersonalInformation(),
+        LocoAssistant.routeName: (context) => const LocoAssistant(),
+        ColorPickerScreen.routeName: (context) => const ColorPickerScreen(),
+        Categories.routeName: (context) => Categories(),
       },
       darkTheme: darkMode,
       themeMode: ThemeMode.system,

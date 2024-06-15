@@ -19,7 +19,6 @@ class Favorites extends StatefulWidget {
   @override
   State<Favorites> createState() => _FavoritesState();
 }
-
 class _FavoritesState extends State<Favorites> {
   bool isTap = true;
   UserFav? userfav;
@@ -32,7 +31,7 @@ class _FavoritesState extends State<Favorites> {
       favListProvider
           .getAllProductsFromFireStore(authProvider.currentUser!.id!);
       return EmptyScreen(
-        buttonText: "Loading",
+        buttonText: "No favorites yet",
         subtitle: 'sdfsdfd',
         title: 'sdf',
       );
@@ -117,7 +116,7 @@ class _FavoritesState extends State<Favorites> {
                                                 .primary,
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 30,
                                         ),
                                         Row(
@@ -154,17 +153,19 @@ class _FavoritesState extends State<Favorites> {
   }
 }
 
+//ignore: must_be_immutable
 class EmptyScreen extends StatelessWidget {
   String? title;
   String? subtitle;
   String? buttonText;
 
-  EmptyScreen({this.title, this.subtitle, this.buttonText});
+  EmptyScreen({super.key, this.title, this.subtitle, this.buttonText});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         automaticallyImplyLeading: false,
         title: Text(AppLocalizations.of(context)!.favorites,
             style: Styles.textOfLabel.copyWith(

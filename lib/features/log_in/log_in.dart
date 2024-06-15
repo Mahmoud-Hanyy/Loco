@@ -92,9 +92,12 @@ class _LogInState extends State<LogIn> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   InkWell(
-                    onTap: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context)=>const ForgotPassword(),));
-                    },
+                    onTap: () async{
+                      await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text);
+                      DialogUtils.showMessage(context, 'Check your email to reset password 😃 ',
+                          title: 'Reset Password',
+                          posActionName: 'ok');
+                      },
                     child: Text(AppLocalizations.of(context)!.forget_your_password,
                       style: Styles.textStyle16.copyWith(
                         color: Theme.of(context).colorScheme.primary,
@@ -107,8 +110,7 @@ class _LogInState extends State<LogIn> {
               StartButton(
                 onPressed: () {
                   logIn();
-                  //Navigator.pushNamed(context, NavigationPage.routeName);
-                },
+                  },
                 textOfButton: AppLocalizations.of(context)!.log_in,
               ),
               const SizedBox(height: 15,),
@@ -130,7 +132,9 @@ class _LogInState extends State<LogIn> {
               const SizedBox(height: 10,),
               InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, RegisterScreen.routeName);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return const RegisterScreen();
+                    }));
                 },
                 child: Text(AppLocalizations.of(context)!.dont_have_an_account_register,
                   style: Styles.textStyle16.copyWith(
@@ -162,8 +166,8 @@ class _LogInState extends State<LogIn> {
         }
         var authProvider = Provider.of<AuthProviders>(context, listen: false);
         authProvider.updateUser(user);
-        DialogUtils.hideLoading(context);
-        DialogUtils.showMessage(context, 'Login Successfully',
+       DialogUtils.hideLoading(context);
+        DialogUtils.showMessage(context, 'Login Successfully ✔️ ',
             title: 'Success', posActionName: 'ok', posAction: () {
           Navigator.of(context).pushReplacementNamed(NavigationPage.routeName);
         });
@@ -172,7 +176,7 @@ class _LogInState extends State<LogIn> {
       } on FirebaseAuthException catch (e) {
         if (e.code == 'invalid-credential') {
           DialogUtils.hideLoading(context);
-          DialogUtils.showMessage(context, 'Invalid password or email',
+          DialogUtils.showMessage(context, 'Invalid password or email ❌ ',
               title: 'Error',
               posActionName: 'ok');
           print('No user found for that email.');

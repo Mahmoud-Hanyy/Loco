@@ -21,4 +21,5 @@ class Assets{
   static const donna = 'lib/resources/images/donna.png';
   static const rika = 'lib/resources/images/rika.png';
   static const google = 'lib/resources/images/google.png';
+  static const sweater = 'lib/resources/images/sweater.png';
 }
