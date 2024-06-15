@@ -1,18 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loco/features/log_in/log_in.dart';
 import 'package:loco/features/model/my_user.dart';
 import 'package:loco/features/navigation/navigation.dart';
+import 'package:provider/provider.dart';
+
 import '../../core/utils/assets.dart';
 import '../../core/utils/dialog_utils.dart';
 import '../../core/utils/firebase_utils.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/custom_text_field.dart';
 import '../../core/widgets/start_button.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../provider/auth_provider.dart';
 
 class RegisterScreen extends StatefulWidget {
-  static const String routeName='registerScreen';
+  static const String routeName = 'registerScreen';
 
   const RegisterScreen({super.key});
 
@@ -194,23 +197,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
           email: emailController.text,
           password: passwordController.text,
         );
-        MyUser myUser=MyUser(
-            id: credential.user?.uid??'',
+        MyUser myUser = MyUser(
+            id: credential.user?.uid ?? '',
             firstName: firstNameController.text,
             lastName: lastNameController.text,
-            email: emailController.text
-        );
+            email: emailController.text);
         await FirebaseUtils.addUserToFireStore(myUser);
+        var authProvider = Provider.of<AuthProviders>(context, listen: false);
+        authProvider.updateUser(myUser);
         DialogUtils.hideLoading(context);
         DialogUtils.showMessage(context, 'Register Successfully',
-            title: 'Success',
-            posActionName: 'ok',
-            posAction: (){
-              Navigator.of(context).pushReplacementNamed(NavigationPage.routeName);
-            }
-        );
+            title: 'Success', posActionName: 'ok', posAction: () {
+          Navigator.of(context).pushReplacementNamed(NavigationPage.routeName);
+        });
         print('register successfully');
-        print(credential.user?.uid??'');
+        print(credential.user?.uid ?? '');
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           DialogUtils.hideLoading(context);

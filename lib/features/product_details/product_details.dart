@@ -1,8 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:loco/core/utils/firebase_utils.dart';
 import 'package:loco/domain/entities/ProductResponseEntity.dart';
+import 'package:loco/features/model/user_fav.dart';
+import 'package:provider/provider.dart';
+
 import '../../core/utils/styles.dart';
 import '../../core/widgets/loco_button.dart';
+import '../../provider/auth_provider.dart';
+import '../../provider/fav_provider.dart';
 
 class ProductDetails extends StatefulWidget {
   static const String routename = 'ProductDetails';
@@ -18,10 +24,12 @@ class _ProductDetailsState extends State<ProductDetails> {
   int quantity = 1;
   String? selectedSize;
   bool addedFav = false;
+  late FavListProvider favlistProvider;
 
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as ProductEntity;
+    var authProvider = Provider.of<AuthProviders>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
@@ -76,16 +84,90 @@ class _ProductDetailsState extends State<ProductDetails> {
                         Text(
                           "${args.price} EGP",
                           style: Styles.textStyle30.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.primary,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(width: MediaQuery.of(context).size.width*0.4,),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                        ),
+
+                        // StreamBuilder(
+                        //   stream: FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser!.email).collection("fav").where("name",isEqualTo: args.name).snapshots(),
+                        //   builder: (BuildContext context,AsyncSnapshot snapchot){
+                        //     if(snapchot.data==null){
+                        //       return Text("");
+                        //     }
+                        //     return  Expanded(
+                        //         child: IconButton(
+                        //             onPressed: () {
+                        //               snapchot.data.docs.length==0?
+                        //               Navigator.of(context).pushNamed(
+                        //                   'fav',
+                        //                   arguments: UserFav(
+                        //                       favProdName: args.name,
+                        //                       favProdPrice: args.price,
+                        //                       favProdImage: args.imageUrl,
+                        //                       favProdDescription:
+                        //                       args.description)):
+                        //                   print("Already added");
+                        //               UserFav userFav = UserFav(
+                        //                   favProdName: args.name,
+                        //                   favProdPrice: args.price,
+                        //                   favProdImage: args.imageUrl,
+                        //                   favProdDescription: args.description);
+                        //               FirebaseUtils.addProductToFireStore(userFav,
+                        //                   authProvider.currentUser!.id!)
+                        //                   .timeout(Duration(milliseconds: 500),
+                        //                   onTimeout: () {
+                        //                     print("product added successfully");
+                        //                     favlistProvider.getAllProductsFromFireStore(
+                        //                         authProvider.currentUser!.id!);
+                        //                   });
+                        //
+                        //               setState(() {
+                        //                 addedFav = !addedFav;
+                        //               });
+                        //             },
+                        //             icon:snapchot.data.docs.length==0? Icon(
+                        //               Icons.favorite_border_outlined,
+                        //               color: Theme.of(context).colorScheme.primary,
+                        //               size: 35,
+                        //             ):Icon(
+                        //               Icons.favorite,
+                        //               color: Theme.of(context).colorScheme.primary,
+                        //               size: 35,
+                        //             )
+                        //         )
+                        //     );
+                        //   },
+                        //
+                        // ),
                         Expanded(
                           child: IconButton(
                               onPressed: () {
                                 setState(() {
+                                  Navigator.of(context).pushNamed('fav',
+                                      arguments: UserFav(
+                                          favProdName: args.name,
+                                          favProdPrice: args.price,
+                                          favProdImage: args.imageUrl,
+                                          favProdDescription:
+                                              args.description));
+                                  UserFav userFav = UserFav(
+                                      favProdName: args.name,
+                                      favProdPrice: args.price,
+                                      favProdImage: args.imageUrl,
+                                      favProdDescription: args.description);
+                                  FirebaseUtils.addProductToFireStore(userFav,
+                                          authProvider.currentUser!.id!)
+                                      .timeout(Duration(milliseconds: 500),
+                                          onTimeout: () {
+                                    print("product added successfully");
+                                    favlistProvider.getAllProductsFromFireStore(
+                                        authProvider.currentUser!.id!);
+                                  });
                                   addedFav = !addedFav;
                                 });
                               },
@@ -238,17 +320,4 @@ class _ProductDetailsState extends State<ProductDetails> {
     }
     return quantity;
   }
-}
-
-class ProductDetailsArgs {
-  String productName;
-  String imagePath;
-  int price;
-
-  ProductDetailsArgs({
-    required this.productName /* required this.index*/,
-    required this.price,
-    required this.imagePath,
-    /* required int index*/
-  });
 }

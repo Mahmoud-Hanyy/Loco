@@ -16,7 +16,7 @@ class NavigationCubit extends Cubit<NavigationState>{
   List<Widget> pages = [
     HomePage(),
     Categories(),
-    const Favorites(),
+    Favorites(),
     const Profile(),
   ];
 

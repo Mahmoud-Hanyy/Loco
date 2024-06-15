@@ -1,14 +1,17 @@
-
 import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:loco/features/favorites/favorites.dart';
 import 'package:loco/features/home/home.dart';
 import 'package:loco/features/payment/payment_method.dart';
 import 'package:loco/features/profile/profile.dart';
 import 'package:loco/provider/app_config_provider.dart';
+import 'package:loco/provider/auth_provider.dart';
+import 'package:loco/provider/fav_provider.dart';
 import 'package:provider/provider.dart';
+
 import 'core/utils/themes.dart';
 import 'features/cart/add_to_cart.dart';
 import 'features/log_in/log_in.dart';
@@ -21,20 +24,25 @@ import 'features/profile/profiles/personal_info.dart';
 import 'features/profile/profiles/settings.dart';
 import 'features/register/register.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Platform.isAndroid?
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-        apiKey: "AIzaSyDq3vnxzDBMxLwplsqHQB904sTRlZduOa0",
-        appId:  "1:528924836776:android:a52865019acbde2913d39d",
-        messagingSenderId: "528924836776",
-        projectId: "loco-238a7"),
-  ):
-  await Firebase.initializeApp();
-  runApp(ChangeNotifierProvider(
-      create: ((context)=>AppConfigProvider()),
-      child: const Loco()));
+  Platform.isAndroid
+      ? await Firebase.initializeApp(
+          options: const FirebaseOptions(
+              apiKey: "AIzaSyDq3vnxzDBMxLwplsqHQB904sTRlZduOa0",
+              appId: "1:528924836776:android:a52865019acbde2913d39d",
+              messagingSenderId: "528924836776",
+              projectId: "loco-238a7"),
+        )
+      : await Firebase.initializeApp();
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => AppConfigProvider()),
+      ChangeNotifierProvider(create: (context) => AuthProviders()),
+      ChangeNotifierProvider(create: (context) => FavListProvider()),
+    ],
+    child: const Loco(),
+  ));
 }
 
 class Loco extends StatelessWidget {
@@ -51,14 +59,15 @@ class Loco extends StatelessWidget {
         OnBoarding.routeName: (context) => const OnBoarding(),
         OnBoarding1.routeName: (context) => const OnBoarding1(),
         OnBoarding2.routeName: (context) => const OnBoarding2(),
-        LogIn.routeName: (context) =>  const LogIn(),
-        RegisterScreen.routeName: (context) =>  const RegisterScreen(),
+        LogIn.routeName: (context) => const LogIn(),
+        RegisterScreen.routeName: (context) => const RegisterScreen(),
         ProductDetails.routename: (context) => ProductDetails(),
         AddToCart.routename: (context) => AddToCart(),
         Settings.routeName: (context) => const Settings(),
         PaymentMethod.routeName: (context) => const PaymentMethod(),
         Profile.routename: (context) => const Profile(),
-        HomePage.routename: (context) =>  HomePage(),
+        HomePage.routename: (context) => HomePage(),
+        'fav': (context) => Favorites(),
         NavigationPage.routeName: (context) => const NavigationPage(),
         PersonalInformation.routename: (context) => const PersonalInformation(),
       },

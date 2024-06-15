@@ -1,16 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:loco/core/widgets/custom_text_field.dart';
 import 'package:loco/features/home/home.dart';
 import 'package:loco/features/navigation/navigation.dart';
+import 'package:provider/provider.dart';
+
 import '../../core/utils/assets.dart';
 import '../../core/utils/dialog_utils.dart';
 import '../../core/utils/firebase_utils.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/start_button.dart';
+import '../../provider/auth_provider.dart';
 import '../register/register.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LogIn extends StatefulWidget {
   static const String routeName = 'login';
@@ -147,23 +150,25 @@ class _LogInState extends State<LogIn> {
     if(formKey.currentState?.validate()==true){
       DialogUtils.showLoading(context, 'Loading');
       try {
-        final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        final credential =
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
-        var user= await FirebaseUtils.readUserFromFireStore(credential.user?.uid??'');
-        if(user==null){
-          return ;
+        var user = await FirebaseUtils.readUserFromFireStore(
+            credential.user?.uid ?? '');
+        if (user == null) {
+          return;
         }
+        var authProvider = Provider.of<AuthProviders>(context, listen: false);
+        authProvider.updateUser(user);
         DialogUtils.hideLoading(context);
         DialogUtils.showMessage(context, 'Login Successfully',
-            title: 'Success',
-            posActionName: 'ok',
-            posAction: (){
-              Navigator.of(context).pushReplacementNamed(NavigationPage.routeName);
-            });
+            title: 'Success', posActionName: 'ok', posAction: () {
+          Navigator.of(context).pushReplacementNamed(NavigationPage.routeName);
+        });
         print('login successfully');
-        print(credential.user?.uid??'');
+        print(credential.user?.uid ?? '');
       } on FirebaseAuthException catch (e) {
         if (e.code == 'invalid-credential') {
           DialogUtils.hideLoading(context);

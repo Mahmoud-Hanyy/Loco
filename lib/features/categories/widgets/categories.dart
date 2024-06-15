@@ -37,7 +37,7 @@ class Categories extends StatelessWidget {
           TextField(
             decoration: InputDecoration(
                 prefixIcon: Icon(Icons.search),
-                hintText: 'Search...',
+                hintText: AppLocalizations.of(context)!.search,
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
                     borderSide: BorderSide(color: Colors.white)),
