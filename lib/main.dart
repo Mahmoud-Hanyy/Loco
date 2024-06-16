@@ -8,16 +8,20 @@ import 'package:loco/features/favorites/favorites.dart';
 import 'package:loco/features/home/home.dart';
 import 'package:loco/features/payment/payment_method.dart';
 import 'package:loco/features/profile/profile.dart';
+import 'package:loco/features/woman_products_page.dart';
 import 'package:loco/provider/app_config_provider.dart';
 import 'package:loco/provider/auth_provider.dart';
 import 'package:loco/provider/fav_provider.dart';
 import 'package:provider/provider.dart';
 import 'core/utils/constants.dart';
 import 'core/utils/themes.dart';
+import 'features/accessories_page.dart';
 import 'features/cart/add_to_cart.dart';
 import 'features/color_picker/color_picker.dart';
+import 'features/kids_products_page.dart';
 import 'features/loco_assistant/loco_assistant.dart';
 import 'features/log_in/log_in.dart';
+import 'features/men_product_page.dart';
 import 'features/navigation/navigation.dart';
 import 'features/on_boarding/on_boarding.dart';
 import 'features/on_boarding/on_boarding1.dart';
@@ -76,6 +80,10 @@ class Loco extends StatelessWidget {
         LocoAssistant.routeName: (context) => const LocoAssistant(),
         ColorPickerScreen.routeName: (context) => const ColorPickerScreen(),
         Categories.routeName: (context) => Categories(),
+        MenProductsPage.routename: (context) => MenProductsPage(),
+        WomanProductsPage.routename: (context) => WomanProductsPage(),
+        KidsProductsPage.routename: (context) => KidsProductsPage(),
+        AccessoriesPage.routename: (context) => AccessoriesPage(),
       },
       darkTheme: darkMode,
       themeMode: ThemeMode.system,

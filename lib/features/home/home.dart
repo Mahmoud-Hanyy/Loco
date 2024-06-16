@@ -5,14 +5,19 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loco/core/utils/assets.dart';
 import 'package:loco/core/widgets/package_item.dart';
 import '../../core/utils/styles.dart';
+import '../accessories_page.dart';
 import '../cart/add_to_cart.dart';
 import '../categories/widgets/categories.dart';
 import '../color_picker/color_picker.dart';
+import '../kids_products_page.dart';
 import '../loco_assistant/loco_assistant.dart';
+import '../men_product_page.dart';
+import '../woman_products_page.dart';
 
 //ignore:must_be_immutable
 class HomePage extends StatelessWidget {
   static const String routename = 'Home';
+
   const HomePage({super.key});
 
   @override
@@ -138,27 +143,33 @@ class HomePage extends StatelessWidget {
                             children: [
                               Column(
                                 children: [
-                                  Container(
-                                    height: MediaQuery.of(context).size.height * 0.14,
-                                    width: MediaQuery.of(context).size.height * 0.14,
-                                    decoration: BoxDecoration(
-                                      image: const DecorationImage(
-                                        image: AssetImage(Assets.man),
-                                        fit: BoxFit.cover,
-                                      ),
-                                      shape: BoxShape.circle,
-                                      color: Theme.of(context).colorScheme.primary,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    AppLocalizations.of(context)!.men,
-                                    style: Styles.textStyle16.copyWith(
-                                      fontSize: 15,
-                                      color: Theme.of(context).colorScheme.primary,
-                                    ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, MenProductsPage.routename);
+                            },
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.14,
+                              width: MediaQuery.of(context).size.height * 0.14,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage(Assets.man),
+                                  fit: BoxFit.cover,
+                                ),
+                                shape: BoxShape.circle,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.men,
+                            style: Styles.textStyle16.copyWith(
+                              fontSize: 15,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                                   ),
                                 ],
                               ),
@@ -167,27 +178,33 @@ class HomePage extends StatelessWidget {
                               ),
                               Column(
                                 children: [
-                                  Container(
-                                    height: MediaQuery.of(context).size.height * 0.14,
-                                    width: MediaQuery.of(context).size.height * 0.14,
-                                    decoration: BoxDecoration(
-                                      image: const DecorationImage(
-                                        image: AssetImage(Assets.woman),
-                                        fit: BoxFit.cover,
-                                      ),
-                                      shape: BoxShape.circle,
-                                      color: Theme.of(context).colorScheme.primary,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    AppLocalizations.of(context)!.women,
-                                    style: Styles.textStyle16.copyWith(
-                                      fontSize: 15,
-                                      color: Theme.of(context).colorScheme.primary,
-                                    ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, WomanProductsPage.routename);
+                            },
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.14,
+                              width: MediaQuery.of(context).size.height * 0.14,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage(Assets.woman),
+                                  fit: BoxFit.cover,
+                                ),
+                                shape: BoxShape.circle,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.women,
+                            style: Styles.textStyle16.copyWith(
+                              fontSize: 15,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                                   ),
                                 ],
                               ),
@@ -196,27 +213,33 @@ class HomePage extends StatelessWidget {
                               ),
                               Column(
                                 children: [
-                                  Container(
-                                    height: MediaQuery.of(context).size.height * 0.14,
-                                    width: MediaQuery.of(context).size.height * 0.14,
-                                    decoration: BoxDecoration(
-                                      image: const DecorationImage(
-                                        image: AssetImage(Assets.kid),
-                                        fit: BoxFit.fill,
-                                      ),
-                                      shape: BoxShape.circle,
-                                      color: Theme.of(context).colorScheme.primary,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    AppLocalizations.of(context)!.kids,
-                                    style: Styles.textStyle16.copyWith(
-                                      fontSize: 15,
-                                      color: Theme.of(context).colorScheme.primary,
-                                    ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, KidsProductsPage.routename);
+                            },
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.14,
+                              width: MediaQuery.of(context).size.height * 0.14,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage(Assets.kid),
+                                  fit: BoxFit.fill,
+                                ),
+                                shape: BoxShape.circle,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.kids,
+                            style: Styles.textStyle16.copyWith(
+                              fontSize: 15,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                                   ),
                                 ],
                               ),
@@ -225,27 +248,33 @@ class HomePage extends StatelessWidget {
                               ),
                               Column(
                                 children: [
-                                  Container(
-                                    height: MediaQuery.of(context).size.height * 0.14,
-                                    width: MediaQuery.of(context).size.height * 0.14,
-                                    decoration: BoxDecoration(
-                                      image: const DecorationImage(
-                                        image: AssetImage(Assets.acc),
-                                        fit: BoxFit.fill,
-                                      ),
-                                      shape: BoxShape.circle,
-                                      color: Theme.of(context).colorScheme.primary,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    AppLocalizations.of(context)!.accessories,
-                                    style: Styles.textStyle16.copyWith(
-                                      fontSize: 15,
-                                      color: Theme.of(context).colorScheme.primary,
-                                    ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, AccessoriesPage.routename);
+                            },
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.14,
+                              width: MediaQuery.of(context).size.height * 0.14,
+                              decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                  image: AssetImage(Assets.acc),
+                                  fit: BoxFit.fill,
+                                ),
+                                shape: BoxShape.circle,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.accessories,
+                            style: Styles.textStyle16.copyWith(
+                              fontSize: 15,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                                   ),
                                 ],
                               ),

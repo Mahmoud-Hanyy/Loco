@@ -77,56 +77,57 @@ class _ColorPickerScreenState extends State<ColorPickerScreen> {
         title: Text('Loco color picker',
             style: Styles.textStyle30.copyWith(
                 color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.bold
-            )
-        ),
+                fontWeight: FontWeight.bold)),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('Selected Color:',style: Styles.textStyle24.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.bold
-            )),
-            const SizedBox(height: 20),
-            Container(
-              height: 200,
-              width: 200,
-              color: _selectedColor,
-            ),
-            const SizedBox(height: 20),
-            Text('Color Palette:',style: Styles.textStyle24.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.bold
-            )
-            ),
-            const SizedBox(height: 20),
-            Wrap(
-              spacing: 8.0,
-              runSpacing: 8.0,
-              children: _colorPalette.map((color) {
-                return Container(
-                  height: 100,
-                  width: 100,
-                  color: color,
-                );
-              }).toList(),
-            ),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Theme.of(context).colorScheme.surface,
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                fixedSize: const Size(200, 50),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Selected Color:',
+                  style: Styles.textStyle24.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.bold)),
+              const SizedBox(height: 20),
+              Container(
+                height: 200,
+                width: 200,
+                color: _selectedColor,
               ),
-              onPressed: () => _openColorPicker(context),
-              child: Text('Pick a color',style: Styles.textStyle16.copyWith(
-                  color: Theme.of(context).colorScheme.surface,
-                  fontWeight: FontWeight.bold
-              ),),
-            ),
-          ],
+              const SizedBox(height: 20),
+              Text('Color Palette:',
+                  style: Styles.textStyle24.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.bold)),
+              const SizedBox(height: 20),
+              Wrap(
+                spacing: 8.0,
+                runSpacing: 8.0,
+                children: _colorPalette.map((color) {
+                  return Container(
+                    height: 100,
+                    width: 100,
+                    color: color,
+                  );
+                }).toList(),
+              ),
+              const SizedBox(height: 40),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Theme.of(context).colorScheme.surface,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  fixedSize: const Size(200, 50),
+                ),
+                onPressed: () => _openColorPicker(context),
+                child: Text(
+                  'Pick a color',
+                  style: Styles.textStyle16.copyWith(
+                      color: Theme.of(context).colorScheme.surface,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
