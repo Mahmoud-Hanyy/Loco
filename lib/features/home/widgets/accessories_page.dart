@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:loco/features/services.dart';
+import 'package:loco/features/home/widgets/services.dart';
+import '../../../core/utils/styles.dart';
+import '../../../core/widgets/product_item.dart';
+import '../../../domain/di.dart';
+import '../../../domain/entities/ProductResponseEntity.dart';
+import '../../categories/cubit/product_list_view_model.dart';
 
-import '../core/utils/styles.dart';
-import '../core/widgets/product_item.dart';
-import '../domain/di.dart';
-import '../domain/entities/ProductResponseEntity.dart';
-import 'categories/cubit/product_list_view_model.dart';
-
-class WomanProductsPage extends StatefulWidget {
-  static const String routename = 'womanProductPage';
+//ignore:must_be_immutable
+class AccessoriesPage extends StatefulWidget {
+  static const String routename = 'AccessoriesProductPage';
   ProductListViewModel viewModel = ProductListViewModel(
       getAllProductsUseCase: injectGetAllProductsUseCase());
 
+  AccessoriesPage({super.key});
+
   @override
-  _WomanProductsPageState createState() => _WomanProductsPageState();
+  State<AccessoriesPage> createState() => _AccessoriesPageState();
 }
 
-class _WomanProductsPageState extends State<WomanProductsPage> {
+class _AccessoriesPageState extends State<AccessoriesPage> {
   filterProduct() {
     ApiServices().myFilterList().then((value) {
       myItems(value!.clothes!);
@@ -30,7 +32,7 @@ class _WomanProductsPageState extends State<WomanProductsPage> {
 
   List<ProductEntity> myItems(List<ProductEntity> list) {
     for (var element in list) {
-      if (element.category == 'Women') {
+      if (element.category == 'Accessories') {
         filterLists.add(element);
       }
     }
@@ -43,11 +45,12 @@ class _WomanProductsPageState extends State<WomanProductsPage> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            AppLocalizations.of(context)!.women,
+            AppLocalizations.of(context)!.accessories,
             style: Styles.textOfLabel.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),
@@ -65,21 +68,9 @@ class _WomanProductsPageState extends State<WomanProductsPage> {
               childAspectRatio: 1 / 1.30),
           itemCount: filterLists.length,
           itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-                onTap: () {
-                  // Navigator.of(context).pushNamed(
-                  // ProductDetails.routename,
-                  // arguments: state.productList[index]);
-                },
-                child: ProductItem(productEntity: filterLists[index]));
+            return ProductItem(productEntity: filterLists[index]);
           },
         )
-        // body: ListView.builder(
-        //   itemCount: filterLists.length,
-        //     itemBuilder: (context,index){
-        //       return ListTile(title:
-        //       Text(filterLists[index].imageUrl.toString()));
-        //     }),
-        );
+          );
   }
 }

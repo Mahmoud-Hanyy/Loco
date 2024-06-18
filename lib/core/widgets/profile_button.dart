@@ -24,7 +24,7 @@ class ProfileButton extends StatelessWidget {
           const SizedBox(width: 10),
           Text(
             text,
-            style: Styles.textStyle20.copyWith(
+            style: Styles.textStyle24.copyWith(
               fontWeight: FontWeight.bold,
               color: Theme.of(context).colorScheme.primary,
             ),
