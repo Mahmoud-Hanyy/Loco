@@ -13,6 +13,7 @@ import 'package:loco/provider/app_config_provider.dart';
 import 'package:loco/provider/auth_provider.dart';
 import 'package:loco/provider/fav_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'core/utils/constants.dart';
 import 'core/utils/themes.dart';
 import 'features/accessories_page.dart';
@@ -31,21 +32,28 @@ import 'features/profile/profiles/personal_info.dart';
 import 'features/profile/profiles/settings.dart';
 import 'features/register/register.dart';
 
-void main() async {
+int? initScreen;
+
+Future<void> main() async {
   Gemini.init(apiKey: geminiApiKey);
   WidgetsFlutterBinding.ensureInitialized();
-  Platform.isAndroid ?
-  await Firebase.initializeApp(
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  initScreen = await preferences.getInt('initScreen');
+  await preferences.setInt('initScreen', 1);
+  Platform.isAndroid
+      ? await Firebase.initializeApp(
           options: const FirebaseOptions(
               apiKey: "AIzaSyDq3vnxzDBMxLwplsqHQB904sTRlZduOa0",
               appId: "1:528924836776:android:a52865019acbde2913d39d",
               messagingSenderId: "528924836776",
               projectId: "loco-238a7"),
-        ) : await Firebase.initializeApp();
+        )
+      : await Firebase.initializeApp();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => AppConfigProvider()),
-      ChangeNotifierProvider(create: (context) => AuthProviders()),
+      ChangeNotifierProvider(create: (context) => AuthProvidersr()),
       ChangeNotifierProvider(create: (context) => FavListProvider()),
     ],
     child: const Loco(),
@@ -61,7 +69,8 @@ class Loco extends StatelessWidget {
     var provider = Provider.of<AppConfigProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'onBoarding',
+      initialRoute:
+          initScreen == 0 || initScreen == null ? 'onBoarding' : 'nav',
       routes: {
         OnBoarding.routeName: (context) => const OnBoarding(),
         OnBoarding1.routeName: (context) => const OnBoarding1(),

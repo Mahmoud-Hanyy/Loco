@@ -193,7 +193,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       DialogUtils.showLoading(context, 'Loading...');
       //await Future.delayed(Duration(seconds: 2));
       try {
-        final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        final credential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
@@ -203,7 +204,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             lastName: lastNameController.text,
             email: emailController.text);
         await FirebaseUtils.addUserToFireStore(myUser);
-        var authProvider = Provider.of<AuthProviders>(context, listen: false);
+        var authProvider = Provider.of<AuthProvidersr>(context, listen: false);
+        authProvider.updateUser(myUser);
         authProvider.updateUser(myUser);
         DialogUtils.hideLoading(context);
         DialogUtils.showMessage(context, 'Register Successfully ✔️ ',

@@ -1,19 +1,37 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:loco/features/profile/profiles/history_of_payment.dart';
 import 'package:loco/features/profile/profiles/personal_info.dart';
 import 'package:loco/features/profile/profiles/settings.dart';
+
 import '../../core/utils/assets.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/profile_button.dart';
+import '../log_in/log_in.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
+
   static const String routename = 'Profile';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  await GoogleSignIn().signOut();
+                  FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushReplacementNamed(LogIn.routeName);
+                },
+                icon: Icon(
+                  Icons.power_settings_new,
+                  size: 20,
+                ))
+          ],
           automaticallyImplyLeading: false,
           title: Text(AppLocalizations.of(context)!.profile,
               style: Styles.textOfLabel.copyWith(
@@ -28,58 +46,58 @@ class Profile extends StatelessWidget {
         body: SingleChildScrollView(
           child: Center(
               child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Image.asset(Assets.icon, scale: 1.7),
-              const SizedBox(height: 20),
-              Text('Mike Arte',
-                  style: Styles.textStyle24.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary,
-                  )),
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Image.asset(Assets.icon, scale: 1.7),
+                  const SizedBox(height: 20),
+                  Text('Mike Arte',
+                      style: Styles.textStyle24.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.primary,
+                      )),
                   const SizedBox(height: 40),
                   Padding(
-                padding:
+                    padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                child: Column(
-                  children: [
-                    ProfileButton(
-                        text: AppLocalizations.of(context)!.personal_information,
-                        icon: Icons.person,
-                        onTap: () {
-                          Navigator.pushNamed(
-                              context, PersonalInformation.routename);
-                        }),
-                    const SizedBox(height: 40),
-                    ProfileButton(
-                        text: AppLocalizations.of(context)!.history_of_payment,
-                        icon: Icons.history_outlined,
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const HistoryOfPayment(),
-                              ));
-                        }),
-                    const SizedBox(height: 40),
-                    ProfileButton(
-                        text: AppLocalizations.of(context)!.settings,
-                        icon: Icons.settings_outlined,
-                        onTap: () {
-                          Navigator.pushNamed(context, Settings.routeName);
-                        }),
-                    const SizedBox(height: 40),
-                    ProfileButton(
-                        text: AppLocalizations.of(context)!.become_a_seller,
-                        icon: Icons.sell_outlined,
-                        onTap: () {}),
-                  ],
-                ),
-              ),
-            ],
-          )),
+                    child: Column(
+                      children: [
+                        ProfileButton(
+                            text: AppLocalizations.of(context)!.personal_information,
+                            icon: Icons.person,
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, PersonalInformation.routename);
+                            }),
+                        const SizedBox(height: 40),
+                        ProfileButton(
+                            text: AppLocalizations.of(context)!.history_of_payment,
+                            icon: Icons.history_outlined,
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HistoryOfPayment(),
+                                  ));
+                            }),
+                        const SizedBox(height: 40),
+                        ProfileButton(
+                            text: AppLocalizations.of(context)!.settings,
+                            icon: Icons.settings_outlined,
+                            onTap: () {
+                              Navigator.pushNamed(context, Settings.routeName);
+                            }),
+                        const SizedBox(height: 40),
+                        ProfileButton(
+                            text: AppLocalizations.of(context)!.become_a_seller,
+                            icon: Icons.sell_outlined,
+                            onTap: () {}),
+                      ],
+                    ),
+                  ),
+                ],
+              )),
         ));
   }
 }

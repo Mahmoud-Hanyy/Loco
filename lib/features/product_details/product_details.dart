@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loco/core/utils/firebase_utils.dart';
 import 'package:loco/domain/entities/ProductResponseEntity.dart';
@@ -29,7 +30,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as ProductEntity;
-    var authProvider = Provider.of<AuthProviders>(context);
+    var authProvider = Provider.of<AuthProvidersr>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(

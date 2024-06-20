@@ -164,9 +164,10 @@ class _LogInState extends State<LogIn> {
         if (user == null) {
           return;
         }
-        var authProvider = Provider.of<AuthProviders>(context, listen: false);
+        var authProvider = Provider.of<AuthProvidersr>(context, listen: false);
         authProvider.updateUser(user);
-       DialogUtils.hideLoading(context);
+        authProvider.updateUser(user);
+        DialogUtils.hideLoading(context);
         DialogUtils.showMessage(context, 'Login Successfully ✔️ ',
             title: 'Success', posActionName: 'ok', posAction: () {
           Navigator.of(context).pushReplacementNamed(NavigationPage.routeName);

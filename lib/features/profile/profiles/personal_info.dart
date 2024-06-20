@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/utils/styles.dart';
+import '../../../provider/auth_provider.dart';
 
 class PersonalInformation extends StatelessWidget {
   const PersonalInformation({super.key});
   static const String routename = 'Personal';
   @override
   Widget build(BuildContext context) {
+    var authProvider = Provider.of<AuthProvidersr>(context);
+
     return SafeArea(
       child: Scaffold(
           backgroundColor: Theme.of(context).colorScheme.surface,
@@ -51,7 +55,7 @@ class PersonalInformation extends StatelessWidget {
                         width: 20,
                       ),
                       Text(
-                        'Mike Areta',
+                        '${authProvider.currentUser!.firstName} ${authProvider.currentUser!.lastName} ',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.surface,
@@ -92,7 +96,7 @@ class PersonalInformation extends StatelessWidget {
                         width: 20,
                       ),
                       Text(
-                        'Mike132@gmail.com',
+                        '${authProvider.currentUser!.email}',
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.surface,
@@ -109,45 +113,6 @@ class PersonalInformation extends StatelessWidget {
                 ),
                 const SizedBox(
                   height: 40,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  width: MediaQuery.of(context).size.width * 0.92,
-                  height: MediaQuery.of(context).size.height * 0.08,
-                  child: Row(
-                    children: [
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        'Phone : ',
-                        style: Styles.textStyle18.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.surface,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      Text(
-                        '+201069169594',
-                        overflow: TextOverflow.ellipsis,
-                        style: Styles.textStyle18.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.surface,
-                        ),
-                      ),
-                      const Spacer(),
-                      IconButton(
-                        icon: Icon(Icons.edit,
-                            color: Theme.of(context).colorScheme.surface),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
                 ),
               ],
             ),

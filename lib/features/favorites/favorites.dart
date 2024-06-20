@@ -26,7 +26,7 @@ class _FavoritesState extends State<Favorites> {
   @override
   Widget build(BuildContext context) {
     var favListProvider = Provider.of<FavListProvider>(context);
-    var authProvider = Provider.of<AuthProviders>(context);
+    var authProvider = Provider.of<AuthProvidersr>(context);
     if (favListProvider.favList.isEmpty) {
       favListProvider
           .getAllProductsFromFireStore(authProvider.currentUser!.id!);
