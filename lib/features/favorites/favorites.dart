@@ -69,8 +69,8 @@ class _FavoritesState extends State<Favorites> {
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            height: MediaQuery.of(context).size.height * 0.2,
+                            width: 140,
+                            height: 145,
                             child: Row(
                               children: [
                                 Container(

@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:loco/features/services.dart';
+import 'package:loco/features/home/widgets/services.dart';
 
-import '../core/utils/styles.dart';
-import '../core/widgets/product_item.dart';
-import '../domain/di.dart';
-import '../domain/entities/ProductResponseEntity.dart';
-import 'categories/cubit/product_list_view_model.dart';
+import '../../../core/utils/styles.dart';
+import '../../../core/widgets/product_item.dart';
+import '../../../domain/di.dart';
+import '../../../domain/entities/ProductResponseEntity.dart';
+import '../../categories/cubit/product_list_view_model.dart';
 
+//ignore:must_be_immutable
 class AccessoriesPage extends StatefulWidget {
   static const String routename = 'AccessoriesProductPage';
   ProductListViewModel viewModel = ProductListViewModel(
       getAllProductsUseCase: injectGetAllProductsUseCase());
+
+  AccessoriesPage({super.key});
 
   @override
   State<AccessoriesPage> createState() => _AccessoriesPageState();
@@ -43,6 +46,7 @@ class _AccessoriesPageState extends State<AccessoriesPage> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -65,21 +69,8 @@ class _AccessoriesPageState extends State<AccessoriesPage> {
               childAspectRatio: 1 / 1.30),
           itemCount: filterLists.length,
           itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-                onTap: () {
-                  // Navigator.of(context).pushNamed(
-                  // ProductDetails.routename,
-                  // arguments: state.productList[index]);
-                },
-                child: ProductItem(productEntity: filterLists[index]));
+            return ProductItem(productEntity: filterLists[index]);
           },
-        )
-        // body: ListView.builder(
-        //   itemCount: filterLists.length,
-        //     itemBuilder: (context,index){
-        //       return ListTile(title:
-        //       Text(filterLists[index].imageUrl.toString()));
-        //     }),
-        );
+        ));
   }
 }

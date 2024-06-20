@@ -1,24 +1,26 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:loco/features/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:loco/features/home/widgets/services.dart';
 
-import '../core/utils/styles.dart';
-import '../core/widgets/product_item.dart';
-import '../domain/di.dart';
-import '../domain/entities/ProductResponseEntity.dart';
-import 'categories/cubit/product_list_view_model.dart';
+import '../../../core/utils/styles.dart';
+import '../../../core/widgets/product_item.dart';
+import '../../../domain/di.dart';
+import '../../../domain/entities/ProductResponseEntity.dart';
+import '../../categories/cubit/product_list_view_model.dart';
 
-class KidsProductsPage extends StatefulWidget {
-  static const String routename = 'kidsProductPage';
+//ignore:must_be_immutable
+class MenProductsPage extends StatefulWidget {
+  static const String routename = 'menProductPage';
   ProductListViewModel viewModel = ProductListViewModel(
       getAllProductsUseCase: injectGetAllProductsUseCase());
 
+  MenProductsPage({super.key});
+
   @override
-  State<KidsProductsPage> createState() => _KidsProductsPageState();
+  State<MenProductsPage> createState() => _MenProductsPageState();
 }
 
-class _KidsProductsPageState extends State<KidsProductsPage> {
+class _MenProductsPageState extends State<MenProductsPage> {
   filterProduct() {
     ApiServices().myFilterList().then((value) {
       myItems(value!.clothes!);
@@ -31,7 +33,7 @@ class _KidsProductsPageState extends State<KidsProductsPage> {
 
   List<ProductEntity> myItems(List<ProductEntity> list) {
     for (var element in list) {
-      if (element.category == 'Children') {
+      if (element.category == 'Men') {
         filterLists.add(element);
       }
     }
@@ -44,11 +46,12 @@ class _KidsProductsPageState extends State<KidsProductsPage> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            AppLocalizations.of(context)!.kids,
+            AppLocalizations.of(context)!.men,
             style: Styles.textOfLabel.copyWith(
               color: Theme.of(context).colorScheme.primary,
             ),
@@ -66,21 +69,8 @@ class _KidsProductsPageState extends State<KidsProductsPage> {
               childAspectRatio: 1 / 1.30),
           itemCount: filterLists.length,
           itemBuilder: (BuildContext context, int index) {
-            return InkWell(
-                onTap: () {
-                  // Navigator.of(context).pushNamed(
-                  // ProductDetails.routename,
-                  // arguments: state.productList[index]);
-                },
-                child: ProductItem(productEntity: filterLists[index]));
+            return ProductItem(productEntity: filterLists[index]);
           },
-        )
-        // body: ListView.builder(
-        //   itemCount: filterLists.length,
-        //     itemBuilder: (context,index){
-        //       return ListTile(title:
-        //       Text(filterLists[index].imageUrl.toString()));
-        //     }),
-        );
+        ));
   }
 }

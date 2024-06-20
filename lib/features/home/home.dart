@@ -4,15 +4,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loco/core/utils/assets.dart';
 import 'package:loco/core/widgets/package_item.dart';
+import 'package:loco/features/home/widgets/accessories_page.dart';
+import 'package:loco/features/home/widgets/kids_products_page.dart';
+import 'package:loco/features/home/widgets/men_product_page.dart';
+
 import '../../core/utils/styles.dart';
-import '../accessories_page.dart';
 import '../cart/add_to_cart.dart';
 import '../categories/widgets/categories.dart';
 import '../color_picker/color_picker.dart';
-import '../kids_products_page.dart';
 import '../loco_assistant/loco_assistant.dart';
-import '../men_product_page.dart';
-import '../woman_products_page.dart';
+import 'widgets/woman_products_page.dart';
 
 //ignore:must_be_immutable
 class HomePage extends StatelessWidget {
