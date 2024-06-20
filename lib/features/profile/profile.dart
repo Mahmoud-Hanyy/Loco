@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:loco/features/profile/profiles/history_of_payment.dart';
-import 'package:loco/features/profile/profiles/personal_info.dart';
 import 'package:loco/features/profile/profiles/settings.dart';
+import 'package:provider/provider.dart';
 
-import '../../core/utils/assets.dart';
 import '../../core/utils/styles.dart';
 import '../../core/widgets/profile_button.dart';
+import '../../provider/auth_provider.dart';
 import '../log_in/log_in.dart';
 
 class Profile extends StatelessWidget {
@@ -18,6 +18,8 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var authProvider = Provider.of<AuthProvidersr>(context);
+
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -47,32 +49,35 @@ class Profile extends StatelessWidget {
           child: Center(
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Image.asset(Assets.icon, scale: 1.7),
-                  const SizedBox(height: 20),
-                  Text('Mike Arte',
-                      style: Styles.textStyle24.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary,
-                      )),
-                  const SizedBox(height: 40),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                    child: Column(
-                      children: [
-                        ProfileButton(
-                            text: AppLocalizations.of(context)!.personal_information,
-                            icon: Icons.person,
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, PersonalInformation.routename);
-                            }),
-                        const SizedBox(height: 40),
-                        ProfileButton(
-                            text: AppLocalizations.of(context)!.history_of_payment,
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                '${authProvider.currentUser!.firstName} ${authProvider.currentUser!.lastName} ',
+                style: Styles.textStyle30.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                '${authProvider.currentUser!.email}',
+                style: Styles.textStyle18.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 10.0),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 40),
+                    ProfileButton(
+                        text: AppLocalizations.of(context)!.history_of_payment,
                             icon: Icons.history_outlined,
                             onTap: () {
                               Navigator.push(
