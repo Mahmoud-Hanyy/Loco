@@ -28,8 +28,7 @@ class _FavoritesState extends State<Favorites> {
     var favListProvider = Provider.of<FavListProvider>(context);
     var authProvider = Provider.of<AuthProvidersr>(context);
     if (favListProvider.favList.isEmpty) {
-      favListProvider
-          .getAllProductsFromFireStore(authProvider.currentUser!.id!);
+      favListProvider.getAllProductsFromFireStore(authProvider.currentUser!.id!);
       return EmptyScreen(
         buttonText: "No favorites yet",
         subtitle: 'sdfsdfd',
@@ -164,6 +163,7 @@ class EmptyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         scrolledUnderElevation: 0,
         automaticallyImplyLeading: false,
@@ -177,6 +177,7 @@ class EmptyScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
             child: TextButton(

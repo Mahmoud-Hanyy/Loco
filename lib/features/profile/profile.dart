@@ -5,6 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:loco/features/profile/profiles/history_of_payment.dart';
 import 'package:loco/features/profile/profiles/settings.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/utils/styles.dart';
 import '../../core/widgets/profile_button.dart';
@@ -18,8 +19,8 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var authProvider = Provider.of<AuthProvidersr>(context);
-
+    Provider.of<AuthProvidersr>(context);
+    final website = Uri.parse("https://fadyfarid.github.io/Loco/#about");
     return Scaffold(
         appBar: AppBar(
           actions: [
@@ -30,8 +31,9 @@ class Profile extends StatelessWidget {
                   Navigator.of(context).pushReplacementNamed(LogIn.routeName);
                 },
                 icon: Icon(
-                  Icons.power_settings_new,
+                  Icons.logout_outlined,
                   size: 20,
+                  color: Theme.of(context).colorScheme.primary,
                 ))
           ],
           automaticallyImplyLeading: false,
@@ -49,23 +51,22 @@ class Profile extends StatelessWidget {
           child: Center(
               child: Column(
                 children: [
-              SizedBox(
-                height: 10,
+              const SizedBox(
+                height: 30,
               ),
               Text(
-                '${authProvider.currentUser!.firstName} ${authProvider.currentUser!.lastName} ',
+                'Mahmoud Hany',
                 style: Styles.textStyle30.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.primary,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
-                '${authProvider.currentUser!.email}',
+                'mahmoudhany374@gmail.com',
                 style: Styles.textStyle18.copyWith(
-                  fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.primary,
                 ),
               ),
@@ -97,12 +98,19 @@ class Profile extends StatelessWidget {
                         ProfileButton(
                             text: AppLocalizations.of(context)!.become_a_seller,
                             icon: Icons.sell_outlined,
-                            onTap: () {}),
+                            onTap: () {
+                              launchUrl(
+                                website,
+                                mode: LaunchMode.inAppBrowserView,
+                              );
+                            }),
                       ],
                     ),
                   ),
                 ],
-              )),
-        ));
+              )
+          ),
+        )
+    );
   }
 }

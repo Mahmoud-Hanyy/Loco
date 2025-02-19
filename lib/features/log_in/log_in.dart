@@ -6,7 +6,6 @@ import 'package:loco/core/widgets/custom_text_field.dart';
 import 'package:loco/features/home/home.dart';
 import 'package:loco/features/navigation/navigation.dart';
 import 'package:provider/provider.dart';
-
 import '../../core/utils/assets.dart';
 import '../../core/utils/dialog_utils.dart';
 import '../../core/utils/firebase_utils.dart';

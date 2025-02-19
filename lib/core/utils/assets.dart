@@ -22,4 +22,5 @@ class Assets{
   static const rika = 'lib/resources/images/rika.png';
   static const google = 'lib/resources/images/google.png';
   static const sweater = 'lib/resources/images/sweater.png';
+  static const String api_key = "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2T1RneU1EazBMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuMGFuSE5TMDBBWkpEb3JHUXJXaVRkc2hTS1lKb3dWYVMzVmh1ZDdDb0NOVENBdUZjQkZTWmZTYzhSUkRuenZMdmN1ekJqa3hCQXNleWs2ZXFTak1EdFE=";
 }

@@ -19,7 +19,6 @@ class FirebaseUtils{
     return querySnapShot.data();
   }
 
-  /// fav data
   static CollectionReference<UserFav> getProductCollection(String uId) {
     return getUsersCollection()
         .doc(uId)

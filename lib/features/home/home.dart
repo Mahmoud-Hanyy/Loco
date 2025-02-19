@@ -7,6 +7,7 @@ import 'package:loco/core/widgets/package_item.dart';
 import 'package:loco/features/home/widgets/accessories_page.dart';
 import 'package:loco/features/home/widgets/kids_products_page.dart';
 import 'package:loco/features/home/widgets/men_product_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/utils/styles.dart';
 import '../cart/add_to_cart.dart';
@@ -23,6 +24,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final website = Uri.parse("https://fadyfarid.github.io/Loco/#plans");
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
@@ -304,24 +306,32 @@ class HomePage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              PackageItem(text: "Bronze package", price: " Free "),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              PackageItem(text: "Silver package ", price: " 250 EG "),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              PackageItem(text: "Gold package ", price: " 750 EG "),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              PackageItem(text: "Platinum package ", price: " 1500 EG"),
-                            ],
+                        InkWell(
+                          onTap: () {
+                            launchUrl(
+                              website,
+                              mode: LaunchMode.inAppBrowserView,
+                            );
+                          },
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                PackageItem(text: "Bronze package", price: " Free "),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                PackageItem(text: "Silver package ", price: " 250 EG "),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                PackageItem(text: "Gold package ", price: " 750 EG "),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                PackageItem(text: "Platinum package ", price: " 1500 EG"),
+                              ],
+                            ),
                           ),
                         ),
                       ],

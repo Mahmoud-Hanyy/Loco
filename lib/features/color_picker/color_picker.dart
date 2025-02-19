@@ -31,7 +31,6 @@ class _ColorPickerScreenState extends State<ColorPickerScreen> {
     _colorPalette = _generatePalette(_selectedColor);
   }
 
-
   List<Color> _generatePalette(Color color) {
     List<Color> palette = [];
     for (int i = 1; i <= 5; i++) {

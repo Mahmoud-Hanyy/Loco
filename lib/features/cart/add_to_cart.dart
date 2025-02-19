@@ -72,6 +72,12 @@ class AddToCart extends StatelessWidget {
                             color: Theme.of(context).colorScheme.primary),
                       ),
                       const SizedBox(height: 10),
+                      Text(
+                        'white | XL ',
+                        style: Styles.textStyle16.copyWith(
+                            color: Theme.of(context).colorScheme.primary),
+                      ),
+                      const SizedBox(height: 10),
                     ],
                   ),
                 ],
